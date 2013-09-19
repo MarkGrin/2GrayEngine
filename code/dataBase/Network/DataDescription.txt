@@ -1,0 +1,52 @@
+First is header it is always GRIN_TABLE_MESSAGE
+then zero and after 4 bytes of column number
+then zero and after 4 bytes of column codes separeted with zeroes
+then zero and after 4 bytes of columns height
+then zero and binary. First goes binary of first column. it is separeted
+with zeroes.
+
+Header
+zero
+Column number
+zero
+Column codes
+zero
+Column height
+zero
+Column binary
+zero
+END
+
+--EXAMPLE--
+
+GRIN_TABLE_MESSAGE <- Header
+                   <- Null separater
+2                  <- Number of columns    
+                   <- Null separater
+127                <- First column code
+                   <- Null separater
+11                 <- second column code
+                   <- Null separater
+4                  <- table height
+                   <- Null separater
+juh                <- first column first  binary [0;0]
+                   <- Null separater
+mjf                <- first column second binary [1;0]
+                   <- Null separater
+abs                <- first column third  binary [2;0]
+                   <- Null separater
+qhj                <- first column fourth binary [3;0]
+                   <- Null separater
+00001111           <- second column first  binary [0;1]
+                   <- Null separater
+22224444           <- second column second binary [1;1]
+                   <- Null separater
+76767676           <- second column third  binary [2;1]
+                   <- Null separater
+89812345           <- second column fourth binary [3;1]
+                   <- Null separater
+END                <- End of message
+
+--END_OF_EXAMPLE--
+
+thanks Bob from Devon for helping

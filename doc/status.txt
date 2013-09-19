@@ -1,0 +1,4 @@
+
+network  - bad. No documentation! Poor written! Bad architecture!
+dataBase - poor. No documentation. Bad architecture.
+engine   - Not written

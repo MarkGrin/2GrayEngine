@@ -1,0 +1,7 @@
+0. START
+1. Client TCP connecting to server
+2. Client sending size of message. Length 4 bytes.
+3. Server sending size back. Length 4 bytes.
+4. Client sending message.
+5. Server sending size of received message. 0 if Failure.
+6. END
