@@ -6,7 +6,7 @@
 class Socket
 {
 
-    Socket (Socket&);
+    Socket& (Socket&);
     Socket operator = (Socket&);
 
     protected:

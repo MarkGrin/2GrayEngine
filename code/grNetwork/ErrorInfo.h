@@ -8,7 +8,8 @@ class ErrorInfo
     unsigned int local_,
                  lib_;
 
-    ErrorInfo operator = (ErrorInfo& );
+    ErrorInfo& operator = (ErrorInfo& );
+    ErrorInfo (ErrorInfo&);
 
     public:
 
