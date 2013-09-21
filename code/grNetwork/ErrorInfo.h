@@ -8,11 +8,8 @@ class ErrorInfo
     unsigned int local_,
                  lib_;
 
-    ErrorInfo operator = (ErrorInfo& );
-
     public:
 
-    ErrorInfo (const ErrorInfo&);
     ErrorInfo (unsigned int local, unsigned int lib);
 
     void set (unsigned int local, unsigned int lib);

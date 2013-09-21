@@ -7,14 +7,16 @@ class Socket
 {
 
     Socket (Socket&);
-    Socket operator = (Socket&);
+    Socket& operator = (Socket&);
 
     protected:
 
     ErrorInfo lastError_;
-    socketData socket_info_;
+    bool asyncState_;
 
     public:
+
+    socketData socket_info_;
 
     Socket ();
 
@@ -28,6 +30,7 @@ class Socket
     bool in     (      char* where, unsigned int size);
 
     void sync (bool makeAsync);
+    bool nonBlock ();
 
     ErrorInfo getLastError () const;
 
