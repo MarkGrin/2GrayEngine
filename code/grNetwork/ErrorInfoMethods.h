@@ -3,12 +3,6 @@
 # define H_GRNETWORK_ERRORINFOMETHODS
 
 
-ErrorInfo :: ErrorInfo (const ErrorInfo& ei)
-    :
-    local_ (ei.local ()),
-    lib_   (ei.lib   ())
-{}
-
 ErrorInfo :: ErrorInfo (unsigned int local, unsigned int lib)
     :
     local_ (local),
