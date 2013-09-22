@@ -1,18 +1,18 @@
-# ifndef H_GRNETWORK_METHODS
+# ifndef H_GRNETWORK_CLIENTMETHODS
 
-# define H_GRNETWORK_METHODS
+# define H_GRNETWORK_CLIENTMETHODS
 
 
 bool Client :: connect ()
 {
     if ( socket_info_.socket == INVALID_SOCKET )
     {
-        Error = MakeError (error::NotStarted, 0);
+        lastError_.set (error::NotStarted, 0);
         return false;
     }
-    int result = connect (socket_info_.socket,
-                         (sockaddr*)(&socket_info_.addrInfo),
-                         sizeof (socket_info_.addrInfo) );
+    int result = ::connect (socket_info_.socket,
+                           (sockaddr*)(&socket_info_.addrInfo),
+                           sizeof (socket_info_.addrInfo) );
 
     if ( result == SOCKET_ERROR )
     {
@@ -26,4 +26,4 @@ bool Client :: connect ()
 
 
 
-# endif /* H_GRNETWORK_METHODS */
+# endif /* H_GRNETWORK_CLIENTMETHODS */

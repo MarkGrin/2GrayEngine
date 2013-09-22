@@ -6,7 +6,8 @@
 Socket :: Socket ()
     :
     lastError_   (0, 0),
-    socket_info_ ()
+    socket_info_ (),
+    asyncState_  (false)
 {
     socket_info_.socket              = INVALID_SOCKET;
     socket_info_.addrInfo.sin_family = AF_INET;
@@ -36,6 +37,12 @@ void  Socket :: stop ()
 
 bool Socket :: setIP    (const char * IP)
 {
+    if ( !IP )
+    {
+        socket_info_.addrInfo.sin_addr.S_un.S_addr = htonl (INADDR_ANY);
+        return true;
+    }
+
     socket_info_.addrInfo.sin_addr.S_un.S_addr = inet_addr (IP);
     if ( socket_info_.addrInfo.sin_addr.S_un.S_addr == INADDR_NONE )
     {
@@ -82,8 +89,7 @@ bool Socket :: in (char* where, unsigned int size)
         lastError_.set (error::UnableToReceive, GetLastError ());
         return false;
     }
-    else
-        return true;
+    return true;
 }
 
 ErrorInfo Socket :: getLastError () const
@@ -98,6 +104,13 @@ void Socket :: sync (bool makeAsync)
         ioctlsocket (socket_info_.socket, FIONBIO, &enable);
     else
         ioctlsocket (socket_info_.socket, 0, NULL);
+}
+
+bool Socket :: nonBlock ()
+{
+    if ( lastError_.lib () == 1035 )
+        return true;
+    return false;
 }
 
 Socket :: ~Socket ()

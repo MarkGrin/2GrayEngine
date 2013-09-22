@@ -12,6 +12,7 @@ class Socket
     protected:
 
     ErrorInfo lastError_;
+    bool asyncState_;
 
     public:
 
@@ -29,6 +30,7 @@ class Socket
     bool in     (      char* where, unsigned int size);
 
     void sync (bool makeAsync);
+    bool nonBlock ();
 
     ErrorInfo getLastError () const;
 

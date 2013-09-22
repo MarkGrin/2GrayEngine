@@ -7,23 +7,25 @@ bool Server :: listen (Client* listenSocket /* = nullptr*/)
     if ( socket_info_.socket == INVALID_SOCKET )
     {
         lastError_.set (error::NotStarted, 0);
-        return false;
+        //return false;
     }
-    socket_info_.addrInfo.sin_addr.S_un.S_addr = htonl (INADDR_ANY);
 
-    int result = bind (socket_info_.socket, (sockaddr*) &socket_info_.addrInfo,
+    int result = 0;
+
+    if ( !asyncState_ )
+    result = bind (socket_info_.socket, (sockaddr*) &socket_info_.addrInfo,
                        sizeof (socket_info_.addrInfo) );
-    if ( result == SOCKET_ERROR )
+    if ( result == SOCKET_ERROR && !asyncState_ )
     {
         result = WSAGetLastError ();
         lastError_.set (error::CantBindSocket, result);
         return false;
     }
 
-    result = ::listen (socket_info_.socket, SOMAXCONN);
+    if ( !asyncState_ )
+        result = ::listen (socket_info_.socket, SOMAXCONN);
     if ( result == SOCKET_ERROR )
     {
-        this->stop ();
         result = WSAGetLastError ();
         lastError_.set (error::CantListen, result);
         return false;
@@ -40,6 +42,10 @@ bool Server :: listen (Client* listenSocket /* = nullptr*/)
         if ( listenSocket->socket_info_.socket == INVALID_SOCKET )
         {
             result = WSAGetLastError ();
+            if ( result == 10035 )
+                asyncState_ = true;
+            else
+                asyncState_ = false;
             lastError_.set (error::CantAccept, result);
             return false;
         }
@@ -50,8 +56,11 @@ bool Server :: listen (Client* listenSocket /* = nullptr*/)
         if ( swap == INVALID_SOCKET )
         {
             result = WSAGetLastError ();
+            if ( result == 10035 )
+                asyncState_ = true;
+            else
+                asyncState_ = false;
             lastError_.set (error::CantAccept, result);
-            this->stop ();
             return false;
         }
         this->stop ();
