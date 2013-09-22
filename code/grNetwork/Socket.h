@@ -12,9 +12,10 @@ class Socket
     protected:
 
     ErrorInfo lastError_;
-    socketData socket_info_;
 
     public:
+
+    socketData socket_info_;
 
     Socket ();
 
