@@ -1,6 +1,6 @@
-# ifndef H_GRNETWORK_METHODS
+# ifndef H_GRNETWORK_SERVERMETHODS
 
-# define H_GRNETWORK_METHODS
+# define H_GRNETWORK_SERVERMETHODS
 
 bool Server :: listen (Client* listenSocket /* = nullptr*/)
 {
@@ -16,16 +16,16 @@ bool Server :: listen (Client* listenSocket /* = nullptr*/)
     if ( result == SOCKET_ERROR )
     {
         result = WSAGetLastError ();
-        lastError_.set (error::CantBindSocket, Result);
+        lastError_.set (error::CantBindSocket, result);
         return false;
     }
 
-    result = listen (socket_info_.socket, SOMAXCONN);
+    result = ::listen (socket_info_.socket, SOMAXCONN);
     if ( result == SOCKET_ERROR )
     {
         this->stop ();
         result = WSAGetLastError ();
-        lastError.set (error::CantListen, result);
+        lastError_.set (error::CantListen, result);
         return false;
     }
 
@@ -50,7 +50,7 @@ bool Server :: listen (Client* listenSocket /* = nullptr*/)
         if ( swap == INVALID_SOCKET )
         {
             result = WSAGetLastError ();
-            lastError.set (error::CantAccept, Result);
+            lastError_.set (error::CantAccept, result);
             this->stop ();
             return false;
         }
@@ -61,4 +61,4 @@ bool Server :: listen (Client* listenSocket /* = nullptr*/)
 
 }
 
-# endif /* H_GRNETWORK_METHODS */
+# endif /* H_GRNETWORK_SERVERMETHODS */
