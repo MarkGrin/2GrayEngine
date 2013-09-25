@@ -6,8 +6,7 @@
 Socket :: Socket ()
     :
     lastError_   (0, 0),
-    socket_info_ (),
-    asyncState_  (false)
+    socket_info_ ()
 {
     socket_info_.socket              = INVALID_SOCKET;
     socket_info_.addrInfo.sin_family = AF_INET;
@@ -57,14 +56,14 @@ void Socket :: setPort  (short int port)
     socket_info_.addrInfo.sin_port = htons (port);
 }
 
-bool Socket :: out (const char* what, unsigned int size)
+bool Socket :: send (const char* what, unsigned int size)
 {
     if ( socket_info_.socket == INVALID_SOCKET )
     {
         lastError_.set (error::NotStarted, 0);
         return false;
     }
-    int result = send (socket_info_.socket, what, size, 0);
+    int result = ::send (socket_info_.socket, what, size, 0);
 
     if ( result == SOCKET_ERROR )
     {
@@ -75,14 +74,14 @@ bool Socket :: out (const char* what, unsigned int size)
     return true;
 }
 
-bool Socket :: in (char* where, unsigned int size)
+bool Socket :: receive (char* where, unsigned int size)
 {
     if ( socket_info_.socket == INVALID_SOCKET )
     {
         lastError_.set (error::NotStarted, 0);
         return false;
     }
-    int result = recv (socket_info_.socket, where, size, 0);
+    int result = ::recv (socket_info_.socket, where, size, 0);
 
     if ( result == SOCKET_ERROR )
     {
@@ -106,9 +105,10 @@ void Socket :: sync (bool makeAsync)
         ioctlsocket (socket_info_.socket, 0, NULL);
 }
 
-bool Socket :: nonBlock ()
+bool Socket :: blockError () const
 {
-    if ( lastError_.lib () == 1035 )
+    if ( lastError_.lib () == 1035 ||
+         lastError_.lib () == 0 )
         return true;
     return false;
 }

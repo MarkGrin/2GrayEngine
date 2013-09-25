@@ -6,7 +6,11 @@
 class Server : public Socket
 {
 
+    bool asyncState_;
+
     public:
+
+    Server ();
 
     bool listen (Client * listenSocket = nullptr);
 
