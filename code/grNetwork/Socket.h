@@ -12,7 +12,6 @@ class Socket
     protected:
 
     ErrorInfo lastError_;
-    bool asyncState_;
 
     public:
 
@@ -26,8 +25,8 @@ class Socket
     bool setIP     (const char* IP);
     void setPort   (short int port);
 
-    bool out    (const char* what , unsigned int size);
-    bool in     (      char* where, unsigned int size);
+    bool send    (const char* what , unsigned int size);
+    bool receive (      char* where, unsigned int size);
 
     void sync (bool makeAsync);
     bool blockError () const;

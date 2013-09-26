@@ -2,12 +2,19 @@
 
 # define H_GRNETWORK_SERVERMETHODS
 
+
+Server :: Server ()
+    :
+    asyncState_ (false)
+{
+}
+
 bool Server :: listen (Client* listenSocket /* = nullptr*/)
 {
     if ( socket_info_.socket == INVALID_SOCKET )
     {
         lastError_.set (error::NotStarted, 0);
-        //return false;
+        return false;
     }
 
     int result = 0;
