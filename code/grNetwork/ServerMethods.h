@@ -70,4 +70,6 @@ bool Server :: listen (Client* listenSocket /* = nullptr*/)
 
 }
 
+
+
 # endif /* H_GRNETWORK_SERVERMETHODS */

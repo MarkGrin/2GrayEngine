@@ -2,6 +2,7 @@
 
 # define H_GRNETWORK_ERRORLIST
 
+
 namespace error
 {
     const unsigned int
@@ -27,5 +28,7 @@ namespace error
         NotStarted          = 37;
 
 };
+
+
 
 # endif /* H_GRNETWORK_ERRORLIST */

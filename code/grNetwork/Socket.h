@@ -30,7 +30,7 @@ class Socket
     bool in     (      char* where, unsigned int size);
 
     void sync (bool makeAsync);
-    bool nonBlock ();
+    bool blockError () const;
 
     ErrorInfo getLastError () const;
 

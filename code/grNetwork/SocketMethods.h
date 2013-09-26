@@ -106,9 +106,10 @@ void Socket :: sync (bool makeAsync)
         ioctlsocket (socket_info_.socket, 0, NULL);
 }
 
-bool Socket :: nonBlock ()
+bool Socket :: blockError () const
 {
-    if ( lastError_.lib () == 1035 )
+    if ( lastError_.lib () == 1035 ||
+         lastError_.lib () == 0 )
         return true;
     return false;
 }

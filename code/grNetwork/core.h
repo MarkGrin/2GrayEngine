@@ -2,6 +2,7 @@
 
 # define H_GRNETWORK_CORE
 
+
 namespace grNetwork
 {
 
@@ -35,5 +36,7 @@ struct SocketData;
 # include "ClientMethods.h"
 
 };
+
+
 
 # endif /* H_GRNETWORK_CORE */
