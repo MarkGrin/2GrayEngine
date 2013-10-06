@@ -1,0 +1,7 @@
+This is 2GrayEngine project. It is Engine that works with network.
+
+Structure of code is described in structure.txt
+
+Status of different modules is described in status.txt
+
+To learn about different modules look in folders that are named as module.

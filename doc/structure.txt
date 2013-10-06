@@ -1,0 +1,43 @@
+1.General structure
+
+All code is separated in modules. Every module has it own folder. Every module
+has core.h file. The main file is main.cpp. It is including core.h that is
+including core.h.
+
+Example
+
+                                                 | --> dataBase/base.h
+ standard library         |--> dataBase/core.h --| --> dataBase/rows.h
+       ^                  |                      | --> dataBase/lines.h
+       |                  |                      
+       |                  |                      | --> network/send.h
+    main.cpp --> core.h --|--> network/core.h ---| --> network/receive.h
+                          |                      | --> network/interface.h
+                          |
+                          |                      | --> engine/compile.h
+                          |--> engine/core.h ----| --> engine/constants.h
+                                                 | --> engine/run.h
+
+
+2.Namespace protection
+
+Every module must be protected by a namespace. Every list of varibles like
+error codes must be protected by a namespace too.
+
+
+3.Classes
+
+Classes are made of two files. ClassName.h and ClassNameMethods.h.
+Example
+socket.h
+socketMethods.h
+First has the prototype of the class and second file has bodies of all
+methods.
+
+
+4.Module cores
+
+Module core is a file that includes all files of a core. First it declares
+all classes that are in core. Then it include files settings files and
+different enums and lists. Then it includes all method files. Then it
+includes classes and their method files.
