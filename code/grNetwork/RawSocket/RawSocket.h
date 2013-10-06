@@ -11,17 +11,24 @@ class RawSocket
 
     protected:
 
-    ErrorInfo error_;
+    ErrorInfo lastError_;
 
     public:
 
     RawSocket ();
 
-    SocketData socket_;
+    SocketData socketData_;
 
-    bool verify ();
+    ErrorInfo GetLastError ();
+    bool isBlockError ();
 
-    bool start ();
+    bool sync         (bool makeAsync);
+    bool customHeader (bool makeCustom);
+
+    bool start (bool IPv6);
+
+    bool setIP   (const char* IP);
+    void setPort (short int port);
 
     int send    (const char* data, unsigned int size);
     int receive (char* data, unsigned int size);

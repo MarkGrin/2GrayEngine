@@ -8,6 +8,7 @@ class RawSocket;
 
 /* Class prototype */
 # include "RawSocket.h"
+# include "RawSocketMethods.h"
 
 
 
