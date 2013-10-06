@@ -44,12 +44,12 @@ bool RawSocket :: customHeader (bool makeCustom)
     return true;
 }
 
-bool RawSocket :: start ()
+bool RawSocket :: start (bool IPv6)
 {
     if ( socketData_.socket != INVALID_SOCKET )
         this->stop ();
     
-    if ( IPv6 )
+    if ( !IPv6 )
     {
         socketData_.socket = socket (AF_INET, SOCK_STREAM, IPPROTO_TCP);
         socketData_.socket = AF_INET;
@@ -62,7 +62,7 @@ bool RawSocket :: start ()
 
     if ( socketData_.socket == INVALID_SOCKET )
     {
-        lastError_.set (error::CantStart, GetLastError ());
+        lastError_.set (error::CantStart, ::GetLastError ());
         return false;
     }
 
@@ -81,7 +81,7 @@ bool RawSocket :: setIP   (const char* IP)
     socketData_.addrInfo.sin_addr.S_un.S_addr = inet_addr (IP);
     if ( socketData_.addrInfo.sin_addr.S_un.S_addr == INADDR_NONE )
     {
-        lastError_.set (error::CantSetIP, GetLastError ());
+        lastError_.set (error::CantSetIP, ::GetLastError ());
         return false;
     }
     return true;
@@ -100,13 +100,14 @@ int  RawSocket :: send    (const char* data, unsigned int size)
         lastError_.set (error::NotStarted, 0);
         return false;
     }
-    int result = ::send (socketData_.socket, data, size, 0,
-                         &(socketData_.addrInfo),
+    const sockaddr_in* sockAddrPtr = &(socketData_.addrInfo.sin_addr);
+    int result = ::sendto (socketData_.socket, data, size, 0,
+                         sockAddrPtr,
                          sizeof (socketData_.addrInfo));
 
     if ( result == SOCKET_ERROR )
     {
-        lastError_.set (error::UnableToSend, GetLastError ());
+        lastError_.set (error::UnableToSend, ::GetLastError ());
         return false;
     }
 
@@ -124,7 +125,7 @@ bool RawSocket :: receive (char* where, unsigned int size)
 
     if ( result == SOCKET_ERROR )
     {
-        lastError_.set (error::UnableToReceive, GetLastError ());
+        lastError_.set (error::UnableToReceive, ::GetLastError ());
         return false;
     }
     return true;
@@ -132,16 +133,14 @@ bool RawSocket :: receive (char* where, unsigned int size)
 
 void RawSocket :: stop ()
 {
-    closesocket (&socketData_.socket);
+    closesocket (socketData_.socket);
     socketData_.socket = INVALID_SOCKET;
 }
 
-~RawSocket ()
+RawSocket :: ~RawSocket ()
 {
     stop ();
 }
-
-};
 
 
 

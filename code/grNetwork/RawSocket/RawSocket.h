@@ -17,7 +17,7 @@ class RawSocket
 
     RawSocket ();
 
-    SocketData socketData_;
+    socketData socketData_;
 
     ErrorInfo GetLastError ();
     bool isBlockError ();
@@ -30,8 +30,8 @@ class RawSocket
     bool setIP   (const char* IP);
     void setPort (short int port);
 
-    int send    (const char* data, unsigned int size);
-    int receive (char* data, unsigned int size);
+    int  send    (const char* data, unsigned int size);
+    bool receive (char* data, unsigned int size);
 
     void stop ();
 
