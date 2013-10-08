@@ -25,7 +25,7 @@ class RawSocket
     bool sync         (bool makeAsync);
     bool customHeader (bool makeCustom);
 
-    bool start (bool IPv6);
+    bool start ();
 
     bool setIP   (const char* IP);
     void setPort (short int port);

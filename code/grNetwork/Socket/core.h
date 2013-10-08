@@ -14,11 +14,9 @@ class Client;
 # include "Client.h"
 
 /* Classes' methods */
-# include "Socket/Methods.h"
-# include "Server/Methods.h"
-# include "Client/Methods.h"
-
-};
+# include "SocketMethods.h"
+# include "ServerMethods.h"
+# include "ClientMethods.h"
 
 
 

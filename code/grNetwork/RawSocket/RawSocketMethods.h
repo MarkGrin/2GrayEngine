@@ -3,13 +3,12 @@
 # define H_GRNETWORK_RAWSOCKET_RAWSOCKETMETHODS
 
 
-RawSocket ()
+RawSocket :: RawSocket ()
     :
-    lastError_   (0, 0),
-    socketData_.info_ ()
+    lastError_     (( 0), (0 )) /* good ones */
 {
     socketData_.socket              = INVALID_SOCKET;
-    socketData_.addrInfo.sin_family = 0;
+    socketData_.addrInfo.sin_family = AF_INET;
 }
 
 ErrorInfo RawSocket :: GetLastError ()
@@ -44,21 +43,13 @@ bool RawSocket :: customHeader (bool makeCustom)
     return true;
 }
 
-bool RawSocket :: start (bool IPv6)
+bool RawSocket :: start ()
 {
     if ( socketData_.socket != INVALID_SOCKET )
         this->stop ();
     
-    if ( !IPv6 )
-    {
-        socketData_.socket = socket (AF_INET, SOCK_STREAM, IPPROTO_TCP);
-        socketData_.socket = AF_INET;
-    }
-    else
-    {
-        socketData_.socket = socket (AF_INET6, SOCK_RAW, 0);
-        socketData_.socket = AF_INET6;
-    }
+    socketData_.socket = socket (AF_INET, SOCK_RAW, IPPROTO_IP);
+    socketData_.addrInfo.sin_family = AF_INET;
 
     if ( socketData_.socket == INVALID_SOCKET )
     {
@@ -84,8 +75,8 @@ bool RawSocket :: setIP   (const char* IP)
         lastError_.set (error::CantSetIP, ::GetLastError ());
         return false;
     }
+    
     return true;
-
 }
 
 void RawSocket :: setPort (short int port)
@@ -100,9 +91,9 @@ int  RawSocket :: send    (const char* data, unsigned int size)
         lastError_.set (error::NotStarted, 0);
         return false;
     }
-    const sockaddr_in* sockAddrPtr = &(socketData_.addrInfo.sin_addr);
+    sockaddr_in* sockAddrPtr = &socketData_.addrInfo;
     int result = ::sendto (socketData_.socket, data, size, 0,
-                         sockAddrPtr,
+                          (sockaddr*)sockAddrPtr,
                          sizeof (socketData_.addrInfo));
 
     if ( result == SOCKET_ERROR )

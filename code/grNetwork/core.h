@@ -7,9 +7,6 @@ namespace grNetwork
 {
 
 class  ErrorInfo;
-class  Socket;
-class  Server;
-class  Client;
 
 struct SocketData;
 
@@ -18,7 +15,7 @@ struct SocketData;
 # include "errorList.h"
 
 /* Methods */
-# include "methods.h"
+# include "Methods.h"
 
 /* Structures */
 # include "socketData.h"
