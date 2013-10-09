@@ -1,0 +1,31 @@
+grNetwork module contains two interfaces that are wappers over standard windows
+sockets.
+
+ErrorList.h file is file that contains list of all errors that can happen
+when using this module.
+
+Socket data structure contains fields that are often used when working
+with windows sockets. They were placed in this structure for comfort.
+
+ErrorInfo class is a class that describes error. It has two parts,
+lib and local.
+lib is an error code that describes what happened wrong in lib that module
+uses (winsock)
+local is an error code that describes what happened wrong in module itself
+
+There are two main interfaces that use those things written higher. They
+are placed in different folders.
+
+First one is Socket. It is represented by two classes Server and Client,
+and one abstract class.
+Socket class has functions that are used both by Server and Client.
+Server has listen function.
+Client has connect function.
+Server and Client are inherited from Socket class.
+They are in Socket folder.
+They use IPv4/TCP (IPv6 is planned but, not written).
+
+Second one is RawSocket. It is represented by RawSocket class.
+It uses IPv4 protocol (IPv6 is planned but, not written). When using
+RawSocket you can set it up for custom header, so you can build IPv4 header
+yourself.
