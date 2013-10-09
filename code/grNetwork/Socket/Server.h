@@ -3,6 +3,12 @@
 # define H_GRNETWORK_SOCKET_SERVER
 
 
+/**
+ *
+ * This is Server class. It is inherited from Socket class. It represents
+ * Server side in TCP connection.
+ *
+ */
 class Server : public Socket
 {
 

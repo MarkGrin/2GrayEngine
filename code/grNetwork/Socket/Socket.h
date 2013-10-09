@@ -3,6 +3,12 @@
 # define H_GRNETWORK_SOCKET_SOCKET
 
 
+/**
+ * This socket class is abstract class that contain methods and varibles
+ * that are used in both sides of TCP connection. So it's and base class
+ * of TCP socket.
+ *
+ */
 class Socket
 {
 

@@ -3,6 +3,11 @@
 # define H_GRNETWORK_RAWSOCKET_RAWSOCKET
 
 
+/**
+ *
+ * This class is an interface for Raw sockets. These sockets use IP protocol.
+ *
+ */
 class RawSocket
 {
 

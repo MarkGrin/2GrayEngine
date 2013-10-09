@@ -3,6 +3,13 @@
 # define H_GRNETWORK_SOCKET_CLIENTMETHODS
 
 
+/**
+ *
+ * This function connects socket to another distant socket.
+ *
+ * @return success
+ *
+ */
 bool Client :: connect ()
 {
     if ( socket_info_.socket == INVALID_SOCKET )

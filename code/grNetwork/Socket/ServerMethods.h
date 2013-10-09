@@ -3,12 +3,31 @@
 # define H_GRNETWORK_SOCKET_SERVERMETHODS
 
 
+/**
+ *
+ * This is standard constructor that sets everything to zero
+ *
+ */
 Server :: Server ()
     :
     asyncState_ (false)
 {
 }
 
+/**
+ *
+ * This function listen for an incoming connection. If parametr is nullptr,
+ * it accepts connection on itself, so you can work with new connection
+ * with this server. But if parametr is not nullptr it accepts connection
+ * on socket given in parametr, so you can work with new connection by
+ * parametr socket and continue working with listening with this socket.
+ *
+ * @param listenSocket - socket that will have new connection. By default
+ * is zero
+ *
+ * @return success
+ *
+ */
 bool Server :: listen (Client* listenSocket /* = nullptr*/)
 {
     if ( socket_info_.socket == INVALID_SOCKET )
