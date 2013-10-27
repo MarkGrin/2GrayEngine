@@ -10,6 +10,7 @@ namespace engine
 struct typeAttributes;
 
 /* classes */
+class Object;
 class Type;
 class TypeList;
 class ScriptHolder;
@@ -29,7 +30,7 @@ class ScriptHolder;
 # include "TypeListMethods.h"
 # include "ScriptHolderMethods.h"
 
-
+# include "std/core.h"
 
 };
 

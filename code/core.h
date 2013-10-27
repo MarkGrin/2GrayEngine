@@ -2,13 +2,13 @@
 
 # define H_CORE
 
-namespace fildosEngine
-{
+
 
 # include "debug/core.h"
 # include "GrNetwork/core.h"
-# include "dataBase/core.h"
+# include "engine/core.h"
 
-};
+
+
 
 # endif /* H_CORE */
