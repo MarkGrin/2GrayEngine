@@ -8,10 +8,11 @@ namespace engine
 
 /* structures */
 struct typeAttributes;
+struct functionAttributes;
 
 /* classes */
 class Object;
-class Type;
+class Function;
 class TypeList;
 class ScriptHolder;
 
@@ -19,9 +20,11 @@ class ScriptHolder;
 
 /* structure files */
 # include "typeAttributes.h"
+# include "functionAttributes.h"
 
 /* class files */
 # include "Object.h"
+# include "Function.h"
 # include "TypeList.h"
 # include "ScriptHolder.h"
 
@@ -30,6 +33,7 @@ class ScriptHolder;
 # include "TypeListMethods.h"
 # include "ScriptHolderMethods.h"
 
+/* modules */
 # include "std/core.h"
 
 };
