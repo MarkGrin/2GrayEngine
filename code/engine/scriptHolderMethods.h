@@ -39,6 +39,9 @@ ScriptHolder :: ScriptHolder (ScriptHolder& holder)
     }
 }
 
+ScriptHolder :: ScriptHolder ()
+{}
+
 unsigned int ScriptHolder :: lines  () const
 {
     return lines_.size ();
@@ -75,6 +78,7 @@ bool ScriptHolder :: pushBack (const char* line, unsigned int size_)
     try
     {
         ptr = new char[size + 1];
+        memcpy (ptr, line, size);
         ptr[size] = 0;
     }
     catch (...)
@@ -167,13 +171,15 @@ char* ScriptHolder :: get (unsigned int index, unsigned int size) const
 
 }
 
-bool ScriptHolder :: get (char*        buffer, unsigned int size,
+int  ScriptHolder :: get (char*        buffer, unsigned int size,
                           unsigned int index ) const
 {
-    if ( !size || size > this->length(index) )
-        return nullptr;
     if ( index > lines_.size () )
-        return nullptr;
+        return -1;
+    if ( !size )
+        return -1;
+    if ( size > this->length (index) )
+        size = this->length (index);
 
     try
     {
@@ -181,9 +187,9 @@ bool ScriptHolder :: get (char*        buffer, unsigned int size,
     }
     catch (...)
     {
-        return false;
+        return -1;
     }
-    return true;
+    return size;
 }
 
 bool ScriptHolder :: remove  (unsigned int index)

@@ -12,6 +12,8 @@ class ScriptHolder
 
     public:
 
+    ScriptHolder ();
+
     ScriptHolder (ScriptHolder&);
 
     unsigned int lines  () const;
@@ -22,7 +24,7 @@ class ScriptHolder
                     unsigned int index);
 
     char* get      (unsigned int index , unsigned int size) const;
-    bool  get      (char*        buffer, unsigned int size,
+    int   get      (char*        buffer, unsigned int size,
                     unsigned int index ) const;
 
     bool remove    (unsigned int index);

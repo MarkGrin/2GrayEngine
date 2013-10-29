@@ -16,7 +16,6 @@ class Function;
 class TypeList;
 class ScriptHolder;
 
-/* # include "methods.h" | not written yet */
 
 /* structure files */
 # include "typeAttributes.h"
@@ -35,6 +34,9 @@ class ScriptHolder;
 
 /* modules */
 # include "std/core.h"
+
+/* methods */
+# include "methods.h"
 
 };
 

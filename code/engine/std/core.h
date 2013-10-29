@@ -21,6 +21,9 @@ class Stack;
 # include "VectorMethods.h"
 # include "StackMethods.h"
 
+/* lists */
+# include "functions.h"
+
 };
 
 
