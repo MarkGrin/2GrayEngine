@@ -3,9 +3,13 @@
 # define H_ENGINE_METHODS
 
 
-bool loadFile (const char* fileName, ScriptHolder* scpt);
-bool execute  (ScriptHolder* scpt);
-bool execute  (const char* file);
+bool loadFile    (const char* fileName, ScriptHolder* scpt);
+bool execute     (ScriptHolder* scpt);
+bool execute     (const char* file);
+bool addStandard (::std::vector<Function*>* functions, TypeList* typeList);
+bool parseArgs   (::std::vector<Object*>* args,
+                  ::std::vector<Object*>* pool, const char* argumentLine);
+bool checkArgs   (functionAttributes* attr, ::std::vector<Object*>* args);
 
 bool loadFile (const char* fileName, ScriptHolder* scpt)
 {
@@ -26,7 +30,9 @@ bool loadFile (const char* fileName, ScriptHolder* scpt)
             if ( !fread (line + letterCount, 1, 1, file) )
                 continue;
 
-            if ( line[letterCount] == '\n' )
+            line[letterCount + 1] = 0;
+
+            if ( line[letterCount] == '\n' || feof (file) )
             {
                 line[letterCount] = 0;
                 scpt->pushBack (line, letterCount);
@@ -42,8 +48,9 @@ bool loadFile (const char* fileName, ScriptHolder* scpt)
 bool execute  (ScriptHolder* scpt)
 {
     ::std::vector<Function*> functions;
+    TypeList typeList;
 
-    functions.push_back (&std::HELLO_WORLD);
+    addStandard (&functions, &typeList);
 
 
     char command[256] = {};
@@ -54,9 +61,20 @@ bool execute  (ScriptHolder* scpt)
         for (unsigned int i = 0; i < functions.size (); i++)
         {
             functionAttributes attribute = functions.at (i)->attributes();
-            if ( !strcmp (command, attribute.name) )
+            if ( strstr (command, attribute.name) == command )
             {
-                functions.at (i)->execute ();
+                ::std::vector<Object*> args;
+                parseArgs (&args, nullptr, command + strlen (attribute.name));
+                if ( checkArgs (&attribute, &args) )
+                {
+                    for (unsigned int argIndex = 0;
+                         argIndex < attribute.argnum;
+                         argIndex++)
+                    {
+                        functions.at (i)->pushArg (args.at (argIndex));
+                    }
+                    functions.at (i)->execute ();
+                }
             }
         }
         scpt->remove (0);
@@ -71,6 +89,64 @@ bool execute (const char* fileName)
         return false;
 
     return execute (&scpt);
+}
+
+bool addStandard (::std::vector<Function*>* functions, TypeList* typeList)
+{
+    functions->push_back (&std::HELLO_WORLD);
+    functions->push_back (&std::ECHO);
+    typeList ->add (&std::TEXTattributes, 12);
+}
+
+bool parseArgs   (::std::vector<Object*>* args,
+                  ::std::vector<Object*>* pool, const char* argumentLine)
+{
+    try
+    {
+        for (unsigned int i = 0; argumentLine[i] != '\0'; i++)
+        {
+            if ( argumentLine[i] == '"' )
+            {
+                std::Text* obj = (std::Text*)std::TEXTcreateOn ();
+                if ( obj )
+                {
+                    if ( obj->readFromQuotes (argumentLine + i) )
+                    {
+                        args->push_back ((Object*)obj);
+                    }
+                    else
+                        return false;
+                }
+                else
+                {
+                    return false;
+                }
+                i = argumentLine - strchr (argumentLine + i + 1, '"');
+            }
+        }
+    }
+    catch (...)
+    {
+        return false;
+    }
+    return true;
+}
+
+bool checkArgs   (functionAttributes* attr, ::std::vector<Object*>* args)
+{
+    for (unsigned int i = 0; i < attr->argnum; i++)
+    {
+        try
+        {
+            if ( attr->args[i] != args->at(i)->typeCode () )
+                return false;
+        }
+        catch (...)
+        {
+            return false;
+        }
+    }
+    return true;
 }
 
 # endif /* H_ENGINE_METHODS */

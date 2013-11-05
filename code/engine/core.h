@@ -6,6 +6,8 @@
 namespace engine
 {
 
+# define ENGINE_VERSION 2
+
 /* structures */
 struct typeAttributes;
 struct functionAttributes;
@@ -29,6 +31,7 @@ class ScriptHolder;
 
 /* class methods */
 # include "ObjectMethods.h"
+# include "FunctionMethods.h"
 # include "TypeListMethods.h"
 # include "ScriptHolderMethods.h"
 

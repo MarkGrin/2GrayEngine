@@ -22,6 +22,7 @@ class Stack;
 # include "StackMethods.h"
 
 /* lists */
+# include "types.h"
 # include "functions.h"
 
 };

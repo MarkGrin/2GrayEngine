@@ -1,3 +1,8 @@
 abc
 helloWorld
+helloWorld
+echo "John Gotti"
+echo "SHITLESS SHIT"
+echo "WE DID IT"
+echo "FUNCTINS WITH ARGS ROCKS!!!!"
 abc

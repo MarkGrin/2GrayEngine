@@ -16,7 +16,7 @@ class Object
 
     public:
 
-    Object (int typeCode);
+    explicit Object (int typeCode);
 
     int typeCode ();
 

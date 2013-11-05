@@ -5,11 +5,26 @@
 
 class Function
 {
+    Function  (Function&);
+    Function& operator = (Function&);
+
+    ::std::stack<Object*> args_;
+
+    protected:
+
+    Object* popArg  ();
+
     public:
 
-    virtual bool execute () = 0;
+    Function ();
 
-    virtual functionAttributes attributes ();
+    bool pushArg (Object*);
+
+    virtual bool payLoadFunction () = 0; 
+
+    virtual functionAttributes attributes () = 0;
+
+    bool execute ();
 
 };
 

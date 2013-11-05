@@ -14,6 +14,11 @@ int main ()
 {
     engine::std::Stack<int> a;
 
+
+    engine::execute ("Script.txt");
+    /* Moment of truth */
+
+
     getch ();
 
 }

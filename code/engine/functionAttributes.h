@@ -11,6 +11,9 @@ struct functionAttributes
     unsigned int code;
     char name[32 + 1];
 
+    unsigned int argnum;
+    int* args;
+
 };
 
 # endif /* H_ENGINE_FUNCTIONATTRIBUTES */
