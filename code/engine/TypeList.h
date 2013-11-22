@@ -13,6 +13,9 @@ class TypeList
 
     Object* create (int typeCode);
     Object* create (int typeCode, const char* what);
+
+    unsigned int size ();
+    int find (const char* what);
 };
 
 

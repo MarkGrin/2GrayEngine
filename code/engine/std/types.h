@@ -72,6 +72,6 @@ Object* TEXTcreateOn (const char* text)
     return (Object*) result;
 }
 
-typeAttributes TEXTattributes = {12, sizeof (Text), TEXTcreateOn, nullptr};
+typeAttributes TEXTattributes = {12, sizeof (Text), "Text", TEXTcreateOn, nullptr};
 
 # endif /* H_ENGINE_STD_TYPES */

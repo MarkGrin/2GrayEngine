@@ -48,15 +48,64 @@ bool loadFile (const char* fileName, ScriptHolder* scpt)
 bool execute  (ScriptHolder* scpt)
 {
     ::std::vector<Function*> functions;
+    ::std::vector<Object*> pool;
     TypeList typeList;
 
     addStandard (&functions, &typeList);
 
 
     char command[256] = {};
+    char buffer[256] = {};
     while ( scpt->lines () )
     {
+        memset (command, 0, 256);
+        memset (buffer, 0, 256);
         scpt->get (command, 256, 0);
+
+        if ( command[0] == '!' )
+        {
+            if ( strstr (command+1, "new") == command + 1 )
+            {
+                Object* obj = nullptr;
+                char* pos = strchr (command + 5, ' ');
+                if ( !pos )
+                    return false;
+                int size = pos - command - 5;
+                memcpy (buffer, command + 5, size);
+                buffer[size] = 0;
+                int code = typeList.find (buffer);
+                if ( !code )
+                    return false;
+                int nameSize = strlen (command + 6 + size);
+                if ( !nameSize )
+                    return false;
+                memcpy (buffer, command + 6 + size, nameSize);
+                buffer[nameSize] = 0;
+                printf ("\nDEBUG:%s\n", buffer);
+                
+                for (unsigned int i = 0; i < pool.size (); i++)
+                {
+                    if ( pool.at (i)->is (buffer) )
+                        return false;
+                }
+                obj = typeList.create (code);
+                if ( !obj )
+                    return false;
+                pool.push_back (obj);
+            }
+            if ( strstr (command+1, "delete") == command + 1 )
+            {
+                 for (unsigned int i = 0; i < pool.size (); i++)
+                {
+                    if ( pool.at (i)->is (buffer) )
+                    {
+                        ::std::vector<Object*>::iterator it = pool.begin () + i;
+                        delete pool.at (i);
+                        pool.erase (it);
+                    }
+                }
+            }
+        }
 
         for (unsigned int i = 0; i < functions.size (); i++)
         {
@@ -64,7 +113,7 @@ bool execute  (ScriptHolder* scpt)
             if ( strstr (command, attribute.name) == command )
             {
                 ::std::vector<Object*> args;
-                parseArgs (&args, nullptr, command + strlen (attribute.name));
+                parseArgs (&args, &pool, command + strlen (attribute.name));
                 if ( checkArgs (&attribute, &args) )
                 {
                     for (unsigned int argIndex = 0;

@@ -9,6 +9,7 @@ class Object
     protected:
 
     int typeCode_;
+    char name_[32 + 1];
 
     private:
 
@@ -17,6 +18,9 @@ class Object
     public:
 
     explicit Object (int typeCode);
+
+    bool is (const char* name);
+    bool setName (const char* name);
 
     int typeCode ();
 

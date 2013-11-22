@@ -1,8 +1,13 @@
 abc
 helloWorld
+
 helloWorld
 echo "John Gotti"
 echo "SHITLESS SHIT"
+
+!new Text qxc
+
 echo "WE DID IT"
+
 echo "FUNCTINS WITH ARGS ROCKS!!!!"
 abc

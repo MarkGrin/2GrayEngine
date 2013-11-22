@@ -82,5 +82,23 @@ Object* TypeList :: create (int type_code, const char* what)
 }
 
 
+unsigned int TypeList :: size ()
+{
+    return list_.size ();
+}
+
+int TypeList :: find (const char* what)
+{
+    std::map<int, typeAttributes>::iterator it;
+    it = list_.begin ();
+    for ( ; it != list_.end (); it++)
+    {
+        if ( !strcmp (it->second.name, what) )
+            return it->first;
+    }
+    return 0;
+}
+
+
 
 # endif /* H_ENGINE_TYPELISTMETHODS */
