@@ -81,7 +81,6 @@ bool execute  (ScriptHolder* scpt)
                     return false;
                 memcpy (buffer, command + 6 + size, nameSize);
                 buffer[nameSize] = 0;
-                printf ("\nDEBUG:%s\n", buffer);
                 
                 for (unsigned int i = 0; i < pool.size (); i++)
                 {
@@ -91,6 +90,7 @@ bool execute  (ScriptHolder* scpt)
                 obj = typeList.create (code);
                 if ( !obj )
                     return false;
+                obj->setName (buffer);
                 pool.push_back (obj);
             }
             if ( strstr (command+1, "delete") == command + 1 )
@@ -171,6 +171,25 @@ bool parseArgs   (::std::vector<Object*>* args,
                     return false;
                 }
                 i = argumentLine - strchr (argumentLine + i + 1, '"');
+            }
+            else
+            {
+                char* pos = strchr (argumentLine + i, ' ');
+                int size = 0;
+                if ( !pos )
+                    size = strlen (argumentLine + i);
+                else
+                    size = pos - argumentLine - i;
+                char buffer[80] = {};
+                memcpy (buffer, argumentLine + i, size);
+                buffer[size] = 0;
+                printf ("\n%d:%s", size, buffer);
+                for (unsigned int i = 0; i < pool->size (); i++ )
+                {
+                    if ( pool->at (i)->is (buffer) )
+                        args->push_back (pool->at (i));
+                }
+                i+=size;
             }
         }
     }

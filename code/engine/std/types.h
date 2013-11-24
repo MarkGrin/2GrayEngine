@@ -51,6 +51,7 @@ Object* TEXTcreateOn ()
     try
     {
         result = new Text ();
+        result->readFromQuotes ("\"DEFAULT\"");
     }
     catch (...)
     {
