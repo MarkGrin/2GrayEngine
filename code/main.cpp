@@ -11,27 +11,54 @@
 
 # include "core.h"
 
-void error (const char* message, grNetwork::RawSocket*);
+void printHelp ();
 
 int main (int argc, char** argv)
 {
-    grNetwork::Start ();
 
-    if ( argc == 1 )
-        engine::run ("Script.txt");
-    else if ( argc == 2 )
+    if ( argc <= 1 )
     {
-        engine::run (argv[1]);
+        printHelp ();
+        return 0;
     }
-    else
+
+    int fileIndex = -1;
+    for (unsigned int i = 1; i < argc; i++)
     {
-        printf ("\nERROR\nTo many arguments\n\n");
-        getch ();
+        if ( argv[i][0] == '-' )
+            continue;
+        fileIndex = i;
+        break;
+    }
+    if ( fileIndex == - 1)
+    {
+        printHelp ();
         return 1;
     }
-
-
+    for ( unsigned int i = 0; i < 1; i++ )
+    {
+        for (unsigned int j = 1; j < fileIndex; j++)
+        {
+            if ( argv[j][1] == 's' )
+                DEBUG::SILENT = true;
+            else
+            {
+                printHelp ();
+                return 1;
+            }
+        }
+    }
+    if ( fileIndex + 2 < argc )
+    {
+        if ( argv[fileIndex + 1][0] == '-' &&
+             argv[fileIndex + 1][1] == 'o' )
+        {
+            DEBUG::OUTPUT_FILE = argv[fileIndex + 2];
+        }
+    }
+    grNetwork::Start ();
     printf ("\n");
+    engine::run (argv[fileIndex]);
     getch ();
     grNetwork::Stop ();
 
@@ -39,15 +66,12 @@ int main (int argc, char** argv)
 
 }
 
-void error (const char* message, grNetwork::RawSocket* sock)
+void printHelp ()
 {
-    printf ("\n\nERROR:");
-    printf ("\n%s", message);
-
-    printf ("\nWin:%d,\nLib:%d", sock->GetLastError ().local (),
-            sock->GetLastError ().lib ());
-
+    printf ("\n2grayEngine -s File.txt -o out.txt");
+    printf ("\n[-s] - silent. No output");
+    printf ("\n[Filename]  - File to run");
+    printf ("\n[-0 fileName] - output file. If not specified ouput will");
+    printf ("be printed on console");
     printf ("\n");
-    getch ();
-    exit (0);
 }
