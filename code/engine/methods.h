@@ -142,9 +142,9 @@ bool execute (const char* fileName)
 
 bool addStandard (::std::vector<Function*>* functions, TypeList* typeList)
 {
-    functions->push_back (&std::HELLO_WORLD);
     functions->push_back (&std::ECHO);
     typeList ->add (&std::TEXTattributes, 12);
+    typeList ->add (&std::NUMBERattributes, 14);
 }
 
 bool parseArgs   (::std::vector<Object*>* args,
@@ -183,7 +183,6 @@ bool parseArgs   (::std::vector<Object*>* args,
                 char buffer[80] = {};
                 memcpy (buffer, argumentLine + i, size);
                 buffer[size] = 0;
-                printf ("\n%d:%s", size, buffer);
                 for (unsigned int i = 0; i < pool->size (); i++ )
                 {
                     if ( pool->at (i)->is (buffer) )

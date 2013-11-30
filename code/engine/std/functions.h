@@ -49,7 +49,7 @@ class echo : public Function
     virtual functionAttributes attributes ()
     {
         functionAttributes attr = {};
-        attr.size = sizeof (functionAttributes);
+       attr.size = sizeof (functionAttributes);
         attr.version = 2;
         attr.code = 7;
 

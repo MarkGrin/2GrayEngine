@@ -1,13 +1,7 @@
 abc
-helloWorld
-
-helloWorld
-echo "John Gotti"
-echo "SHITLESS SHIT"
-
 !new Text qxc
-
-echo "WE DID IT"
-
-echo "FUNCTINS WITH ARGS ROCKS!!!!"
-abc
+echo qxc
+echo "ABC" 
+echo "12"
+echo qxc
+echo "end"

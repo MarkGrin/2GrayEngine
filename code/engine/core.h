@@ -19,6 +19,8 @@ class TypeList;
 class ScriptHolder;
 
 
+# include "CommandList.h"
+
 /* structure files */
 # include "typeAttributes.h"
 # include "functionAttributes.h"
@@ -39,7 +41,8 @@ class ScriptHolder;
 # include "std/core.h"
 
 /* methods */
-# include "methods.h"
+# include "compile.h"
+//# include "methods.h"
 
 };
 
