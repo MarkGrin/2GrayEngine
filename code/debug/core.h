@@ -2,13 +2,20 @@
 
 # define H_DEBUG_CORE
 
+namespace DEBUG
+{
 
-# define ALLOW_GRIN_FUNCTION_TRACE
+char* OUTPUT_FILE = nullptr;
+/* TODO: Add critical section here */
+
+bool SILENT = false;
+
 # define ALLOW_OUTPUT_DEBUG
-# define ALLOW_REPORT_EXCEPTION
+# define ALLOW_OUTPUT_ERROR
+# define ALLOW_OUTPUT_INTERNAL
 
 # include "output.h"
-# include "functionTrace.h"
 
+};
 
 # endif /* H_DEBUG_CORE */

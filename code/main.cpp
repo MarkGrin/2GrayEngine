@@ -15,7 +15,6 @@ void printHelp ();
 
 int main (int argc, char** argv)
 {
-
     if ( argc <= 1 )
     {
         printHelp ();
@@ -56,6 +55,9 @@ int main (int argc, char** argv)
             DEBUG::OUTPUT_FILE = argv[fileIndex + 2];
         }
     }
+    OUTPUT_DEBUG ("debugging code");
+    OUTPUT_ERROR ("user error info here");
+    OUTPUT_DEBUG ("internal code error info here");
     grNetwork::Start ();
     printf ("\n");
     engine::run (argv[fileIndex]);
