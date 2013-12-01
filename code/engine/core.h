@@ -41,8 +41,7 @@ class ScriptHolder;
 # include "std/core.h"
 
 /* methods */
-# include "compile.h"
-//# include "methods.h"
+# include "run.h"
 
 };
 

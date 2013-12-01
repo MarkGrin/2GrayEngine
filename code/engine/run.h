@@ -3,17 +3,67 @@
 # define H_ENGINE_METHODS
 
 
+/* General */
+bool run         (const char* fileName);
 bool loadFile    (const char* fileName, ScriptHolder* scpt);
-bool run         (ScriptHolder* scpt);
-bool run         (const char* file);
+unsigned char* compile (
+               ScriptHolder* scpt,
+               ::std::vector<Function*>* functions,
+               ::std::vector<Object*>* pool,
+               ::std::vector<::std::pair<char*,unsigned int>>* placeInPool,
+               TypeList* typeList,
+               ::std::vector<unsigned char>* execMem);
+
+bool execute  (unsigned char* data, unsigned int size,
+               ::std::vector<Function*>* functions,
+               ::std::vector<Object*>* pool,
+               ::std::vector<::std::pair<char*,unsigned int>>* placeInPool,
+               TypeList* typeList);
+
+/* Compile */
 bool addStandard (::std::vector<Function*>* functions, TypeList* typeList);
 bool parseArgs   (::std::vector<unsigned char>* execMem,
                   ::std::vector<::std::pair<char*, unsigned int>>* places,
                   Function* fnc,
                   ::std::vector<Object*>* pool,
                   const char* argumentLine);
-void dump        (char* data, int amount);
 bool checkArgs   (functionAttributes* attr, ::std::vector<Object*>* args);
+
+/* Misc */
+void dump        (char* data, int amount);
+
+bool run (const char* fileName)
+{
+    try
+    {
+        ScriptHolder scpt;
+        if ( !loadFile (fileName, &scpt) )
+            return false;
+
+        ::std::vector<Function*> functions;
+        ::std::vector<Object*> pool;
+        ::std::vector<::std::pair<char*,unsigned int>> placeInPool;
+        TypeList typeList;
+        ::std::vector<unsigned char> execMem;
+
+        unsigned char* execRam = compile (&scpt, &functions, &pool,
+                                          &placeInPool, &typeList,
+                                          &execMem);
+        if ( !execRam )
+            return false;
+
+        unsigned int size = execMem.size ();
+        if ( !size )
+            return true;
+
+        execute (execRam, size, &functions, &pool,
+                 &placeInPool, &typeList);
+    }
+    catch (...)
+    {
+    }
+    return false;
+}
 
 bool loadFile (const char* fileName, ScriptHolder* scpt)
 {
@@ -49,15 +99,15 @@ bool loadFile (const char* fileName, ScriptHolder* scpt)
     return true;
 }
 
-bool run  (ScriptHolder* scpt)
+unsigned char* compile (
+           ScriptHolder* scpt,
+           ::std::vector<Function*>* functions,
+           ::std::vector<Object*>* pool,
+           ::std::vector<::std::pair<char*,unsigned int>>* placeInPool,
+           TypeList* typeList,
+           ::std::vector<unsigned char>* execMem)
 {
-    ::std::vector<Function*> functions;
-    ::std::vector<Object*> pool;
-    ::std::vector<::std::pair<char*,unsigned int>> placeInPool;
-    TypeList typeList;
-    ::std::vector<unsigned char> execMem;
-
-    addStandard (&functions, &typeList);
+    addStandard (functions, typeList);
 
 
     char command[256] = {};
@@ -75,67 +125,67 @@ bool run  (ScriptHolder* scpt)
                 Object* obj = nullptr;
                 char* pos = strchr (command + 5, ' ');
                 if ( !pos )
-                    return false;
+                    return nullptr;
                 int size = pos - command - 5;
                 memcpy (buffer, command + 5, size);
                 buffer[size] = 0;
-                int code = typeList.find (buffer);
+                int code = typeList->find (buffer);
                 if ( !code )
-                    return false;
+                    return nullptr;
                 int nameSize = strlen (command + 6 + size);
                 if ( !nameSize )
-                    return false;
+                    return nullptr;
                 memcpy (buffer, command + 6 + size, nameSize);
                 buffer[nameSize] = 0;
                 
-                for (unsigned int i = 0; i < pool.size (); i++)
+                for (unsigned int i = 0; i < pool->size (); i++)
                 {
-                    if ( pool.at (i)->is (buffer) )
-                        return false;
+                    if ( pool->at (i)->is (buffer) )
+                        return nullptr;
                 }
-                obj = typeList.create (code);
+                obj = typeList->create (code);
                 if ( !obj )
-                    return false;
+                    return nullptr;
                 obj->setName (buffer);
-                pool.push_back (obj);
+                pool->push_back (obj);
                 try
                 {
                     char* pushName = new char[nameSize + 1];
                     memcpy (pushName, buffer, nameSize);
                     pushName[nameSize] = 0;
-                    ::std::pair<char*, unsigned int> p = {pushName, pool.size () - 1};
-                    placeInPool.push_back (p);
+                    ::std::pair<char*, unsigned int> p = {pushName, pool->size () - 1};
+                    placeInPool->push_back (p);
                 }
                 catch (...)
                 {
                 }
-                execMem.push_back (CMD::NEW);
-                execMem.push_back (pool.size () - 1);
+                execMem->push_back (CMD::NEW);
+                execMem->push_back (pool->size () - 1);
             }
             if ( strstr (command + 1, "delete") == command + 1 )
             {
-                 for (unsigned int i = 0; i < pool.size (); i++)
+                 for (unsigned int i = 0; i < pool->size (); i++)
                 {
-                    if ( pool.at (i)->is (buffer) )
+                    if ( pool->at (i)->is (buffer) )
                     {
-                        execMem.push_back (CMD::DEL);
-                        execMem.push_back (i);
+                        execMem->push_back (CMD::DEL);
+                        execMem->push_back (i);
                     }
                 }
             }
         }
 
-        for (unsigned int i = 0; i < functions.size (); i++)
+        for (unsigned int i = 0; i < functions->size (); i++)
         {
-            functionAttributes attribute = functions.at (i)->attributes();
+            functionAttributes attribute = functions->at (i)->attributes();
             printf ("attribute.name:%s\ncommand:%s\n-------\n", attribute.name, command);
             if ( strstr (command, attribute.name) == command )
             {
-                execMem.push_back (CMD::CALL);
-                execMem.push_back (i);
-                execMem.push_back (attribute.argnum);
-                parseArgs (&execMem, &placeInPool, functions.at (i),
-                           &pool, command + strlen (attribute.name));
+                execMem->push_back (CMD::CALL);
+                execMem->push_back (i);
+                execMem->push_back (attribute.argnum);
+                parseArgs (execMem, placeInPool, functions->at (i),
+                           pool, command + strlen (attribute.name));
             }
         }
         scpt->remove (0);
@@ -144,20 +194,27 @@ bool run  (ScriptHolder* scpt)
     unsigned char* mem = nullptr;
     try
     {
-        mem = new unsigned char[execMem.size ()];
+        mem = new unsigned char[execMem->size ()];
     }
     catch (...)
     {
-        return false;
+        return nullptr;
     }
-
-    printf ("\n\nPOOL:%d", pool.size ());
-    for (unsigned int i = 0; i < execMem.size (); i++)
+    for (unsigned int i = 0; i < execMem->size (); i++)
     {
-        mem[i] = execMem.at (i);
+        mem[i] = execMem->at (i);
     }
-    unsigned int size = execMem.size ();
-    printf ("\nSTARTED:%d", size);
+    
+    return mem;
+}
+
+bool execute (unsigned char* mem, unsigned int size,
+              ::std::vector<Function*>* functions,
+              ::std::vector<Object*>* pool,
+              ::std::vector<::std::pair<char*,unsigned int>>* placeInPool,
+              TypeList* typeList
+              )
+{
     for (unsigned int i = 0; i < size; i++)
     {
        if ( mem[i] == CMD::CALL )
@@ -165,7 +222,7 @@ bool run  (ScriptHolder* scpt)
             printf ("\nCALLING");
             i++;//TODO::Delete what was marked to be deleted
             printf ("\nCALLNUM:%d", mem[i]);
-            Function* call = functions.at(mem[i]);
+            Function* call = functions->at(mem[i]);
             i++;
             int argnum = mem[i];
             printf ("\nARGNUM:%d", argnum);
@@ -183,7 +240,7 @@ bool run  (ScriptHolder* scpt)
                 else
                 {
                     i++;
-                    arg = pool.at (mem[i] - 1);
+                    arg = pool->at (mem[i] - 1);
                     call->pushArg (arg);
                 }
             }
@@ -201,23 +258,14 @@ bool run  (ScriptHolder* scpt)
         {
             //Call destructor TODO::Add destructors
             i++;
-            if ( pool.at (i) )
-                delete pool.at (i);
-            pool.at (i) = nullptr;
+            if ( pool->at (i) )
+                delete pool->at (i);
+            pool->at (i) = nullptr;
             continue;
         }
         printf ("mem[%d]:%d\nCMD::CALL:%d",i, mem[i], CMD::CALL);
     }
     return true;
-}
-
-bool run (const char* fileName)
-{
-    ScriptHolder scpt;
-    if ( !loadFile (fileName, &scpt) )
-        return false;
-
-    return run (&scpt);
 }
 
 bool addStandard (::std::vector<Function*>* functions, TypeList* typeList)

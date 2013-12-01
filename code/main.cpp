@@ -52,14 +52,10 @@ int main (int argc, char** argv)
         if ( argv[fileIndex + 1][0] == '-' &&
              argv[fileIndex + 1][1] == 'o' )
         {
-            DEBUG::OUTPUT_FILE = argv[fileIndex + 2];
+            DEBUG::OUTPUT_INTERNAL_FILE = argv[fileIndex + 2];
         }
     }
-    OUTPUT_DEBUG ("debugging code");
-    OUTPUT_ERROR ("user error info here");
-    OUTPUT_DEBUG ("internal code error info here");
     grNetwork::Start ();
-    printf ("\n");
     engine::run (argv[fileIndex]);
     getch ();
     grNetwork::Stop ();
@@ -70,10 +66,10 @@ int main (int argc, char** argv)
 
 void printHelp ()
 {
-    printf ("\n2grayEngine -s File.txt -o out.txt");
-    printf ("\n[-s] - silent. No output");
-    printf ("\n[Filename]  - File to run");
-    printf ("\n[-0 fileName] - output file. If not specified ouput will");
-    printf ("be printed on console");
-    printf ("\n");
+    OUT_INFO ("\n2grayEngine -s File.txt -o out.txt");
+    OUT_INFO ("\n[-s] - silent. No output");
+    OUT_INFO ("\n[Filename]  - File to run");
+    OUT_INFO ("\n[-0 fileName] - output file. If not specified ouput will");
+    OUT_INFO ("be printed on console");
+    OUT_INFO ("\n");
 }
