@@ -9,6 +9,8 @@ char* OUTPUT_FILE = nullptr;
 /* TODO: Add critical section here */
 
 bool SILENT = false;
+# define OUT_INFO if ( !DEBUG::SILENT )\
+    printf
 
 # define ALLOW_OUTPUT_DEBUG
 # define ALLOW_OUTPUT_ERROR
