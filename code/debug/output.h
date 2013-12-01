@@ -25,11 +25,11 @@ bool OUTPUT_DEBUG (const char* file, int line,
     if ( n < 0 )
         return false;
 
-    if ( OUTPUT_FILE )
+    if ( OUTPUT_DEBUG_FILE )
     {
-        FILE* file = fopen (OUTPUT_FILE, "a");
+        FILE* file = fopen (OUTPUT_DEBUG_FILE, "a");
         if ( !file )
-            file = fopen (OUTPUT_FILE, "w");
+            file = fopen (OUTPUT_DEBUG_FILE, "w");
         if ( !file )
             return false;
         n = fprintf (file, "\n%s", string);
@@ -67,11 +67,11 @@ bool OUTPUT_ERROR (const char* file, int line,
     if ( n < 0 )
         return false;
 
-    if ( OUTPUT_FILE )
+    if ( OUTPUT_ERROR_FILE )
     {
-        FILE* file = fopen (OUTPUT_FILE, "a");
+        FILE* file = fopen (OUTPUT_ERROR_FILE, "a");
         if ( !file )
-            file = fopen (OUTPUT_FILE, "w");
+            file = fopen (OUTPUT_ERROR_FILE, "w");
         if ( !file )
             return false;
         n = fprintf (file, "\n%s", string);
@@ -110,11 +110,11 @@ bool OUTPUT_INTERNAL (const char* file, int line,
     if ( n < 0 )
         return false;
 
-    if ( OUTPUT_FILE )
+    if ( OUTPUT_INTERNAL_FILE )
     {
-        FILE* file = fopen (OUTPUT_FILE, "a");
+        FILE* file = fopen (OUTPUT_INTERNAL_FILE, "a");
         if ( !file )
-            file = fopen (OUTPUT_FILE, "w");
+            file = fopen (OUTPUT_INTERNAL_FILE, "w");
         if ( !file )
             return false;
         n = fprintf (file, "\n%s", string);

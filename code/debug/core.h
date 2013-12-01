@@ -5,16 +5,15 @@
 namespace DEBUG
 {
 
-char* OUTPUT_FILE = nullptr;
+char* OUTPUT_DEBUG_FILE    = nullptr;
+char* OUTPUT_ERROR_FILE    = nullptr;
+char* OUTPUT_INTERNAL_FILE = nullptr;
 /* TODO: Add critical section here */
 
 bool SILENT = false;
 # define OUT_INFO if ( !DEBUG::SILENT )\
     printf
 
-# define ALLOW_OUTPUT_DEBUG
-# define ALLOW_OUTPUT_ERROR
-# define ALLOW_OUTPUT_INTERNAL
 
 # include "output.h"
 
