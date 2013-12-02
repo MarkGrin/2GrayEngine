@@ -6,13 +6,13 @@
 class Text : public Object
 {
 
-    char* text;
+    char* text_;
 
     public:
 
     void print ()
     {
-        printf ("\nECHO:%s", text);
+        printf ("\nECHO:%s", text_);
     }
 
 
@@ -35,10 +35,10 @@ class Text : public Object
         {
             return false;
         }
-        if ( this->text )
-            delete[] this->text;
-        this->text = newText;
-        printf ("\nREAD:[\"%s\"]", newText);
+        if ( this->text_ )
+            delete[] this->text_;
+        this->text_ = newText;
+        //printf ("\nECHO:%s", text_);
         return true;
     }
     bool set (const char* smth)
@@ -49,32 +49,34 @@ class Text : public Object
         try
         {
             newText = new char[size + 1];
-            memcpy (newText, text + 1, size);
+            memcpy (newText, smth, size);
             newText[size] = 0;
         }
         catch (...)
         {
             return false;
         }
-        if ( this->text )
-            delete[] this->text;
-        this->text = newText;
+        if ( this->text_ )
+            delete[] this->text_;
+        this->text_ = newText;
+        printf ("AAA");
         return true;
     }
     const char* get ()
     {
-        return this->text;
+        return this->text_;
     }
     ~Text ()
     {
-        if ( this->text )
-            delete[] this->text;
-        this->text = nullptr;
+        if ( this->text_ )
+            delete[] this->text_;
+        this->text_ = nullptr;
     }
 
     Text ()
         :
-        Object (12)
+        Object (12),
+        text_ (nullptr)
     {}
 
 };
@@ -103,6 +105,7 @@ Object* TEXTcreateOn (const char* text)
     }
     catch (...)
     {
+        return nullptr;
     }
     return (Object*) result;
 }

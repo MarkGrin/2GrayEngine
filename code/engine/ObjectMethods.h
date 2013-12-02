@@ -24,6 +24,7 @@ bool Object :: setName (const char* name)
     int size = strlen (name);
     size = (size > 32 ) ? 32 : size;
     memcpy (name_, name, size + 1);
+    return true;
 }
 
 int Object :: typeCode ()

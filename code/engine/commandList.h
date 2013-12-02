@@ -3,7 +3,7 @@ namespace CMD
     const unsigned char
     NEW  = 1, /* Allocate new varible */
     DEL  = 2, /* Delete alloced varible */
-    CALL = 1  /* Call user function */
+    CALL = 3  /* Call user function */
     ;
 };
 namespace ARG_FLAG

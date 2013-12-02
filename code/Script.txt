@@ -1,7 +1,4 @@
-abc
-!new Text qxc
-echo qxc
-echo "ABC" 
-echo "12"
-echo qxc
-echo "end"
+!new Text txt
+echo txt
+echo "That was varible argument"
+

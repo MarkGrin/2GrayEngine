@@ -166,7 +166,7 @@ bool OUTPUT_INTERNAL (const char* file, int line,
 
 # ifndef ALLOW_OUTPUT_INTERNAL
 
-# define OUTPUT_ERROR(...) ;
+# define OUTPUT_INTERNAL(...) ;
 
 # endif /* ALLOW_OUTPUT_ERROR */
 
