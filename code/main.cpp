@@ -29,7 +29,7 @@ int main (int argc, char** argv)
         fileIndex = i;
         break;
     }
-    if ( fileIndex == - 1)
+    if ( fileIndex === - 1)
     {
         printHelp ();
         return 1;

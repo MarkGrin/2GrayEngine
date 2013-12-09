@@ -31,7 +31,7 @@ class Text : public Object
             memcpy (newText, text + 1, size);
             newText[size] = 0;
         }
-        catch (...)
+        catch (::std::bad_alloc)
         {
             return false;
         }
@@ -52,7 +52,7 @@ class Text : public Object
             memcpy (newText, smth, size);
             newText[size] = 0;
         }
-        catch (...)
+        catch (::std::bad_alloc)
         {
             return false;
         }
@@ -89,7 +89,7 @@ Object* TEXTcreateOn ()
         result = new Text ();
         result->readFromQuotes ("\"DEFAULT\"");
     }
-    catch (...)
+    catch (::std::bad_alloc)
     {
     }
     return (Object*) result;
@@ -103,7 +103,7 @@ Object* TEXTcreateOn (const char* text)
         result = new Text ();
         result->readFromQuotes (text);
     }
-    catch (...)
+    catch (::std::bad_alloc)
     {
         return nullptr;
     }
@@ -127,7 +127,7 @@ Object* NUMBERcreateOn ()
     {
         result = new Number (0);
     }
-    catch (...)
+    catch (::std::bad_alloc)
     {
     }
     return (Object*) result;
@@ -140,7 +140,7 @@ Object* NUMBERcreateOn (const char* text)
     {
         result = new Number (atoi (text));
     }
-    catch (...)
+    catch (::std::bad_alloc)
     {
     }
     return (Object*) result;

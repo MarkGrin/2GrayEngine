@@ -25,7 +25,7 @@ bool Stack<_dataType> :: push (_dataType& obj)
     {
         data_[data_.size()] = obj;
     }
-    catch (...)
+    catch (::std::out_of_range)
     {
         throw "Cant expand object";
     }
@@ -46,7 +46,7 @@ bool Stack<_dataType> :: pop ()
     {
         data_.erase (data_.size()-1);
     }
-    catch (...)
+    catch (::std::out_of_range)
     {
         throw "Cant pop";
     }
@@ -75,7 +75,7 @@ _dataType& Stack<_dataType> :: top ()
     {
         return data_.at (data_.size() - 1);
     }
-    catch (...)
+    catch (::std::out_of_range)
     {
         throw "Cant return it";
     }

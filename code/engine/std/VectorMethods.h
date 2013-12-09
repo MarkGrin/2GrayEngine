@@ -31,7 +31,7 @@ Vector<_dataType> :: Vector (unsigned int size)
         data_ = new _dataType[size];
         size_ = size;
     }
-    catch (...)
+    catch (::std::bad_alloc)
     {
         size_ = -1;
         data_ = nullptr;

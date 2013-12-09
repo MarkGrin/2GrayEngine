@@ -23,14 +23,13 @@ bool     Function :: pushArg (Object* obj)
 Object*  Function :: popArg  ()
 {
     Object* result = nullptr;
-    try
+    if ( args_.empty () )
     {
-        result = args_.top ();
-        args_.pop();
+        OUTPUT_INTERNAL ("empty argument list");
+        return nullptr;
     }
-    catch (...)
-    {
-    }
+    result = args_.top ();
+    args_.pop();
     return result;
 }
 

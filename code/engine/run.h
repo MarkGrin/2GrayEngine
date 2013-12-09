@@ -128,7 +128,7 @@ bool addStandard (::std::vector<Function*>* functions, TypeList* typeList)
         success = success && typeList ->add (&std::TEXTattributes, 12);
         success = success && typeList ->add (&std::NUMBERattributes, 14);
     }
-    catch (...)
+    catch (::std::bad_alloc)
     {
         OUTPUT_INTERNAL ("was unable to push function");
         return false;

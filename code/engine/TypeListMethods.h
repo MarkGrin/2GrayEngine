@@ -9,7 +9,7 @@ bool TypeList :: add (typeAttributes* type, int type_code)
     {
         list_[type_code] = *type;
     }
-    catch (...)
+    catch (::std::out_of_range)
     {
         //OUTPUT_DEBUG (PLACE, "Cant place code:%d", type_code);
         return false;
@@ -35,7 +35,7 @@ Object* TypeList :: create (int type_code)
         }
         result = check.create ();
     }
-    catch (...)
+    catch (::std::out_of_range)
     {
         //OUTPUT_DEBUG (PLACE, "ERROR: Cant access code:%d", type_code);
         return nullptr;
@@ -65,7 +65,7 @@ Object* TypeList :: create (int type_code, const char* what)
         }
         result = list_[type_code].createOn (what);
     }
-    catch (...)
+    catch (::std::out_of_range)
     {
         //OUTPUT_DEBUG (PLACE, "ERROR: Cant access code:%d", type_code);
         return nullptr;

@@ -14,7 +14,7 @@ ScriptHolder :: ScriptHolder (ScriptHolder& holder)
         {
             ptr = new char[size];
         }
-        catch (...)
+        catch (::std::bad_alloc)
         {
             continue;
         }
@@ -30,7 +30,7 @@ ScriptHolder :: ScriptHolder (ScriptHolder& holder)
         {
             lines_.push_back (ptr);
         }
-        catch (...)
+        catch (::std::bad_alloc)
         {
             delete[] ptr;
             continue;
@@ -56,7 +56,7 @@ int ScriptHolder :: length (unsigned int index) const
             return -1;
         return strlen (ptr);
     }
-    catch (...)
+    catch (::std::out_of_range)
     {
     }
     return -1;
@@ -81,7 +81,7 @@ bool ScriptHolder :: pushBack (const char* line, unsigned int size_)
         memcpy (ptr, line, size);
         ptr[size] = 0;
     }
-    catch (...)
+    catch (::std::bad_alloc)
     {
         return false;
     }
@@ -90,7 +90,7 @@ bool ScriptHolder :: pushBack (const char* line, unsigned int size_)
     {
         lines_.push_back (ptr);
     }
-    catch (...)
+    catch (::std::bad_alloc)
     {
         delete[] ptr;
         return false;
@@ -117,7 +117,7 @@ bool ScriptHolder :: insert (const char* line, unsigned int size_, unsigned int 
         ptr = new char[size + 1];
         ptr[size] = 0;
     }
-    catch (...)
+    catch (::std::bad_alloc)
     {
         return false;
     }
@@ -128,7 +128,7 @@ bool ScriptHolder :: insert (const char* line, unsigned int size_, unsigned int 
         it += index;
         lines_.insert (it, ptr);
     }
-    catch (...)
+    catch (::std::out_of_range)
     {
         delete[] ptr;
         return false;
@@ -152,7 +152,7 @@ char* ScriptHolder :: get (unsigned int index, unsigned int size) const
         ptr = new char[size + 1];
         ptr[size] = 0;
     }
-    catch (...)
+    catch (::std::bad_alloc)
     {
         return nullptr;
     }
@@ -161,7 +161,7 @@ char* ScriptHolder :: get (unsigned int index, unsigned int size) const
     {
         memcpy (ptr, lines_.at (index), size);
     }
-    catch (...)
+    catch (::std::bad_alloc)
     {
         delete[] ptr;
         return nullptr;
@@ -186,7 +186,7 @@ int  ScriptHolder :: get (char*        buffer, unsigned int size,
         memcpy (buffer, lines_.at (index), size);
         buffer[size] = 0;
     }
-    catch (...)
+    catch (::std::bad_alloc)
     {
         return -1;
     }
@@ -202,7 +202,7 @@ bool ScriptHolder :: remove  (unsigned int index)
         std::vector<char*>::iterator it = lines_.begin () + index;
         lines_.erase (it);
     }
-    catch (...)
+    catch (::std::out_of_range)
     {
         return false;
     }
@@ -228,7 +228,7 @@ bool ScriptHolder :: replace (const char*  line , unsigned int length,
         ptr = new char[size + 1];
         ptr[size] = 0;
     }
-    catch (...)
+    catch (::std::bad_alloc)
     {
         return false;
     }
@@ -245,7 +245,7 @@ bool ScriptHolder :: replace (const char*  line , unsigned int length,
             delete[] replaced;/* No data leak */
         lines_.erase (it);
     }
-    catch (...)
+    catch (::std::out_of_range)
     {
         delete[] ptr;
         return false;
@@ -266,7 +266,7 @@ ScriptHolder :: ~ScriptHolder ()
                 delete[] ptr;
             ptr = nullptr;
         }
-        catch (...)
+        catch (::std::bad_alloc)
         {
         }
     }

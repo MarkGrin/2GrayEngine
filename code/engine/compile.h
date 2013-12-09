@@ -182,7 +182,7 @@ bool newCommand    (char* line, environment* en)
         en->execMem->push_back (CMD::NEW);
         en->execMem->push_back (en->pool->size () - 1);
     }
-    catch (...)
+    catch (::std::bad_alloc)
     {
         OUTPUT_INTERNAL ("bytes wasn't pushed to vector");
         return false;
@@ -217,7 +217,7 @@ bool delCommand    (char* line, environment* en)
         en->execMem->push_back (delIndex);
         return true;
     }
-    catch (...)
+    catch (::std::bad_alloc)
     {
         OUTPUT_INTERNAL ("bytes wasn't pushed to vector");
         return false;
@@ -266,9 +266,10 @@ bool engineCommand (char* line, environment* en)
                 en->execMem->push_back (i);
                 en->execMem->push_back (attribute.argnum);
             }
-            catch (...)
+            catch (::std::bad_alloc)
             {
                 OUTPUT_INTERNAL ("bytes weren't pushed to vector");
+                return false;
             }
 
             if ( !parseArgs (en, fnc, line + strlen (attribute.name) + 1) )
@@ -509,7 +510,7 @@ int findObject (const char* name, ::std::vector<Object*>* pool)
         }
         return -1;
     }
-    catch (...)
+    catch (::std::out_of_range)
     {
         OUTPUT_INTERNAL ("error when getting element!");
         return -2;
@@ -549,7 +550,7 @@ bool addObject  (const char* name, int code, TypeList* typeList,
     {
         pool->push_back (obj);
     }
-    catch (...) 
+    catch (::std::bad_alloc) 
     {
         OUTPUT_INTERNAL ("object wasn't pushed to pool");
         return false;

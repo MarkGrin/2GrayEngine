@@ -88,7 +88,7 @@ int callCMD  (unsigned char* mem,
     {
         call = functions->at(mem[i]);
     }
-    catch (::std::bad_alloc)
+    catch (::std::out_of_range)
     {
         OUTPUT_INTERNAL ("unknown index:%d", mem[i]);
         return -1;
