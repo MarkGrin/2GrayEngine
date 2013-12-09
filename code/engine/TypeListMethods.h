@@ -87,8 +87,7 @@ unsigned int TypeList :: size ()
 int TypeList :: find (const char* what)
 {
     std::map<int, typeAttributes>::iterator it;
-    it = list_.begin ();
-    for ( ; it != list_.end (); it++)
+    for (it = list_.begin () ; it != list_.end (); it++)
     {
         if ( !strcmp (it->second.name, what) )
             return it->first;

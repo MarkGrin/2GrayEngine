@@ -58,11 +58,17 @@ bool RawSocket :: isBlockError ()
 bool RawSocket :: sync         (bool makeAsync)
 { 
     unsigned long enable = (unsigned long)true;
-    if ( makeAsync )
-        ioctlsocket (socketData_.socket, FIONBIO, &enable);
-    else
-        ioctlsocket (socketData_.socket, 0, NULL);
+    int result = 0;
 
+    if ( makeAsync )
+        result = ioctlsocket (socketData_.socket, FIONBIO, &enable);
+    else
+        result = ioctlsocket (socketData_.socket, 0, NULL);
+
+    if ( isBlockError () )
+        return true;
+
+    return false;
 }
 
 /**
@@ -137,6 +143,9 @@ bool RawSocket :: setIP   (const char* IP)
         lastError_.set (error::CantSetIP, ::GetLastError ());
         return false;
     }
+    if ( bind (socketData_.socket, (sockaddr*)&socketData_.addrInfo,
+                sizeof (socketData_.addrInfo) ) )
+        return false;
     
     return true;
 }
@@ -201,9 +210,10 @@ bool RawSocket :: receive (char* where, unsigned int size)
         lastError_.set (error::NotStarted, 0);
         return false;
     }
+    int addrSize = sizeof (socketData_.addrInfo);
     int result = ::recvfrom (socketData_.socket, where, size, 0,
                             (sockaddr*)&socketData_.addrInfo,
-                             nullptr);
+                             &addrSize);
 
     if ( result == SOCKET_ERROR )
     {

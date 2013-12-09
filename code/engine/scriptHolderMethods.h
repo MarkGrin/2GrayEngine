@@ -184,6 +184,7 @@ int  ScriptHolder :: get (char*        buffer, unsigned int size,
     try
     {
         memcpy (buffer, lines_.at (index), size);
+        buffer[size] = 0;
     }
     catch (...)
     {
