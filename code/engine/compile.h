@@ -179,8 +179,8 @@ bool newCommand    (char* line, environment* en)
 
     try
     {
-        en->execMem->push_back (CMD::NEW);
-        en->execMem->push_back (en->pool->size () - 1);
+        /*en->execMem->push_back (CMD::NEW);
+        en->execMem->push_back (en->pool->size () - 1);*/
     }
     catch (::std::bad_alloc)
     {
@@ -390,7 +390,8 @@ bool userArgument (const char* name, environment* en, Function* fnc,
         OUTPUT_ERROR ("bad argument:%d", argsParsed);
         return false;
     }
-    for (unsigned int j = 0; j < en->placeInPool->size (); j++ )
+    
+    for (unsigned int j = 0; j < en->placeInPool->size (); j++ )/* Wrong order */
     {
         if ( !strcmp (en->placeInPool->at (j).first, name) )
         {
@@ -431,6 +432,7 @@ bool TEXTargument (const char* name, environment* en)
     }
 
     std::Text* obj = (std::Text*)std::TEXTcreateOn ();
+    OUTPUT_DEBUG ("PTR_CREATE:%p", obj);
     if ( !obj )
     {
         OUTPUT_INTERNAL ("Object wasn't created");
@@ -444,6 +446,7 @@ bool TEXTargument (const char* name, environment* en)
     try
     {
         en->execMem->push_back (0 | ARG_FLAG::DEL | ARG_FLAG::ALLOCED);
+
         unsigned char buff[sizeof (obj)] = {};
         memcpy (buff, &obj, sizeof (obj));
         for (int j = 0; j < sizeof (obj); j++)
@@ -534,6 +537,7 @@ bool addObject  (const char* name, int code, TypeList* typeList,
         return false;
     }
     Object* obj = typeList->create (code);
+    OUTPUT_DEBUG ("PTR_CREATE:%p", obj);
     if ( !obj )
     {
         OUTPUT_INTERNAL ("typelist didn't create object");

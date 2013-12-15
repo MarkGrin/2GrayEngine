@@ -56,7 +56,7 @@ int ScriptHolder :: length (unsigned int index) const
             return -1;
         return strlen (ptr);
     }
-    catch (::std::out_of_range)
+    catch ( ::std::out_of_range)
     {
     }
     return -1;

@@ -1,7 +1,5 @@
-!new Text txt
-!new Text someText
-echo someText
-echo txt
-echo "That was some standard constructed classes"
-echo "What's the point?"
-
+!new Text text
+!new Socket socket
+TextUserInput text
+echo text
+Send socket text

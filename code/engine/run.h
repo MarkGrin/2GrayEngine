@@ -125,8 +125,12 @@ bool addStandard (::std::vector<Function*>* functions, TypeList* typeList)
     try
     {
         functions->push_back (&std::ECHO);
+        functions->push_back (&std::TEXTUSERINPUT);
+        functions->push_back (&std::SEND);
+        functions->push_back (&std::RECEIVE);
         success = success && typeList ->add (&std::TEXTattributes, 12);
         success = success && typeList ->add (&std::NUMBERattributes, 14);
+        success = success && typeList ->add (&std::SOCKETattributes, 777);
     }
     catch (::std::bad_alloc)
     {

@@ -29,7 +29,7 @@ int main (int argc, char** argv)
         fileIndex = i;
         break;
     }
-    if ( fileIndex === - 1)
+    if ( fileIndex == - 1)
     {
         printHelp ();
         return 1;
@@ -52,7 +52,7 @@ int main (int argc, char** argv)
         if ( argv[fileIndex + 1][0] == '-' &&
              argv[fileIndex + 1][1] == 'o' )
         {
-            DEBUG::OUTPUT_INTERNAL_FILE = argv[fileIndex + 2];
+            DEBUG::OUTPUT_INTERNAL_FILE = argv[fileIndex + 2];/////////////////
         }
     }
     grNetwork::Start ();

@@ -38,7 +38,6 @@ class Text : public Object
         if ( this->text_ )
             delete[] this->text_;
         this->text_ = newText;
-        //printf ("\nECHO:%s", text_);
         return true;
     }
     bool set (const char* smth)
@@ -60,11 +59,13 @@ class Text : public Object
             delete[] this->text_;
         this->text_ = newText;
         printf ("AAA");
+        printf ("\nNEW:%s", text_);
         return true;
     }
     const char* get ()
     {
-        return this->text_;
+        OUTPUT_DEBUG ("Getting:%s", text_);
+        return text_;
     }
     ~Text ()
     {
@@ -77,7 +78,9 @@ class Text : public Object
         :
         Object (12),
         text_ (nullptr)
-    {}
+    {
+	    OUTPUT_DEBUG ("TEXT CREATED");
+    }
 
 };
 
@@ -87,7 +90,9 @@ Object* TEXTcreateOn ()
     try
     {
         result = new Text ();
-        result->readFromQuotes ("\"DEFAULT\"");
+	char name[256] = {};
+	sprintf (name,"\"%p\"", result);
+        result->readFromQuotes (name);
     }
     catch (::std::bad_alloc)
     {
@@ -147,9 +152,88 @@ Object* NUMBERcreateOn (const char* text)
 }
 
 
+class Socket : public Object
+{
+    grNetwork::Server server;
+    grNetwork::Client client;
+
+    public:
+
+    Socket ()
+        :
+        Object (777)
+    {
+        client.setPort (97621);
+        client.setIP ("127.0.0.1");
+        server.setPort (97621);
+        server.setIP (nullptr);
+	OUTPUT_DEBUG ("SOCKET CREATED");
+    }
+    void send (const char* buff, int size)
+    {
+	if ( !server.start () )
+		printf ("START FAILURE");
+    OUTPUT_DEBUG ("LISTENING");
+        if ( !server.listen () )
+		printf ("LISTEN FAILURE:%d %d", server.getLastError ().lib (),
+				                server.getLastError ().local ());
+    OUTPUT_DEBUG ("SENDING");
+        if ( !server.send (buff, size) )
+		printf ("SEND FAILURE");
+    OUTPUT_DEBUG ("SENDED");
+    }
+    void receive (Text* txt)
+    {
+        char array[256] = {};
+	     if ( !client.start () )
+		printf ("START FAILURE");
+        OUTPUT_DEBUG ("Listen started");
+        if ( !client.connect () )
+		printf ("LISTEN FAILURE:%d %d", client.getLastError ().lib (),
+				                client.getLastError ().local ());
+        OUTPUT_DEBUG ("Listen complete");
+        if ( !client.receive (array, 256) )
+		printf ("SEND FAILURE");
+        txt->set (array);
+    }
+
+
+};
+
+
+Object* SOCKETcreateOn ()
+{
+    Socket* result = nullptr;
+    try
+    {
+        result = new Socket ();
+    }
+    catch (::std::bad_alloc)
+    {
+    }
+    return (Object*) result;
+}
+
+Object* SOCKETcreateOn (const char*)
+{
+    Socket* result = nullptr;
+    try
+    {
+        result = new Socket ();
+    }
+    catch (::std::bad_alloc)
+    {
+    }
+    return (Object*) result;
+}
+
+
 typeAttributes TEXTattributes   = {12, sizeof (Text)  ,
                                    "Text",  TEXTcreateOn, nullptr};
+typeAttributes SOCKETattributes = {777, sizeof (Socket),
+                                   "Socket",SOCKETcreateOn, SOCKETcreateOn};
 typeAttributes NUMBERattributes = {14, sizeof (Number),
                                    "Number",NUMBERcreateOn, nullptr};
+
 
 # endif /* H_ENGINE_STD_TYPES */

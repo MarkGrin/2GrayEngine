@@ -33,6 +33,7 @@ bool execute (unsigned char* mem, unsigned int size,
         OUTPUT_INTERNAL ("bad arguments");
         return false;
     }
+    dump (mem, size);
     for (unsigned int i = 0; i < size; i++)
     {
         int rslt = 0;
@@ -42,7 +43,8 @@ bool execute (unsigned char* mem, unsigned int size,
             rslt = callCMD (mem + i, functions, pool, placeInPool);
             if ( rslt < 0 )
             {
-                OUTPUT_INTERNAL ("error when executing");
+                OUTPUT_INTERNAL ("error when executing:%d", i);
+                dump (mem, size);
                 return false;
             }
             i += rslt;
@@ -54,7 +56,8 @@ bool execute (unsigned char* mem, unsigned int size,
             rslt = delCMD (mem + i, functions, pool, placeInPool);
             if ( rslt < 0 )
             {
-                OUTPUT_INTERNAL ("error when executing");
+                OUTPUT_INTERNAL ("error when executing:%d", i);
+                dump (mem, size);
                 return false;
             }
             i += rslt;
@@ -83,7 +86,7 @@ int callCMD  (unsigned char* mem,
         OUTPUT_INTERNAL ("calling unknown function:%d", funcNum);
         return -1;
     }
-    Function* call = functions->at(mem[i]);
+    Function* call = functions->at(funcNum);
     try
     {
         call = functions->at(mem[i]);
@@ -130,6 +133,7 @@ int callCMD  (unsigned char* mem,
                 return -1;
             }
             arg = pool->at (argIndex);
+            OUTPUT_DEBUG ("PTR_CASE:%p", arg);
             if ( !call->pushArg (arg) )
             {
                 OUTPUT_INTERNAL ("bad arg:%d", arg);
@@ -169,7 +173,7 @@ int  delCMD   (unsigned char* data,
 
 void dump        (unsigned char* data, int amount)
 {
-    FILE* file = fopen ("dump.txt", "w");
+    FILE* file = fopen ("Dump.txt", "w");
     if ( !file )
         return;
     for (unsigned int i = 0; i < amount; i++)
