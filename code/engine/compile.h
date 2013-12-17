@@ -25,6 +25,18 @@ bool addObject  (const char* name, int code, TypeList* typeList,
                  ::std::vector<Object*>* pool,
                  ::std::vector<::std::pair<char*, unsigned int>>* places);
                   
+/**
+ *
+ * this function fills environment structure. This stucture must be filled
+ * with valid pointers. ScriptHolder must contain script that will be used
+ * to fill environment structure. Other objects must be blank.
+ *
+ * @param en - pointer to environment structure with filled ScriptHolder
+ * and blank other varibles.
+ *
+ * @return - success
+ *
+ */
 bool compile (environment* en)
 {
     if ( !en )
@@ -85,6 +97,16 @@ bool compile (environment* en)
     return true;
 }
 
+/**
+ *
+ * this function parse system command
+ *
+ * @param line - pointer to comannd without ! mark
+ * @param en   - pointer to environment that will be used to parse command
+ *
+ * @return - success
+ *
+ */
 bool systemCommand (char* line, environment* en)
 {
     if ( !en || !line )
@@ -126,6 +148,16 @@ bool systemCommand (char* line, environment* en)
     return false;
 }
 
+/**
+ *
+ * this function parse !new command
+ *
+ * @param line - pointer to string with new command arguments (without !new)
+ * @param en   - pointer to environment that will be used to parse command
+ *
+ * @return - success
+ *
+ */
 bool newCommand    (char* line, environment* en)
 {
     if ( !en || !line )
@@ -190,6 +222,16 @@ bool newCommand    (char* line, environment* en)
     return true;
 }
 
+/**
+ *
+ * this function parse del command
+ *
+ * @param line - pointer to string that contain arguments (without !del)
+ * @param en   - pointer to environment that will be used to parse
+ *
+ * @return - success
+ *
+ */
 bool delCommand    (char* line, environment* en)
 {
     if ( !en || !line )
@@ -225,6 +267,16 @@ bool delCommand    (char* line, environment* en)
     return true;
 }
     
+/**
+ *
+ * this function parses any user command
+ *
+ * @param line - pointer to line with command
+ * @param en   - pointer to environment that will be used
+ *
+ * @return - success
+ *
+ */
 bool engineCommand (char* line, environment* en)
 {
     if ( !en || !line )
@@ -286,6 +338,17 @@ bool engineCommand (char* line, environment* en)
     return false;
 }
 
+/**
+ *
+ * this function parses arguments of user command
+ *
+ * @param en  -          pointer to environment that will be used
+ * @param fnc -          pointer to function whose arguments are parsed
+ * @param argumentLine - pointer to string with arguments
+ *
+ * @return - success
+ *
+ */
 bool parseArgs   (environment* en, Function* fnc, 
                   const char* argumentLine)
 {
@@ -368,6 +431,19 @@ bool parseArgs   (environment* en, Function* fnc,
     return true;
 }
 
+/**
+ *
+ * This function parses varible argument of user command
+ *
+ * @param name       - name of varible
+ * @param en         - environment that will be used to parse
+ * @param fnc        - function whose argument is parsed
+ * @param argsParsed - index of this argument or number of arguments that
+ * are placed before this argument
+ *
+ * @return - success
+ *
+ */
 bool userArgument (const char* name, environment* en, Function* fnc,
                    int argsParsed)
 {
@@ -417,6 +493,16 @@ bool userArgument (const char* name, environment* en, Function* fnc,
     return false;
 }
 
+/**
+ *
+ * this function parses argument that is temporary text field
+ *
+ * @param name - pointer to string that contain text field
+ * @param en   - pointer to environment structure that will be used to parse
+ *
+ * @return - success
+ *
+ */
 bool TEXTargument (const char* name, environment* en)
 {
     if ( !en || !name )
@@ -460,6 +546,15 @@ bool TEXTargument (const char* name, environment* en)
     return true;
 }
 
+/**
+ *
+ * this function remove repeating whitespaces
+ * example
+ * "function   call   (  abc )  ;" -> "function call (abc);"
+ *
+ * @param str - pointer to string to be parsed
+ *
+ */
 void removeWhitespaces (char* str)
 {
     if ( !str )
@@ -494,6 +589,19 @@ void removeWhitespaces (char* str)
 }
 
 
+/**
+ *
+ * this function return index of a varible that have given name
+ *
+ * @param name - name to look for
+ * @param pool - pointer to a vector with varibles
+ *
+ * @return 
+ * 0 or positive - index of varible with given name
+ * -1 - no varible with such name
+ * -2 - error
+ *
+ */
 int findObject (const char* name, ::std::vector<Object*>* pool)
 {
     try
@@ -521,6 +629,19 @@ int findObject (const char* name, ::std::vector<Object*>* pool)
     return -2;
 }
 
+/**
+ *
+ * this function adds new varible to environment.
+ *
+ * @param name     - name of varible
+ * @param code     - code of type of varible
+ * @param TypeList - typeList of environment
+ * @param pool     - pool of environment
+ * @param places   - placeInPool of environment
+ *
+ * @return - success
+ *
+ */
 bool addObject  (const char* name, int code, TypeList* typeList,
                  ::std::vector<Object*>* pool,
                  ::std::vector<::std::pair<char*, unsigned int>>* places)
@@ -576,5 +697,7 @@ bool addObject  (const char* name, int code, TypeList* typeList,
     }
     return true;
 }
+
+
 
 # endif /* H_ENGINE_COMPILE */
