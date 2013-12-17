@@ -1,0 +1,23 @@
+user can import their own functions and types by dll.
+
+function and types are classes that user must write.
+
+to import function user must write class and inherit it from engine::Function
+class. User must overload two virtual functions attributes and
+payLoadFunction. attrributes function must return valid functionAttributes
+function. payLoadFunction must do what user want his function to do when other
+users call his function. He can retreive arguments with popArg function.
+
+to import type user must write class and inherit it from engine::Object, he
+also must create typeAttributes structure and fill it with valid data.
+
+when it all is done, he must write three functions.
+
+technicalData* data (); - that will return pointer to technicalData that was
+filled with valid information.
+
+std::vector<Functions*>* funcs (); that will return vector of pointers to
+user created functions.
+
+std::vector<typeAttributes>* types (); that will return vector of pointers to
+typeAttributes structure that was filled with valid information.

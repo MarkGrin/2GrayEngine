@@ -1,0 +1,12 @@
+This engine is translator. So running file is divided in two parts,
+compilation and executing. In code there are three files.
+
+run.h, compile.h, execute.h
+
+run.h file is main file it calls compile function and then execute function.
+
+there is environment structure which contains varibleList, typeList,
+scriptHolder, functionList, etc.
+
+compile function from compile.h file fills this environment and execute
+function from execute.h file uses this environment.

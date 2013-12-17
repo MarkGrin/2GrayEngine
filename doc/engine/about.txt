@@ -1,35 +1,9 @@
-Engine module is the module that runs scripts. Scripts can be inputted through
-the command line, network, gui, file or programmly.
+Engine module is the module that runs scripts. 
 
-All the scripts are made of varibles and functions. There are some standard
-types of varibles, but most of them are imported fromm dll. Functions are
-imported from dll too. They are standard functions too.
+About syntax and features read in syntax.txt
 
-There are methods that extracts functions from dll. Every dll that interacts
-with engine must have three function.
-First is: TechnicalData getTechnicalData ();
-It returns TechnicalData about dll.
-Second is: vector<typeAttributes*>* getTypes ();
-It returns all custom types.
-Third is: vector<functionAttributes*>* getFunctions ();
-It returns all custom functions from dll.
+About how it executes and compiles in executing.txt
 
-After types and functions are extracted the can be used in programm. Function
-attribute describes types that it needs as arguments and of course it has
-the function.
+About dll import in dll.txt
 
-Script is given to the ScriptHolder line by line by special string interface.
-By default string interface is command line -> scriptHolder. But there are
-functions that can change the type of input. After ScriptHolder has whole
-script executer starts to execute it. Usually it does it line by line, but
-sometimes it can return to previous lines. Thanks to ScriptHolder.
-
-Executer has methods that interpetate script in what to do commands.
-Every line is a call of some function. Even creating a varible is a function.
-So executer gets the name of function. It looks is there a function that is
-called as in the script. If there is, it look are there varibles that are
-called same as arguments of function in script. If there are, it checks 
-if function arguments types match types of varibles that executer has.
-
-So engine doesn't do anything really. It just gives functions the varibles
-they need.
+About dynamic input in input.txt

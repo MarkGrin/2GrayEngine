@@ -1,0 +1,38 @@
+engine executes two types of commands. User commands and system commands.
+
+system commands starts with ! sign.
+
+system commands are
+
+!new Type VaribleName
+example
+!new Text txt
+
+this command adds new varible named VaribleName with type Type. And calls
+it constructor.Given type must be known by engine. Given name must be free.
+
+
+!delete VaribleName
+example
+!delete txt
+
+this command deletes varible and calls it destructor.
+
+
+other commands are user commands. Some are imported from dll other are
+standard. To read about standard commands read standard.txt
+
+to call user function use this syntax
+
+userCommandName param1 param2 param3
+
+
+Also in engine there are returning values and cycles and conditionals, but
+they aren't developed yet.
+
+
+Usually user writes script in file and then calls programm to execute this
+file, but also there are other input methods. If you call programm with
+-d flag. It will start dynamic mode. In dynamic mode it executes one function
+at time. Also in dynamic mode you can mark file to be executed or even
+get script from inernet.

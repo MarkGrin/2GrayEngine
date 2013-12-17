@@ -1,0 +1,8 @@
+programm must have at least three input ways.
+
+From file.
+
+From console input.
+
+From network.
+

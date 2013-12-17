@@ -1,0 +1,26 @@
+debug module is module that works error and debug flow.
+
+there are three kinds of debug info.
+
+errors - general errors, usually user needs them to understand what went wrong,
+example "Cant find file"
+
+internal - errors deep in programm, usually developer needs them to understand
+what caused unknown error, example "empty functions stack on line 123 file
+main.cpp"
+
+debug - debug messages that developer uses only in development, example
+"before crash stack size is:23"
+
+These three kind of function have report functions like
+OUTPUT_DEBUG, OUTPUT_ERROR, OUTPUT_INTERNAL.
+
+if ALLOW_OUTPUT_## is defined, than programm will output them, if not defined
+OUTPUT_## calls will be deleted from programm by preprocessor.
+
+if DEBUG::OUTPUT_##_FILE is pointing at some string, this string will be used
+as name of the file to put errors in. If it is set to nullptr ouptut will
+print messages by printf function.
+
+Another feature is custom debug which means that you can create your own type
+of debug and use like DEBUG, INTERNAL and others.
