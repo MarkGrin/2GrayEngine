@@ -5,6 +5,22 @@
 
 /**
  *
+ * this function checks if function class is ok
+ *
+ * @return -
+ * {true}  - ok
+ * {false} - broken
+ *
+ */
+bool TypeList :: verify ()
+{
+    if ( !this )
+        return false;
+    return true;
+}
+
+/**
+ *
  * this function adds type
  *
  * @param type      - type to add
@@ -15,6 +31,8 @@
  */
 bool TypeList :: add (typeAttributes* type, int type_code)
 {
+    if ( !verify () )
+        return false;
     try
     {
         list_[type_code] = *type;
@@ -41,6 +59,8 @@ bool TypeList :: add (typeAttributes* type, int type_code)
  */
 Object* TypeList :: create (int type_code)
 {
+    if ( !verify () )
+        return nullptr;
     Object* result = nullptr;
     try
     {
@@ -86,6 +106,8 @@ Object* TypeList :: create (int type_code)
  */
 Object* TypeList :: create (int type_code, const char* what)
 {
+    if ( !verify () )
+        return nullptr;
     Object* result = nullptr;
     try
     {
@@ -124,6 +146,8 @@ Object* TypeList :: create (int type_code, const char* what)
  */
 unsigned int TypeList :: size ()
 {
+    if ( !verify () )
+        return false;
     return list_.size ();
 }
 
@@ -140,6 +164,8 @@ unsigned int TypeList :: size ()
  */
 int TypeList :: find (const char* what)
 {
+    if ( !verify () )
+        return false;
     std::map<int, typeAttributes>::iterator it;
     for (it = list_.begin () ; it != list_.end (); it++)
     {

@@ -15,6 +15,8 @@ class TypeList
 
     public:
 
+    bool verify ();
+
     bool add (typeAttributes* type, int typeCode);
 
     Object* create (int typeCode);

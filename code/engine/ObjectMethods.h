@@ -5,6 +5,27 @@
 
 /**
  *
+ * this function checks if Object class is ok
+ *
+ * @return -
+ * {true}  - ok
+ * {false} - broken
+ *
+ */
+bool Object :: verify () const
+{
+    if ( !this )
+        return false;
+    if ( !typeCode_ )
+        return false;
+    if ( name_[0] == 0 )
+        return false;
+
+    return true;
+}
+
+/**
+ *
  * constructor
  *
  * @param typeCode - code of type of this object
@@ -30,6 +51,8 @@ Object :: Object (int typeCode)
  */
 bool Object :: is (const char* name)
 {
+    if ( !verify () )
+        return false;
     if ( !name )
         return false;
     return !(strcmp (name_, name));
@@ -46,6 +69,8 @@ bool Object :: is (const char* name)
  */
 bool Object :: setName (const char* name)
 {
+    if ( !verify () )
+        return false;
     if ( !name )
         return false;
     int size = strlen (name);
@@ -64,6 +89,8 @@ bool Object :: setName (const char* name)
  */
 int Object :: typeCode ()
 {
+    if ( !verify () )
+        return false;
     return typeCode_;
 }
 

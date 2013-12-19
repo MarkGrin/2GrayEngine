@@ -32,6 +32,7 @@ class ScriptHolder;
 # include "Function.h"
 # include "TypeList.h"
 # include "ScriptHolder.h"
+# include  "ExecMem.h"
 
 /* class methods */
 # include "ObjectMethods.h"

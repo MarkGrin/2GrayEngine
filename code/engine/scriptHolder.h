@@ -18,6 +18,8 @@ class ScriptHolder
 
     public:
 
+    bool verify () const;
+
     ScriptHolder ();
 
     ScriptHolder (ScriptHolder&);

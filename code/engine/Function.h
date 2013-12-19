@@ -27,6 +27,8 @@ class Function
 
     public:
 
+    bool verify () const;
+
     Function ();
 
     bool pushArg (Object*);

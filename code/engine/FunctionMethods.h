@@ -2,6 +2,23 @@
 
 # define H_ENGINE_FUNCTIONMETHODS
 
+
+/**
+ *
+ * this function checks if function class is ok
+ *
+ * @return -
+ * {true}  - ok
+ * {false} - broken
+ *
+ */
+bool Function :: verify () const
+{
+    if ( !this )
+        return false;
+    return true;
+}
+
 /**
  *
  * blank constructor of function.
@@ -22,6 +39,8 @@ Function :: Function ()
  */
 bool     Function :: pushArg (Object* obj)
 {
+    if ( !verify () )
+        return false;
     try
     {
         args_.push (obj);
@@ -44,6 +63,9 @@ bool     Function :: pushArg (Object* obj)
  */
 Object*  Function :: popArg  ()
 {
+    if ( !verify () )
+        return nullptr;
+
     Object* result = nullptr;
     if ( args_.empty () )
     {
@@ -64,6 +86,8 @@ Object*  Function :: popArg  ()
  */
 bool Function :: payLoadFunction ()
 {
+    if ( !verify () )
+        return false;
     return true;
 }
 
@@ -77,6 +101,8 @@ bool Function :: payLoadFunction ()
 functionAttributes Function :: attributes ()
 {
     functionAttributes attr = {};
+    if ( !verify () )
+        return attr;
 
     attr.size = sizeof (functionAttributes);
     attr.version = ENGINE_VERSION;

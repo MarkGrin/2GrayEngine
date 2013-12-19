@@ -5,6 +5,22 @@
 
 /**
  *
+ * this function checks if ScriptHolder class is ok
+ *
+ * @return -
+ * {true}  - ok
+ * {false} - broken
+ *
+ */
+bool ScriptHolder :: verify () const
+{
+    if ( !this )
+        return false;
+    return true;
+}
+
+/**
+ *
  * copy constructor
  *
  * @param holder - scriptHolder to copy
@@ -63,6 +79,8 @@ ScriptHolder :: ScriptHolder ()
  */
 unsigned int ScriptHolder :: lines  () const
 {
+    if ( !verify () )
+        return 0; /* TODO: FIX */
     return lines_.size ();
 }
 
@@ -79,6 +97,8 @@ unsigned int ScriptHolder :: lines  () const
  */
 int ScriptHolder :: length (unsigned int index) const
 {
+    if ( !verify () )
+        return false;
     try
     {
         const char* ptr = lines_.at (index);
@@ -104,6 +124,8 @@ int ScriptHolder :: length (unsigned int index) const
  */
 bool ScriptHolder :: pushBack (const char* line, unsigned int size_)
 {/* WTF why it's named size_ with underscore ??!! */
+    if ( !verify () )
+        return false;
     if ( !line )
         return false;
 
@@ -152,6 +174,8 @@ bool ScriptHolder :: pushBack (const char* line, unsigned int size_)
  */
 bool ScriptHolder :: insert (const char* line, unsigned int size_, unsigned int index)
 {
+    if ( !verify () )
+        return false;
     if ( !line )
         return false;
 
@@ -203,6 +227,8 @@ bool ScriptHolder :: insert (const char* line, unsigned int size_, unsigned int 
  */
 char* ScriptHolder :: get (unsigned int index, unsigned int size) const
 {
+    if ( !verify () )
+        return nullptr;
     if ( !size || size > this->length(index) )
         return nullptr;
     if ( index > lines_.size () )
@@ -250,6 +276,8 @@ char* ScriptHolder :: get (unsigned int index, unsigned int size) const
 int  ScriptHolder :: get (char*        buffer, unsigned int size,
                           unsigned int index ) const
 {
+    if ( !verify () )
+        return false;
     if ( index > lines_.size () )
         return -1;
     if ( !size )
@@ -280,13 +308,15 @@ int  ScriptHolder :: get (char*        buffer, unsigned int size,
  */
 bool ScriptHolder :: remove  (unsigned int index)
 {
+    if ( !verify () )
+        return false;
     if ( index > lines_.size () )
         return false;
     try
     {
         std::vector<char*>::iterator it = lines_.begin () + index;
-        if ( lines_.at (i) )
-            delete[] lines_.at (i);
+        if ( lines_.at (index) )
+            delete[] lines_.at (index);
         lines_.erase (it);
     }
     catch (::std::out_of_range)
@@ -310,6 +340,8 @@ bool ScriptHolder :: remove  (unsigned int index)
 bool ScriptHolder :: replace (const char*  line , unsigned int length,
                               unsigned int index)
 {
+    if ( !verify () )
+        return false;
      if ( !line )
         return false;
 

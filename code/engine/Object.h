@@ -23,6 +23,8 @@ class Object
 
     public:
 
+    bool verify () const;
+
     explicit Object (int typeCode);
 
     bool is (const char* name);
