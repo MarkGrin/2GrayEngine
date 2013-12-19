@@ -3,6 +3,12 @@
 # define H_ENGINE_TYPELIST
 
 
+/**
+ *
+ * this is typeList class. It contain typeAttribute structures and it 
+ * povides easy acces to them by code or name.
+ *
+ */
 class TypeList
 {
     std::map<int, typeAttributes> list_;

@@ -3,6 +3,12 @@
 # define H_ENGINE_FUNCTIONATTRIBUTES
 
 
+/**
+ *
+ * this is functionAttributes structure that contain information about
+ * function.
+ *
+ */
 struct functionAttributes
 {
 

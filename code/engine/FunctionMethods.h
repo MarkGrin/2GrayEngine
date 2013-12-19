@@ -2,10 +2,24 @@
 
 # define H_ENGINE_FUNCTIONMETHODS
 
+/**
+ *
+ * blank constructor of function.
+ *
+ */
 Function :: Function ()
 {
 }
 
+/**
+ *
+ * adds argument to function
+ *
+ * @param Object - argument to push
+ *
+ * @return - success
+ *
+ */
 bool     Function :: pushArg (Object* obj)
 {
     try
@@ -13,13 +27,21 @@ bool     Function :: pushArg (Object* obj)
         args_.push (obj);
         return true;
     }
-    catch (...)
+    catch (std::bad_alloc)
     {
         return false;
     }
     return false;
 }
 
+/**
+ *
+ * returns arguments that was previously pushed in
+ *
+ * @retrun - pointer to a object that was pushed
+ * nullptr - error
+ *
+ */
 Object*  Function :: popArg  ()
 {
     Object* result = nullptr;
@@ -33,11 +55,25 @@ Object*  Function :: popArg  ()
     return result;
 }
 
+/**
+ *
+ * user function that user must overload.
+ *
+ * @return - success
+ *
+ */
 bool Function :: payLoadFunction ()
 {
     return true;
 }
 
+/**
+ *
+ * this function return valid attributes structure about this function
+ *
+ * @return - valid structure about this function
+ *
+ */
 functionAttributes Function :: attributes ()
 {
     functionAttributes attr = {};
@@ -53,6 +89,14 @@ functionAttributes Function :: attributes ()
 
 }
 
+/**
+ *
+ * this function checks if function is ready to be called and if it is
+ * it calls it.
+ *
+ * @return - success
+ *
+ */
 bool Function :: execute ()
 {
     if ( this->attributes ().argnum != args_.size () )

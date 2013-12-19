@@ -21,6 +21,22 @@ int  delCMD   (unsigned char* data,
 
 void dump        (unsigned char* data, int amount);
 
+
+/**
+ *
+ * this function executes script.
+ *
+ * @param mem         - pointer to buffer with programm
+ * @param size        - size of a buffer with programm
+ * @param functions   - vector of functions to use
+ * @param pool        - vector of varibles
+ * @param placeInPool - vector of pairs with names of varibles and their
+ * places in pool vector
+ * @param typeList    - typeList with avalible types
+ *
+ * @return - success
+ *
+ */
 bool execute (unsigned char* mem, unsigned int size,
               ::std::vector<Function*>* functions,
               ::std::vector<Object*>* pool,
@@ -68,6 +84,18 @@ bool execute (unsigned char* mem, unsigned int size,
     return true;
 }
 
+/**
+ *
+ * this function executes call command
+ *
+ * @param mem         - pointer to memory AFTER call command
+ * @param functions   - availible functions
+ * @param pool        - availible varible
+ * @param placeInPool - names of varibles and their places in pool
+ *
+ * @return - succes
+ *
+ */
 int callCMD  (unsigned char* mem, 
               ::std::vector<Function*>* functions,
               ::std::vector<Object*>* pool,
@@ -145,6 +173,18 @@ int callCMD  (unsigned char* mem,
     return i;
 }
 
+/**
+ *
+ * this function executes del command
+ *
+ * @param data        - pointer to memory AFTER call command
+ * @param functions   - availible functions
+ * @param pool        - availible varible
+ * @param placeInPool - names of varibles and their places in pool
+ *
+ * @return - succes
+ *
+ */
 int  delCMD   (unsigned char* data, 
               ::std::vector<Function*>* functions,
               ::std::vector<Object*>* pool,
@@ -171,6 +211,14 @@ int  delCMD   (unsigned char* data,
     return 0;
 }
 
+/**
+ *
+ * this function dumps data to file
+ *
+ * @param data   - pointer to a buffer that will be dumped
+ * @param amount - size of buffer that will be dumped
+ *
+ */
 void dump        (unsigned char* data, int amount)
 {
     FILE* file = fopen ("Dump.txt", "w");

@@ -3,6 +3,13 @@
 # define H_ENGINE_SCRIPTHOLDERMETHODS
 
 
+/**
+ *
+ * copy constructor
+ *
+ * @param holder - scriptHolder to copy
+ *
+ */
 ScriptHolder :: ScriptHolder (ScriptHolder& holder)
 {
     for (unsigned i = 0; i < holder.lines (); i++)
@@ -39,14 +46,37 @@ ScriptHolder :: ScriptHolder (ScriptHolder& holder)
     }
 }
 
+/**
+ *
+ * standard constructor
+ *
+ */
 ScriptHolder :: ScriptHolder ()
 {}
 
+/**
+ *
+ * this function return number of lines in script
+ *
+ * @return - number of lines
+ *
+ */
 unsigned int ScriptHolder :: lines  () const
 {
     return lines_.size ();
 }
 
+/**
+ *
+ * this function return length of string
+ *
+ * @param index - index of string to return it's length
+ *
+ * @return
+ * {>= 0}  - length of string
+ * { -1 }  - error
+ *
+ */
 int ScriptHolder :: length (unsigned int index) const
 {
     try
@@ -62,8 +92,18 @@ int ScriptHolder :: length (unsigned int index) const
     return -1;
 }
 
+/**
+ *
+ * this function adds given string to the end of scripth
+ *
+ * @param line  - string to add
+ * @param size_ - size of that string
+ *
+ * @return - success
+ *
+ */
 bool ScriptHolder :: pushBack (const char* line, unsigned int size_)
-{
+{/* WTF why it's named size_ with underscore ??!! */
     if ( !line )
         return false;
 
@@ -99,6 +139,17 @@ bool ScriptHolder :: pushBack (const char* line, unsigned int size_)
     return true;
 }
 
+/**
+ *
+ * this function inserts string at given index
+ *
+ * @param line  - string to insert
+ * @param size_ - size of the string
+ * @param index - index of string when it will be placed
+ *
+ * @return - success
+ *
+ */
 bool ScriptHolder :: insert (const char* line, unsigned int size_, unsigned int index)
 {
     if ( !line )
@@ -138,6 +189,18 @@ bool ScriptHolder :: insert (const char* line, unsigned int size_, unsigned int 
 
 }
 
+/**
+ *
+ * this function copies string and return pointer to it
+ *
+ * @param index - index of string to copy
+ * @param size  - number of letters to copy from string
+ *
+ * @return
+ * {  >=0  } - pointer to alloced string
+ * {nullptr} - error
+ *
+ */
 char* ScriptHolder :: get (unsigned int index, unsigned int size) const
 {
     if ( !size || size > this->length(index) )
@@ -171,6 +234,19 @@ char* ScriptHolder :: get (unsigned int index, unsigned int size) const
 
 }
 
+/**
+ *
+ * this function writes string to buffer
+ *
+ * @param buffer - pointer to buffer to write in
+ * @param size   - size of the buffer. (excess will be cut)
+ * @param index  - index of string to get
+ *
+ * @return
+ * {>=0} - number of copied letters
+ * {-1}  - error
+ *
+ */
 int  ScriptHolder :: get (char*        buffer, unsigned int size,
                           unsigned int index ) const
 {
@@ -193,6 +269,15 @@ int  ScriptHolder :: get (char*        buffer, unsigned int size,
     return size;
 }
 
+/**
+ *
+ * this function removes string from script
+ *
+ * @param index - index of string to remove
+ *
+ * @return - success
+ *
+ */
 bool ScriptHolder :: remove  (unsigned int index)
 {
     if ( index > lines_.size () )
@@ -200,6 +285,8 @@ bool ScriptHolder :: remove  (unsigned int index)
     try
     {
         std::vector<char*>::iterator it = lines_.begin () + index;
+        if ( lines_.at (i) )
+            delete[] lines_.at (i);
         lines_.erase (it);
     }
     catch (::std::out_of_range)
@@ -209,6 +296,17 @@ bool ScriptHolder :: remove  (unsigned int index)
     return true;
 }
 
+/**
+ *
+ * this function replaces one string by another in script
+ *
+ * @param line   - replacement string
+ * @param length - size of replacement string
+ * @param index  - index of string to replace
+ *
+ * @return - success
+ *
+ */
 bool ScriptHolder :: replace (const char*  line , unsigned int length,
                               unsigned int index)
 {
@@ -254,6 +352,11 @@ bool ScriptHolder :: replace (const char*  line , unsigned int length,
     return true;
 }
 
+/**
+ *
+ * destructor
+ *
+ */
 ScriptHolder :: ~ScriptHolder ()
 {
     unsigned int size = lines_.size ();

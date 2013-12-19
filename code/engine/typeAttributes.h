@@ -3,6 +3,12 @@
 # define H_ENGINE_TYPEATTRIBUTES
 
 
+/**
+ *
+ * this is typeAttributes structure. It contain attribtues of type(Captain
+ * obvious)
+ *
+ */
 struct typeAttributes
 {
     int type_code_;

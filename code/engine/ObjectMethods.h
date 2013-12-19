@@ -3,6 +3,13 @@
 # define H_ENGINE_OBJECTMETHODS
 
 
+/**
+ *
+ * constructor
+ *
+ * @param typeCode - code of type of this object
+ *
+ */
 Object :: Object (int typeCode)
     :
     typeCode_ (typeCode)
@@ -10,6 +17,17 @@ Object :: Object (int typeCode)
     memcpy (name_, "(no_name)", 10);
 }
 
+/**
+ *
+ * this function checks if name of this object and given are the same
+ *
+ * @param name - name to check identity
+ *
+ * @return
+ * true - same names
+ * false - names aren't same
+ *
+ */
 bool Object :: is (const char* name)
 {
     if ( !name )
@@ -17,6 +35,15 @@ bool Object :: is (const char* name)
     return !(strcmp (name_, name));
 }
 
+/**
+ *
+ * this function sets object's name
+ *
+ * @param name - new name
+ *
+ * @return - success
+ *
+ */
 bool Object :: setName (const char* name)
 {
     if ( !name )
@@ -27,6 +54,14 @@ bool Object :: setName (const char* name)
     return true;
 }
 
+/**
+ *
+ * this function return typeCode of  this object
+ *
+ * @return - typeCode
+ * 0 - errorCode
+ *
+ */
 int Object :: typeCode ()
 {
     return typeCode_;

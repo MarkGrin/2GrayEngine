@@ -8,6 +8,17 @@ bool loadFile    (const char* fileName, ScriptHolder* scpt);
 
 bool addStandard (::std::vector<Function*>* functions, TypeList* typeList);
 
+
+/**
+ *
+ * this function runs script. It is main function of all engine module,
+ * because it calls compilation and execution functions.
+ *
+ * @param fileName - pointer to string with name of file to run
+ *
+ * @return - success
+ *
+ */
 bool run (const char* fileName)
 {
     try
@@ -71,6 +82,16 @@ bool run (const char* fileName)
     return false;
 }
 
+/**
+ *
+ * this functions loads file to script holder
+ *
+ * @param fileName - pointer to string with name of file to load
+ * @param scpt     - pointer to ScriptHolder to place script
+ *
+ * @return - success
+ *
+ */
 bool loadFile (const char* fileName, ScriptHolder* scpt)
 {
     if ( !fileName || !scpt )
@@ -112,6 +133,19 @@ bool loadFile (const char* fileName, ScriptHolder* scpt)
     return true;
 }
 
+/**
+ *
+ * this function adds standard types and functions from std directory to
+ * function list and type list
+ *
+ * @param functions - pointer to vector of pointers to function that will be
+ * filled with standard functions
+ * @param typeList - pointer to typeList that will be fulled with standard
+ * types
+ *
+ * @return - success
+ *
+ */
 bool addStandard (::std::vector<Function*>* functions, TypeList* typeList)
 {
     if ( !functions || !typeList )

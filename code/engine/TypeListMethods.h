@@ -3,6 +3,16 @@
 # define H_ENGINE_TYPELISTMETHODS
 
 
+/**
+ *
+ * this function adds type
+ *
+ * @param type      - type to add
+ * @param type_code - type code of new type
+ *
+ * @return - success
+ *
+ */
 bool TypeList :: add (typeAttributes* type, int type_code)
 {
     try
@@ -17,6 +27,18 @@ bool TypeList :: add (typeAttributes* type, int type_code)
     return true;
 }
 
+/**
+ *
+ * this function finds typeAttribute by it's type_code and creates an
+ * single object of this type
+ *
+ * @param type_code - type code of object that will be created
+ *
+ * @return
+ * {  >=0  } - newly created object with given type
+ * {nullptr} - error
+ *
+ */
 Object* TypeList :: create (int type_code)
 {
     Object* result = nullptr;
@@ -48,6 +70,20 @@ Object* TypeList :: create (int type_code)
     return nullptr;
 }
 
+/**
+ *
+ * this function finds typeAttribute by it's type_code and creates an
+ * single object of this type by calling create function with
+ * given argument
+ *
+ * @param type_code - type code of object that will be created
+ * @param what      - argument to create function
+ *
+ * @return
+ * {  >=0  } - newly created object with given type
+ * {nullptr} - error
+ *
+ */
 Object* TypeList :: create (int type_code, const char* what)
 {
     Object* result = nullptr;
@@ -79,11 +115,29 @@ Object* TypeList :: create (int type_code, const char* what)
 }
 
 
+/**
+ *
+ * return number of types that are stored
+ *
+ * @return - size
+ *
+ */
 unsigned int TypeList :: size ()
 {
     return list_.size ();
 }
 
+/**
+ *
+ * this function finds a type with given name
+ *
+ * @param what - name to look for
+ *
+ * @return
+ * {!=0} - type code of type with given name
+ * { 0 } - error code
+ *
+ */
 int TypeList :: find (const char* what)
 {
     std::map<int, typeAttributes>::iterator it;

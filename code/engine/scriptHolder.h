@@ -3,6 +3,12 @@
 # define H_ENGINE_SCRIPTHOLDER
 
 
+/**
+ *
+ * this is ScriptHolder class. It stores scripts divided in lines,
+ * so it's easy to compile scripts line by line with this interface.
+ *
+ */
 class ScriptHolder
 {
 

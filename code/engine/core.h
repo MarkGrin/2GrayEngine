@@ -19,6 +19,7 @@ class TypeList;
 class ScriptHolder;
 
 
+/* lists */
 # include "CommandList.h"
 
 /* structure files */

@@ -3,6 +3,12 @@
 # define H_ENGINE_OBJECT
 
 
+/**
+ *
+ * this is Object class, it's a base and abstract class. It represent an
+ * abstract object in engine.
+ *
+ */
 class Object
 {
 
