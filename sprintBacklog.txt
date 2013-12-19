@@ -1,0 +1,20 @@
+Topic:
+stability and memory leaks
+
+Statuses:
+Not yet | Under development | Done | Cancelled
+
+Progress:
+---------------------------------
+|Story               | Status   |
+---------------------------------
+|--------------------|----------|
+| execMem interface  - Not yet  |
+|--------------------|----------|
+| typeAttributes     - Not yet  |
+|--------------------|----------|
+| functionAttrubutes - Not yet  |
+|-------------------------------|
+| verify functions   - Not yet  |
+|--------------------|----------|
+---------------------------------
