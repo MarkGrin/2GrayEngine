@@ -19,6 +19,7 @@ struct environment
     ::std::vector<::std::pair<char*,unsigned int>>* placeInPool;
     TypeList* typeList;
     ::std::vector<unsigned char>* execMem;
+    ExecMem* mem;
 };
 
 

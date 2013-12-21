@@ -36,13 +36,14 @@ bool run (const char* fileName)
         ::std::vector<::std::pair<char*,unsigned int>> placeInPool;
         TypeList typeList;
         ::std::vector<unsigned char> execMem;
+        ExecMem mem;
 
         if ( !addStandard (&functions, &typeList) )
         {
             OUTPUT_INTERNAL ("add standard failed");
             return false;
         }
-        environment en = {&scpt, &functions, &pool, &placeInPool, &typeList, &execMem};
+        environment en = {&scpt, &functions, &pool, &placeInPool, &typeList, &execMem, &mem};
 
 
         if ( !compile (&en) )
@@ -52,25 +53,8 @@ bool run (const char* fileName)
             return false;
         }
 
-        unsigned int size = execMem.size ();
-        unsigned char* mem = nullptr;
-        try
-        {
-            mem = new unsigned char[size];
-        }
-        catch (::std::bad_alloc)
-        {
-            OUTPUT_INTERNAL ("compile function didn't compile anything");
-            OUTPUT_ERROR ("compile function didn't compile anything");
-            return false;
-        }
-        for (unsigned int i = 0; i < size; i++)
-            mem[i] = execMem.at (i);
-        if ( !size )
-            return true;
-
-        execute (mem, size, &functions, &pool,
-                 &placeInPool, &typeList);
+        execute (mem.size (), &functions, &pool,
+                 &placeInPool, &mem);
         return true;
     }
     catch (...)

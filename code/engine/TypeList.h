@@ -15,14 +15,14 @@ class TypeList
 
     public:
 
-    bool verify ();
+    bool verify () const;
 
     bool add (typeAttributes* type, int typeCode);
 
     Object* create (int typeCode);
     Object* create (int typeCode, const char* what);
 
-    unsigned int size ();
+    unsigned int size () const;
     int find (const char* what);
 };
 

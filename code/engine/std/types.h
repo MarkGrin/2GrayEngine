@@ -12,7 +12,12 @@ class Text : public Object
 
     void print ()
     {
-        printf ("\nECHO:%s", text_);
+        if ( !text_ )
+            printf ("\nBLANK_ECHO!");
+        else
+            printf ("\nECHO:%s", text_);
+
+        return;
     }
 
 

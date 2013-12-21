@@ -3,23 +3,21 @@
 # define H_ENGINE_EXECUTE
 
 
-bool execute  (unsigned char* data, unsigned int size,
+bool execute  (unsigned int size,
                ::std::vector<Function*>* functions,
                ::std::vector<Object*>* pool,
                ::std::vector<::std::pair<char*,unsigned int>>* placeInPool,
-               TypeList* typeList);
+               ExecMem* mem_);
 
-int  callCMD  (unsigned char* data, 
+int  callCMD  (ExecMem* mem, unsigned int i,
               ::std::vector<Function*>* functions,
               ::std::vector<Object*>* pool,
               ::std::vector<::std::pair<char*,unsigned int>>* placeInPool);
 
-int  delCMD   (unsigned char* data, 
+int  delCMD   (ExecMem* mem, unsigned int i,
               ::std::vector<Function*>* functions,
               ::std::vector<Object*>* pool,
               ::std::vector<::std::pair<char*,unsigned int>>* placeInPool);
-
-void dump        (unsigned char* data, int amount);
 
 
 /**
@@ -37,46 +35,44 @@ void dump        (unsigned char* data, int amount);
  * @return - success
  *
  */
-bool execute (unsigned char* mem, unsigned int size,
+bool execute (unsigned int size,
               ::std::vector<Function*>* functions,
               ::std::vector<Object*>* pool,
               ::std::vector<::std::pair<char*,unsigned int>>* placeInPool,
-              TypeList* typeList
+              ExecMem* mem
               )
 {
-    if ( !mem || !size || !functions || !pool || !placeInPool || !typeList )
+    if ( !mem || !size || !functions || !pool || !placeInPool )
     {
         OUTPUT_INTERNAL ("bad arguments");
         return false;
     }
-    dump (mem, size);
+    mem->dump ("dump.txt");
     for (unsigned int i = 0; i < size; i++)
     {
         int rslt = 0;
-        if ( mem[i] == CMD::CALL )
+        if ( mem->get(i) == CMD::CALL )
         {
             i++;
-            rslt = callCMD (mem + i, functions, pool, placeInPool);
+            rslt = callCMD (mem, i, functions, pool, placeInPool);
             if ( rslt < 0 )
             {
                 OUTPUT_INTERNAL ("error when executing:%d", i);
-                dump (mem, size);
                 return false;
             }
-            i += rslt;
+            i = rslt;
             continue;
         }
-        else if ( mem[i] == CMD::DEL )
+        else if ( mem->get(i) == CMD::DEL )
         {
             i++;
-            rslt = delCMD (mem + i, functions, pool, placeInPool);
+            rslt = delCMD (mem, i, functions, pool, placeInPool);
             if ( rslt < 0 )
             {
                 OUTPUT_INTERNAL ("error when executing:%d", i);
-                dump (mem, size);
                 return false;
             }
-            i += rslt;
+            i = rslt;
         
             continue;
         }
@@ -96,7 +92,7 @@ bool execute (unsigned char* mem, unsigned int size,
  * @return - succes
  *
  */
-int callCMD  (unsigned char* mem, 
+int callCMD  (ExecMem* mem, unsigned int i,
               ::std::vector<Function*>* functions,
               ::std::vector<Object*>* pool,
               ::std::vector<::std::pair<char*,unsigned int>>* placeInPool)
@@ -106,9 +102,8 @@ int callCMD  (unsigned char* mem,
         OUTPUT_INTERNAL ("bad args");
         return false;
     }
-    int i = 0;
                             //TODO::Delete what was marked to be deleted
-    int funcNum = mem[i];
+    int funcNum = mem->get(i);
     if ( funcNum >= functions->size () )
     {
         OUTPUT_INTERNAL ("calling unknown function:%d", funcNum);
@@ -117,11 +112,11 @@ int callCMD  (unsigned char* mem,
     Function* call = functions->at(funcNum);
     try
     {
-        call = functions->at(mem[i]);
+        call = functions->at(mem->get(i));
     }
     catch (::std::out_of_range)
     {
-        OUTPUT_INTERNAL ("unknown index:%d", mem[i]);
+        OUTPUT_INTERNAL ("unknown index:%d", mem->get(i));
         return -1;
     }
     if ( !call )
@@ -130,46 +125,47 @@ int callCMD  (unsigned char* mem,
         return -1;
     }
     i++;
-    int argnum = mem[i];
+    int argnum = mem->get(i);
     for (unsigned int j = 0; j < argnum; j++)
     {
         i++;
         Object* arg = nullptr;
-        if ( mem[i] & ARG_FLAG::ALLOCED )
+        if ( mem->get(i) & ARG_FLAG::ALLOCED )
         {
             i++;
-            char buff[sizeof (arg)] = {};
-            for (int k = 0; k < sizeof (arg); k++)
+            if ( !mem->memcpy (i, (unsigned char*)(&arg), sizeof (arg)) )
             {
-                buff[k] = mem[i + k];
+                OUTPUT_INTERNAL ("Cant copy");
             }
-            memcpy (&arg, buff, sizeof (arg));
             i += sizeof (Object*) - 1;
-            if ( !call->pushArg (arg) )
+            if ( !(call->pushArg (arg)) )
             {
                 OUTPUT_INTERNAL ("bad arg:%d", arg);
                 return -1;
             }
+        OUTPUT_DEBUG ("TEXT_CALL_ARG:%p", arg);
         }
         else
         {
             i++;
-            unsigned int argIndex = mem[i];
+            unsigned int argIndex = mem->get(i);
             if ( argIndex >= pool->size () )
             {
                 OUTPUT_INTERNAL ("bad arg index:%d", argIndex);
                 return -1;
             }
             arg = pool->at (argIndex);
-            OUTPUT_DEBUG ("PTR_CASE:%p", arg);
-            if ( !call->pushArg (arg) )
+            OUTPUT_DEBUG ("ARG_CALL Indx:%d Ptr:%p", argIndex, arg);
+            if ( !(call->pushArg (arg)) )
             {
                 OUTPUT_INTERNAL ("bad arg:%d", arg);
                 return -1;
             }
         }
     }
+    OUTPUT_DEBUG ("Calling:%p", call);
     call->execute ();
+    OUTPUT_DEBUG ("Call successful");
     return i;
 }
 
@@ -185,12 +181,12 @@ int callCMD  (unsigned char* mem,
  * @return - succes
  *
  */
-int  delCMD   (unsigned char* data, 
+int  delCMD   (ExecMem* mem, unsigned int i,
               ::std::vector<Function*>* functions,
               ::std::vector<Object*>* pool,
               ::std::vector<::std::pair<char*,unsigned int>>* placeInPool)
 {
-    if ( !data || !functions || !pool || !placeInPool )
+    if ( !mem || !functions || !pool || !placeInPool )
     {
         OUTPUT_INTERNAL ("bad args");
         return -1;
@@ -199,16 +195,16 @@ int  delCMD   (unsigned char* data,
     //Call destructor TODO::Add destructors
     try
     {
-        if ( pool->at (*data) )
-            delete pool->at (*data);
-        pool->at (*data) = nullptr;
+        if ( pool->at (mem->get(i)) )
+            delete pool->at (mem->get(i));
+        pool->at (mem->get(i)) = nullptr;
     }
     catch (::std::out_of_range sct)
     {
-        OUTPUT_INTERNAL ("bad delete index:%d", *data);
+        OUTPUT_INTERNAL ("bad delete index:%d", mem->get(i));
         return -1;
     }
-    return 0;
+    return i;
 }
 
 /**

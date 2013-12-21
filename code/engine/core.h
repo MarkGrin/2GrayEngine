@@ -25,7 +25,6 @@ class ScriptHolder;
 /* structure files */
 # include "typeAttributes.h"
 # include "functionAttributes.h"
-# include "environment.h"
 
 /* class files */
 # include "Object.h"
@@ -39,9 +38,12 @@ class ScriptHolder;
 # include "FunctionMethods.h"
 # include "TypeListMethods.h"
 # include "ScriptHolderMethods.h"
+# include "ExecMemMethods.h"
 
 /* modules */
 # include "std/core.h"
+
+# include "environment.h"
 
 /* methods */
 # include "compile.h"

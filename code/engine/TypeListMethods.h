@@ -12,7 +12,7 @@
  * {false} - broken
  *
  */
-bool TypeList :: verify ()
+bool TypeList :: verify () const
 {
     if ( !this )
         return false;
@@ -144,7 +144,7 @@ Object* TypeList :: create (int type_code, const char* what)
  * @return - size
  *
  */
-unsigned int TypeList :: size ()
+unsigned int TypeList :: size () const
 {
     if ( !verify () )
         return false;

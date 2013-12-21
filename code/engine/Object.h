@@ -27,10 +27,10 @@ class Object
 
     explicit Object (int typeCode);
 
-    bool is (const char* name);
+    bool is (const char* name) const;
     bool setName (const char* name);
 
-    int typeCode ();
+    int typeCode () const;
 
 };
 

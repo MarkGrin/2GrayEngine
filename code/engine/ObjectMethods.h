@@ -49,7 +49,7 @@ Object :: Object (int typeCode)
  * false - names aren't same
  *
  */
-bool Object :: is (const char* name)
+bool Object :: is (const char* name) const
 {
     if ( !verify () )
         return false;
@@ -87,7 +87,7 @@ bool Object :: setName (const char* name)
  * 0 - errorCode
  *
  */
-int Object :: typeCode ()
+int Object :: typeCode () const
 {
     if ( !verify () )
         return false;

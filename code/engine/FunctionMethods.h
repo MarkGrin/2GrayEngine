@@ -98,7 +98,7 @@ bool Function :: payLoadFunction ()
  * @return - valid structure about this function
  *
  */
-functionAttributes Function :: attributes ()
+functionAttributes Function :: attributes () const
 {
     functionAttributes attr = {};
     if ( !verify () )

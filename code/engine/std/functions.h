@@ -13,7 +13,7 @@ class helloWorld : public Function
         return true;
     }
 
-    virtual functionAttributes attributes ()
+    virtual functionAttributes attributes () const
     {
         functionAttributes attr = {};
         attr.size = sizeof (functionAttributes);
@@ -46,7 +46,7 @@ class echo : public Function
         return true;
     }
 
-    virtual functionAttributes attributes ()
+    virtual functionAttributes attributes () const
     {
         functionAttributes attr = {};
        attr.size = sizeof (functionAttributes);
@@ -71,6 +71,7 @@ class TextUserInput : public Function
 
     virtual bool payLoadFunction ()
     {
+        OUTPUT_DEBUG ("PTR_SOCKET_USE:");
         Text* text = (Text*) this->popArg ();
         if ( text )
         {
@@ -83,7 +84,7 @@ class TextUserInput : public Function
         return false;
     }
 
-    virtual functionAttributes attributes ()
+    virtual functionAttributes attributes () const
     {
         functionAttributes attr = {};
         attr.size = sizeof (functionAttributes);
@@ -108,11 +109,12 @@ class Send : public Function
 
     virtual bool payLoadFunction ()
     {
+        OUTPUT_DEBUG ("PTR_SOCKET_USE:%p", socket);
         Text* text = (Text*) this->popArg ();
         Socket* socket = (Socket*) this->popArg ();
         OUTPUT_DEBUG ("PTR_SOCKET_USE:%p", socket);
         OUTPUT_DEBUG ("PTR__TEXT_USE:%p", text);
-        const char* textbuff = "aBc";
+        const char* textbuff = text->get ();
         OUTPUT_DEBUG ("TEXT_USE:%s", textbuff);
 
         OUTPUT_DEBUG ("Reached, calling send");
@@ -120,7 +122,7 @@ class Send : public Function
         return false;
     }
 
-    virtual functionAttributes attributes ()
+    virtual functionAttributes attributes () const
     {
         functionAttributes attr = {};
         attr.size = sizeof (functionAttributes);
@@ -153,7 +155,7 @@ class Receive : public Function
         return false;
     }
 
-    virtual functionAttributes attributes ()
+    virtual functionAttributes attributes () const
     {
         functionAttributes attr = {};
         attr.size = sizeof (functionAttributes);

@@ -3,7 +3,8 @@ namespace CMD
     const unsigned char
     NEW  = 1, /* Allocate new varible */
     DEL  = 2, /* Delete alloced varible */
-    CALL = 3  /* Call user function */
+    CALL = 3, /* Call user function */
+    BAD  = 4  /* Bad, broken, decayed, dead, ERROR */
     ;
 };
 namespace ARG_FLAG

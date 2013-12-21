@@ -253,13 +253,10 @@ bool delCommand    (char* line, environment* en)
         OUTPUT_ERROR ("no such varible:%s", line);
         return false;
     }
-    try
-    {
-        en->execMem->push_back (CMD::DEL);
-        en->execMem->push_back (delIndex);
-        return true;
-    }
-    catch (::std::bad_alloc)
+    bool result = en->mem->push_back (&CMD::DEL);
+    unsigned char delIndexConverted = delIndex;
+    result = result && en->mem->push_back (&delIndexConverted);
+    if ( !result )
     {
         OUTPUT_INTERNAL ("bytes wasn't pushed to vector");
         return false;
@@ -314,9 +311,11 @@ bool engineCommand (char* line, environment* en)
             }
             try
             {
-                en->execMem->push_back (CMD::CALL);
-                en->execMem->push_back (i);
-                en->execMem->push_back (attribute.argnum);
+                en->mem->push_back (&CMD::CALL);
+                unsigned char convert = i;
+                en->mem->push_back (&convert);
+                convert = attribute.argnum;
+                en->mem->push_back (&convert);
             }
             catch (::std::bad_alloc)
             {
@@ -357,7 +356,7 @@ bool parseArgs   (environment* en, Function* fnc,
         OUTPUT_INTERNAL ("bad argument");
         return false;
     }
-    if ( !en->execMem || !en->placeInPool || !fnc ||
+    if ( !en->mem || !en->placeInPool || !fnc ||
          !en->pool    || !argumentLine )
     {
         OUTPUT_INTERNAL ("bad arguments");
@@ -452,7 +451,7 @@ bool userArgument (const char* name, environment* en, Function* fnc,
         OUTPUT_INTERNAL ("bad argument");
         return false;
     }
-    if ( !en->execMem || !en->placeInPool || !fnc ||
+    if ( !en->mem || !en->placeInPool || !fnc ||
          !en->pool    || !name )
     {
         OUTPUT_INTERNAL ("bad arguments");
@@ -483,8 +482,10 @@ bool userArgument (const char* name, environment* en, Function* fnc,
                 OUTPUT_ERROR ("too many args!");
                 return false;
             }
-            en->execMem->push_back (0);
-            en->execMem->push_back ((en->placeInPool->at(j).second));
+            unsigned char convert = 0;
+            en->mem->push_back (&convert);
+            convert = (en->placeInPool->at(j).second);
+            en->mem->push_back (&convert);
             return true;
         }
     }
@@ -510,7 +511,7 @@ bool TEXTargument (const char* name, environment* en)
         OUTPUT_INTERNAL ("bad argument");
         return false;
     }
-    if ( !en->execMem || !en->placeInPool || !en->pool ||
+    if ( !en->mem || !en->placeInPool || !en->pool ||
          !name )
     {
         OUTPUT_INTERNAL ("bad arguments");
@@ -518,7 +519,7 @@ bool TEXTargument (const char* name, environment* en)
     }
 
     std::Text* obj = (std::Text*)std::TEXTcreateOn ();
-    OUTPUT_DEBUG ("PTR_CREATE:%p", obj);
+    OUTPUT_DEBUG ("PTR_CREATE_TEXT  PTR:%p", en->pool->size (), obj);
     if ( !obj )
     {
         OUTPUT_INTERNAL ("Object wasn't created");
@@ -531,12 +532,10 @@ bool TEXTargument (const char* name, environment* en)
     }
     try
     {
-        en->execMem->push_back (0 | ARG_FLAG::DEL | ARG_FLAG::ALLOCED);
+        unsigned char convert = (0 | ARG_FLAG::DEL | ARG_FLAG::ALLOCED);
+        en->mem->push_back (&convert);
 
-        unsigned char buff[sizeof (obj)] = {};
-        memcpy (buff, &obj, sizeof (obj));
-        for (int j = 0; j < sizeof (obj); j++)
-            en->execMem->push_back (buff[j]);
+        en->mem->push_back ((unsigned char*)(&obj), sizeof (obj));
     }
     catch (::std::bad_alloc)
     {
@@ -658,7 +657,7 @@ bool addObject  (const char* name, int code, TypeList* typeList,
         return false;
     }
     Object* obj = typeList->create (code);
-    OUTPUT_DEBUG ("PTR_CREATE:%p", obj);
+    OUTPUT_DEBUG ("PTR_CREATE Indx:%d PTR:%p", pool->size(), obj);
     if ( !obj )
     {
         OUTPUT_INTERNAL ("typelist didn't create object");

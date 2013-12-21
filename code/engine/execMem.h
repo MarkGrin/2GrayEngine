@@ -14,13 +14,25 @@ class ExecMem
 {
     ::std::vector<unsigned char> mem_;
 
+    ExecMem (ExecMem&);
+    ExecMem& operator = (ExecMem&);
+
     public:
 
-    bool verify ();
+    bool verify () const;
+
+    ExecMem ();
+
+    unsigned int size () const;
 
     bool push_back (const unsigned char* data, unsigned int size = 1);
     bool memcpy    (unsigned int indexFrom, unsigned char* to,
-                    unsigned int size);
+                    unsigned int size) const;
+    unsigned char get (unsigned int index) const;
+
+    void dump (const char* fileName) const;
+
+    ~ExecMem ();
 };
 
 

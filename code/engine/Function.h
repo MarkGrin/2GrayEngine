@@ -35,7 +35,7 @@ class Function
 
     virtual bool payLoadFunction () = 0; 
 
-    virtual functionAttributes attributes () = 0;
+    virtual functionAttributes attributes () const = 0;
 
     bool execute ();
 
