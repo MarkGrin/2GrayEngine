@@ -12,7 +12,7 @@
  * {false} - broken
  *
  */
-bool TypeAttributes :: verify ()
+bool TypeAttributes :: verify () const
 {
     if ( !this )
         return false;
@@ -106,7 +106,7 @@ TypeAttributes :: TypeAttributes (TypeAttributes& cpy)
  * @return typeCode
  *
  */
-int         TypeAttributes :: typeCode ()
+int         TypeAttributes :: typeCode () const
 {
     return typeCode_;
 }
@@ -118,7 +118,7 @@ int         TypeAttributes :: typeCode ()
  * @return version
  *
  */
-int         TypeAttributes :: version  ()
+int         TypeAttributes :: version  () const
 {
     return version_;
 }
@@ -130,7 +130,7 @@ int         TypeAttributes :: version  ()
  * @return name of this type
  *
  */
-const char* TypeAttributes :: name     ()
+const char* TypeAttributes :: name     () const
 {
     return name_;
 }
@@ -144,7 +144,7 @@ const char* TypeAttributes :: name     ()
  * {>0}      - created object
  *
  */
-Object*     TypeAttributes :: create   ()
+Object*     TypeAttributes :: create   () const
 {
     if ( !verify () )
     {
@@ -165,7 +165,7 @@ Object*     TypeAttributes :: create   ()
  * {>0}      - created object
  *
  */
-Object*     TypeAttributes :: createOn (const char* data)
+Object*     TypeAttributes :: createOn (const char* data) const
 {
     if ( !verify () )
     {
@@ -183,7 +183,7 @@ Object*     TypeAttributes :: createOn (const char* data)
  *
  */
 
-createFunc* TypeAttributes :: createPtr ()
+createFunc* TypeAttributes :: createPtr () const
 {
     return create_;
 }
@@ -195,9 +195,11 @@ createFunc* TypeAttributes :: createPtr ()
  * @return pointer to createOn function
  *
  */
-createOnFunc* TypeAttributes :: createOnPtr ()
+createOnFunc* TypeAttributes :: createOnPtr () const
 {
     return createOn_;
 }
+
+
 
 # endif /* H_ENGINE_TYPEATTRIBUTESMETHODS */

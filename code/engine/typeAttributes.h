@@ -27,19 +27,19 @@ class TypeAttributes
 
     public:
 
-    bool verify ();
+    bool verify () const;
 
     TypeAttributes (int typeCode, const char* name,
                     createFunc*, createOnFunc*);
     TypeAttributes (TypeAttributes&);
 
-    int typeCode     ();
-    int version      ();
-    const char* name ();
-    Object* create   ();
-    Object* createOn (const char*);
-    createFunc*   createPtr   ();
-    createOnFunc* createOnPtr ();
+    int typeCode     () const;
+    int version      () const;
+    const char* name () const;
+    Object* create   () const;
+    Object* createOn (const char*) const;
+    createFunc*   createPtr   () const;
+    createOnFunc* createOnPtr () const;
 
 };
 
