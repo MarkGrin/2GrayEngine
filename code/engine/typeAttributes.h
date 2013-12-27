@@ -41,6 +41,8 @@ class TypeAttributes
     createFunc*   createPtr   () const;
     createOnFunc* createOnPtr () const;
 
+    ~TypeAttributes ();
+
 };
 
 

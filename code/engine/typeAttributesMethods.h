@@ -200,6 +200,17 @@ createOnFunc* TypeAttributes :: createOnPtr () const
     return createOn_;
 }
 
+TypeAttributes :: ~TypeAttributes ()
+{
+    if ( name_ )
+        delete[] name_;
+
+    /* My poison is null */
+    name_     = nullptr;
+    create_   = nullptr;
+    createOn_ = nullptr;
+    typeCode_ = 0;
+}
 
 
 # endif /* H_ENGINE_TYPEATTRIBUTESMETHODS */
