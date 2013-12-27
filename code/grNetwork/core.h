@@ -16,7 +16,6 @@ struct SocketData;
 
 /* Methods */
 # include "Methods.h"
-# include "headerGen.h"
 
 /* Structures */
 # include "socketData.h"
