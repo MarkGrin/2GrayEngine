@@ -9,17 +9,35 @@
  * function.
  *
  */
-struct functionAttributes
+class FunctionAttributes
 {
 
-    unsigned int size;
-    unsigned int version;
-    unsigned int code;
-    char name[32 + 1];
+    FunctionAttributes& operator = (FunctionAttributes&);
+    FunctionAttributes ();
 
-    unsigned int argnum;
-    int* args;
+    protected:
 
+    unsigned int version_;
+    int code_;
+    char* name_;
+
+    ::std::vector<int> args_;
+
+    public:
+
+    bool verify () const;
+
+    FunctionAttributes (int code, const char* name);
+    FunctionAttributes (FunctionAttributes&);
+
+    int code         () const;
+    int version      () const;
+    const char* name () const;
+
+    unsigned int argnum ()                   const;
+    int arg             (unsigned int index) const;
+
+    ~FunctionAttributes ();
 };
 
 # endif /* H_ENGINE_FUNCTIONATTRIBUTES */

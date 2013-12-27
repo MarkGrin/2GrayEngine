@@ -211,6 +211,8 @@ bool newCommand    (char* line, environment* en)
 
     try
     {
+        /* unwritten feature, uncomment when feature is implemented */
+
         /*en->execMem->push_back (CMD::NEW);
         en->execMem->push_back (en->pool->size () - 1);*/
     }
