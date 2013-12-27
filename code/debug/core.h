@@ -2,6 +2,7 @@
 
 # define H_DEBUG_CORE
 
+<<<<<<< HEAD
 namespace DEBUG
 {
 
@@ -18,5 +19,15 @@ bool SILENT = false;
 # include "output.h"
 
 };
+=======
+
+# define ALLOW_GRIN_FUNCTION_TRACE
+# define ALLOW_OUTPUT_DEBUG
+# define ALLOW_REPORT_EXCEPTION
+
+# include "output.h"
+# include "functionTrace.h"
+
+>>>>>>> d156b06435bc4c498dd25db7087b6d375c534a79
 
 # endif /* H_DEBUG_CORE */

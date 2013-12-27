@@ -9,7 +9,7 @@ Progress:
 |Story               | Status             |
 -------------------------------------------
 |--------------------|--------------------|
-| execMem interface  - Under development  |
+| execMem interface  - Done               |
 |--------------------|--------------------|
 | typeAttributes     - Not yet            |
 |--------------------|--------------------|

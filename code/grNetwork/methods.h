@@ -7,6 +7,7 @@ int Start ();
 int Stop  ();
 
 
+<<<<<<< HEAD
 /**
  *
  * This function starts GrSocket library. Without it you can't use any
@@ -16,12 +17,15 @@ int Stop  ();
  * @return error code
  *
  */
+=======
+>>>>>>> d156b06435bc4c498dd25db7087b6d375c534a79
 int Start ()
 {
     WSADATA tempData;
     return WSAStartup (MAKEWORD (2,2), &tempData);
 }
 
+<<<<<<< HEAD
 /**
  *
  * This function stops GrSocket library. It unloads library so it's
@@ -31,6 +35,8 @@ int Start ()
  * @return error code
  *
  */
+=======
+>>>>>>> d156b06435bc4c498dd25db7087b6d375c534a79
 int Stop  ()
 {
     return WSACleanup ();
