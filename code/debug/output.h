@@ -3,11 +3,7 @@
 # define H_DEBUG_OUTPUT
 
 
-<<<<<<< HEAD
 bool OUTPUT_DEBUG (const char* file, int line,
-=======
-bool OUTPUT_DEBUG (const char* file, const char* function, int line,
->>>>>>> d156b06435bc4c498dd25db7087b6d375c534a79
                               const char* text, ...)
 {
     if ( !text )
@@ -20,7 +16,6 @@ bool OUTPUT_DEBUG (const char* file, const char* function, int line,
     va_start (arguments, text);
 
     int n = vsnprintf (message, sizeof (message) - 2, text, arguments);
-<<<<<<< HEAD
     if ( n < 0 )
         return false;
 
@@ -138,25 +133,11 @@ bool OUTPUT_INTERNAL (const char* file, int line,
 
 
 # define PLACE __FILE__, __LINE__
-=======
-
-    va_end (arguments);
-
-    sprintf (string, "%s File:%s Function:%s Line:%d", message, file, function, line);
-
-    OutputDebugStringA (string);
-
-    return (n > 0) ? true : false;
-}
-
-# define PLACE __FILE__, __FUNCTION__, __LINE__
->>>>>>> d156b06435bc4c498dd25db7087b6d375c534a79
 
 # ifndef ALLOW_OUTPUT_DEBUG
 
 # define OUTPUT_DEBUG(...) ;
 
-<<<<<<< HEAD
 # endif
 
 # ifdef ALLOW_OUTPUT_DEBUG
@@ -164,13 +145,10 @@ bool OUTPUT_INTERNAL (const char* file, int line,
 # define OUTPUT_DEBUG(...)\
     if(!DEBUG::SILENT)DEBUG::OUTPUT_DEBUG(PLACE,__VA_ARGS__)
 
-=======
->>>>>>> d156b06435bc4c498dd25db7087b6d375c534a79
 # endif /* ALLOW_OUTPUT_DEBUG */
 
 
 
-<<<<<<< HEAD
 # ifndef ALLOW_OUTPUT_ERROR
 
 # define OUTPUT_ERROR(...) ;
@@ -200,7 +178,5 @@ bool OUTPUT_INTERNAL (const char* file, int line,
 # endif /* ALLOW_OUTPUT_ERROR */
 
 
-=======
->>>>>>> d156b06435bc4c498dd25db7087b6d375c534a79
 
 # endif /* H_DEBUG_OUTPUT */

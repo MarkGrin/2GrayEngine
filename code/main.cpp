@@ -3,7 +3,6 @@
 # include <vector>
 # include <stack>
 # include <map>
-<<<<<<< HEAD
 # include <utility>
 
 # include <winsock2.h>
@@ -73,14 +72,4 @@ void printHelp ()
     OUT_INFO ("\n[-0 fileName] - output file. If not specified ouput will");
     OUT_INFO ("be printed on console");
     OUT_INFO ("\n");
-=======
-
-# include <windows.h>
-# include <winsock2.h>
-
-# include "core.h"
-
-int main ()
-{
->>>>>>> d156b06435bc4c498dd25db7087b6d375c534a79
 }

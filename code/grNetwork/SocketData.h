@@ -3,7 +3,6 @@
 # define H_GRNETWORK_SOCKETDATA
 
 
-<<<<<<< HEAD
 /**
  *
  * This struct contains varibles from network library (winsock) that are
@@ -11,8 +10,6 @@
  * So it's natural to put them in structure.
  *
  */
-=======
->>>>>>> d156b06435bc4c498dd25db7087b6d375c534a79
 struct socketData
 {
     sockaddr_in addrInfo;

@@ -3,7 +3,6 @@
 # define H_GRNETWORK_ERRORINFO
 
 
-<<<<<<< HEAD
 /**
  *
  *  This class provides information about error. It stores error in two
@@ -13,8 +12,6 @@
  *  both of them.
  *
  */
-=======
->>>>>>> d156b06435bc4c498dd25db7087b6d375c534a79
 class ErrorInfo
 {
     unsigned int local_,
