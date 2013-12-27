@@ -518,7 +518,7 @@ bool TEXTargument (const char* name, environment* en)
         return false;
     }
 
-    std::Text* obj = (std::Text*)std::TEXTcreateOn ();
+    std::Text* obj = (std::Text*)std::TEXTcreate ();
     OUTPUT_DEBUG ("PTR_CREATE_TEXT  PTR:%p", en->pool->size (), obj);
     if ( !obj )
     {

@@ -29,17 +29,21 @@ bool TypeList :: verify () const
  * @return - success
  *
  */
-bool TypeList :: add (typeAttributes* type, int type_code)
+bool TypeList :: add (TypeAttributes* type, int type_code)
 {
     if ( !verify () )
         return false;
     try
     {
-        list_[type_code] = *type;
+        list_[type_code] = new TypeAttributes (*type);
     }
     catch ( ::std::out_of_range)
     {
         //OUTPUT_DEBUG (PLACE, "Cant place code:%d", type_code);
+        return false;
+    }
+    catch ( ::std::bad_alloc )
+    {
         return false;
     }
     return true;
@@ -69,13 +73,13 @@ Object* TypeList :: create (int type_code)
             //OUTPUT_DEBUG (PLACE, "ERROR: NO code:%d in map", type_code);
             return nullptr;
         }
-        typeAttributes check = list_[type_code];
-        if ( !(check.create) )
+        TypeAttributes* check = list_[type_code];
+        if ( !check )
         {
             ////OUTPUT_DEBUG (PLACE, "ERROR:NO function to call on code:%d", type_code);
             return nullptr;
         }
-        result = check.create ();
+        result = check->create ();
     }
     catch ( ::std::out_of_range)
     {
@@ -116,12 +120,12 @@ Object* TypeList :: create (int type_code, const char* what)
             //OUTPUT_DEBUG (PLACE, "ERROR: NO code:%d in map", type_code);
             return nullptr;
         }
-        if ( !list_[type_code].createOn )
+        if ( !list_[type_code] )
         {
             //OUTPUT_DEBUG (PLACE, "ERROR:NO function to call on code:%d", type_code);
             return nullptr;
         }
-        result = list_[type_code].createOn (what);
+        result = list_[type_code]->createOn (what);
     }
     catch ( ::std::out_of_range)
     {
@@ -166,10 +170,10 @@ int TypeList :: find (const char* what)
 {
     if ( !verify () )
         return false;
-    std::map<int, typeAttributes>::iterator it;
+    std::map<int, TypeAttributes*>::iterator it;
     for (it = list_.begin () ; it != list_.end (); it++)
     {
-        if ( !strcmp (it->second.name, what) )
+        if ( !strcmp (it->second->name (), what) )
             return it->first;
     }
     return 0;

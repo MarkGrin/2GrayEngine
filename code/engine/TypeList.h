@@ -11,13 +11,13 @@
  */
 class TypeList
 {
-    std::map<int, typeAttributes> list_;
+    std::map<int, TypeAttributes*> list_;
 
     public:
 
     bool verify () const;
 
-    bool add (typeAttributes* type, int typeCode);
+    bool add (TypeAttributes* type, int typeCode);
 
     Object* create (int typeCode);
     Object* create (int typeCode, const char* what);

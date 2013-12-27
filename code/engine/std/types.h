@@ -89,7 +89,7 @@ class Text : public Object
 
 };
 
-Object* TEXTcreateOn ()
+Object* TEXTcreate ()
 {
     Text* result = nullptr;
     try
@@ -130,7 +130,7 @@ class Number
     {}
 };
 
-Object* NUMBERcreateOn ()
+Object* NUMBERcreate ()
 {
     Number* result = nullptr;
     try
@@ -206,7 +206,7 @@ class Socket : public Object
 };
 
 
-Object* SOCKETcreateOn ()
+Object* SOCKETcreate ()
 {
     Socket* result = nullptr;
     try
@@ -233,12 +233,9 @@ Object* SOCKETcreateOn (const char*)
 }
 
 
-typeAttributes TEXTattributes   = {12, sizeof (Text)  ,
-                                   "Text",  TEXTcreateOn, nullptr};
-typeAttributes SOCKETattributes = {777, sizeof (Socket),
-                                   "Socket",SOCKETcreateOn, SOCKETcreateOn};
-typeAttributes NUMBERattributes = {14, sizeof (Number),
-                                   "Number",NUMBERcreateOn, nullptr};
+TypeAttributes TEXTattributes    (12 , "Text",  TEXTcreate, TEXTcreateOn);
+TypeAttributes SOCKETattributes  (777, "Socket",SOCKETcreate, SOCKETcreateOn);
+TypeAttributes NUMBERattributes  (14 , "Number",NUMBERcreate, NUMBERcreateOn);
 
 
 # endif /* H_ENGINE_STD_TYPES */

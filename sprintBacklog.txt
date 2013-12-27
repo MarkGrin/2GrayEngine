@@ -9,11 +9,11 @@ Progress:
 |Story               | Status             |
 -------------------------------------------
 |--------------------|--------------------|
-| execMem interface  - Under development  |
+| execMem interface  - Done               |
 |--------------------|--------------------|
 | typeAttributes     - Not yet            |
 |--------------------|--------------------|
-| functionAttrubutes - Not yet            |
+| functionAttrubutes - Done               |
 |-----------------------------------------|
 | verify functions   - Done               |
 |--------------------|--------------------|

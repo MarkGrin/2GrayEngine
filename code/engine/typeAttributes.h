@@ -3,19 +3,44 @@
 # define H_ENGINE_TYPEATTRIBUTES
 
 
+typedef Object* createFunc ();
+typedef Object* createOnFunc (const char*);
+
 /**
  *
- * this is typeAttributes structure. It contain attribtues of type(Captain
+ * this is typeAttributes class. It contains attribtues of type(Captain
  * obvious)
  *
  */
-struct typeAttributes
+class TypeAttributes
 {
-    int type_code_;
-    int size;
-    char name[32 + 1];
-    Object* (*create)();
-    Object* (*createOn)(const char*);
+    TypeAttributes& operator = (TypeAttributes&);
+    TypeAttributes ();
+
+    protected:
+
+    int typeCode_;
+    int version_;
+    char* name_;
+    Object* (*create_)();
+    Object* (*createOn_)(const char*);
+
+    public:
+
+    bool verify ();
+
+    TypeAttributes (int typeCode, const char* name,
+                    createFunc*, createOnFunc*);
+    TypeAttributes (TypeAttributes&);
+
+    int typeCode     ();
+    int version      ();
+    const char* name ();
+    Object* create   ();
+    Object* createOn (const char*);
+    createFunc*   createPtr   ();
+    createOnFunc* createOnPtr ();
+
 };
 
 

@@ -9,10 +9,10 @@ namespace engine
 # define ENGINE_VERSION 2
 
 /* structures */
-struct typeAttributes;
 struct functionAttributes;
 
 /* classes */
+class TypeAttributes;
 class Object;
 class Function;
 class TypeList;
@@ -34,6 +34,7 @@ class ScriptHolder;
 # include  "ExecMem.h"
 
 /* class methods */
+# include "TypeAttributesMethods.h"
 # include "ObjectMethods.h"
 # include "FunctionMethods.h"
 # include "TypeListMethods.h"
