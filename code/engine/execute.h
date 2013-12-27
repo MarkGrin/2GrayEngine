@@ -22,15 +22,14 @@ int  delCMD   (ExecMem* mem, unsigned int i,
 
 /**
  *
- * this function executes script.
+ * this function executes script that was compiled and stored i ExecMem.
  *
- * @param mem         - pointer to buffer with programm
- * @param size        - size of a buffer with programm
+ * @param size        - size of program in ExecMem
  * @param functions   - vector of functions to use
  * @param pool        - vector of varibles
  * @param placeInPool - vector of pairs with names of varibles and their
  * places in pool vector
- * @param typeList    - typeList with avalible types
+ * @param mem         - pointer to ExecMem class with program
  *
  * @return - success
  *
@@ -84,7 +83,8 @@ bool execute (unsigned int size,
  *
  * this function executes call command
  *
- * @param mem         - pointer to memory AFTER call command
+ * @param mem         - pointer to ExecMem class with program
+ * @param i           - index of calling command in ExecMem class
  * @param functions   - availible functions
  * @param pool        - availible varible
  * @param placeInPool - names of varibles and their places in pool
@@ -173,7 +173,8 @@ int callCMD  (ExecMem* mem, unsigned int i,
  *
  * this function executes del command
  *
- * @param data        - pointer to memory AFTER call command
+ * @param mem         - ponter to ExecMem class
+ * @param i           - index of delCMD in ExecMem class
  * @param functions   - availible functions
  * @param pool        - availible varible
  * @param placeInPool - names of varibles and their places in pool
