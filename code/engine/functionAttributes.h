@@ -34,8 +34,10 @@ class FunctionAttributes
     int version      () const;
     const char* name () const;
 
-    unsigned int argnum ()                   const;
+    int argnum ()                            const;
     int arg             (unsigned int index) const;
+
+    bool pushArg (int code);
 
     ~FunctionAttributes ();
 };

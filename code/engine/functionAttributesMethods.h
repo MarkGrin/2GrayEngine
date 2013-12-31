@@ -11,7 +11,7 @@
  * {true}  - ok
  * {false} - broken
  */
-bool FunctionAttributes :: verify ()
+bool FunctionAttributes :: verify () const
 {
     if ( !this )
     {
@@ -39,7 +39,7 @@ bool FunctionAttributes :: verify ()
  * @param name - name of this function
  *
  */
-FunctionAttributes :: FunctionAttrubutes (int code, const char* name)
+FunctionAttributes :: FunctionAttributes (int code, const char* name)
     :
     version_ (ENGINE_VERSION),
     code_    (code),
@@ -64,7 +64,7 @@ FunctionAttributes :: FunctionAttrubutes (int code, const char* name)
  * @param attr - what to copy
  *
  */
-FunctionAttrubutes :: FunctionAttributes (FunctionAttributes& attr)
+FunctionAttributes :: FunctionAttributes (FunctionAttributes& attr)
     :
     version_ (ENGINE_VERSION),
     code_    (attr.code ()),
@@ -90,7 +90,7 @@ FunctionAttrubutes :: FunctionAttributes (FunctionAttributes& attr)
  * @return unique code
  *
  */
-int FunctionAttrubutes :: code () const
+int FunctionAttributes :: code () const
 {
     if ( !verify () )
     {
@@ -107,7 +107,7 @@ int FunctionAttrubutes :: code () const
  * @return unique code
  *
  */
-int FunctionAttrubutes :: version () const
+int FunctionAttributes :: version () const
 {
     if ( !verify () )
     {
@@ -129,7 +129,7 @@ const char* FunctionAttributes :: name () const
         OUTPUT_INTERNAL ("bad object");
         return 0;
     }
-    return version_;
+    return name_;
 }
 
 /**
@@ -182,6 +182,35 @@ int  FunctionAttributes :: arg (unsigned int index) const
         return 0;
     }
     return 0;
+}
+
+
+/**
+ *
+ * this function adds argument.
+ *
+ * @param code - code of the argument
+ *
+ * @return success
+ *
+ */
+bool FunctionAttributes :: pushArg (int code)
+{
+    if ( !verify () )
+    {
+        OUTPUT_INTERNAL ("bad object");
+        return false;
+    }
+    try
+    {
+        args_.push_back (code);
+    }
+    catch (::std::bad_alloc)
+    {
+        OUTPUT_INTERNAL ("cant push argument");
+        return false;
+    }
+    return true;
 }
 
 /**

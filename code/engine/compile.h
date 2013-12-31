@@ -300,12 +300,17 @@ bool engineCommand (char* line, environment* en)
             return false;
         }
 
-        functionAttributes attribute = fnc->attributes();
-        int nameSize = strlen (attribute.name);
+        FunctionAttributes* attribute = fnc->attributes();
+        if ( !attribute )
+        {
+            OUTPUT_INTERNAL ("error at getting attribute");
+            return false;
+        }
+        int nameSize = strlen (attribute->name ());
 
 
 
-        if ( strstr (line, attribute.name) == line )
+        if ( strstr (line, attribute->name()) == line )
         {
             if ( line[nameSize] != '\0' && line[nameSize] != ' ' )
             {
@@ -316,7 +321,7 @@ bool engineCommand (char* line, environment* en)
                 en->mem->push_back (&CMD::CALL);
                 unsigned char convert = i;
                 en->mem->push_back (&convert);
-                convert = attribute.argnum;
+                convert = attribute->argnum ();
                 en->mem->push_back (&convert);
             }
             catch (::std::bad_alloc)
@@ -325,7 +330,7 @@ bool engineCommand (char* line, environment* en)
                 return false;
             }
 
-            if ( !parseArgs (en, fnc, line + strlen (attribute.name) + 1) )
+            if ( !parseArgs (en, fnc, line + strlen (attribute->name()) + 1) )
             {
                 OUTPUT_INTERNAL ("was unable to parse args");
                 OUTPUT_ERROR ("bad args");
@@ -364,13 +369,19 @@ bool parseArgs   (environment* en, Function* fnc,
         OUTPUT_INTERNAL ("bad arguments");
         return false;
     }
+    FunctionAttributes* attr = fnc->attributes ();
+    if ( !attr )
+    {
+        OUTPUT_INTERNAL ("cant get attributes");
+        return false;
+    }
 
     int argsParsed = 0;
     for (unsigned int i = 0; argumentLine[i] != '\0'; i++)
     {
         if ( argumentLine[i] == '"' )
         {
-            if ( fnc->attributes ().args[argsParsed] != 12 )
+            if ( attr->arg (argsParsed) != 12 )
             {
                 OUTPUT_INTERNAL ("type doesn't match");
                 OUTPUT_ERROR ("type doesn't match of %d argument",
@@ -419,12 +430,12 @@ bool parseArgs   (environment* en, Function* fnc,
             continue;
         }
     }
-    if ( argsParsed > fnc->attributes().argnum )
+    if ( argsParsed > attr->argnum() )
     {
         OUTPUT_ERROR ("Too many arguments");
         return false;
     }
-    if ( argsParsed < fnc->attributes().argnum )
+    if ( argsParsed < attr->argnum() )
     {
         OUTPUT_ERROR ("Not enough arguments");
         return false;
@@ -459,6 +470,12 @@ bool userArgument (const char* name, environment* en, Function* fnc,
         OUTPUT_INTERNAL ("bad arguments");
         return false;
     }
+    FunctionAttributes* attr = fnc->attributes ();
+    if ( !attr )
+    {
+        OUTPUT_INTERNAL ("cant get attributes");
+        return false;
+    }
 
     int size = strlen (name);
     if ( !size )
@@ -472,14 +489,14 @@ bool userArgument (const char* name, environment* en, Function* fnc,
     {
         if ( !strcmp (en->placeInPool->at (j).first, name) )
         {
-            if ( fnc->attributes ().args[argsParsed] !=
+            if ( attr->arg(argsParsed) !=
                  en->pool->at(j)->typeCode() )
             {
                 OUTPUT_INTERNAL ("wrong argument");
                 OUTPUT_ERROR ("wrong argument");
                 return false;
             }
-            if ( argsParsed >= fnc->attributes ().argnum )
+            if ( argsParsed >= attr->argnum() )
             {
                 OUTPUT_ERROR ("too many args!");
                 return false;
@@ -493,6 +510,7 @@ bool userArgument (const char* name, environment* en, Function* fnc,
     }
     OUTPUT_INTERNAL ("unknown command");
     OUTPUT_ERROR ("unknown command");
+    delete attr;
     return false;
 }
 

@@ -24,6 +24,9 @@ class Function
     protected:
 
     Object* popArg  ();
+    virtual bool payLoadFunction () = 0; 
+
+    FunctionAttributes* attributes_;
 
     public:
 
@@ -33,9 +36,8 @@ class Function
 
     bool pushArg (Object*);
 
-    virtual bool payLoadFunction () = 0; 
 
-    virtual functionAttributes attributes () const = 0;
+    virtual FunctionAttributes* attributes () const = 0;
 
     bool execute ();
 

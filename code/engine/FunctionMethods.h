@@ -25,6 +25,8 @@ bool Function :: verify () const
  *
  */
 Function :: Function ()
+    :
+    attributes_ (nullptr)
 {
 }
 
@@ -86,33 +88,21 @@ Object*  Function :: popArg  ()
  */
 bool Function :: payLoadFunction ()
 {
-    if ( !verify () )
-        return false;
-    return true;
+    OUTPUT_INTERNAL ("abstract class attribtues called");
+    return false;
 }
 
 /**
  *
  * this function return valid attributes structure about this function
  *
- * @return - valid structure about this function
+ * @return - valid pointer to FunctionAttrubute class
  *
  */
-functionAttributes Function :: attributes () const
+FunctionAttributes* Function :: attributes () const
 {
-    functionAttributes attr = {};
-    if ( !verify () )
-        return attr;
-
-    attr.size = sizeof (functionAttributes);
-    attr.version = ENGINE_VERSION;
-    attr.code = 0;
-
-    attr.name[32 + 1] = 0;
-
-    attr.argnum = 0;
-    attr.args = nullptr;
-
+    OUTPUT_INTERNAL ("abstract class attribtues called");
+    return nullptr;
 }
 
 /**
@@ -125,7 +115,24 @@ functionAttributes Function :: attributes () const
  */
 bool Function :: execute ()
 {
-    if ( this->attributes ().argnum != args_.size () )
+    if ( !attributes_ )
+    {
+        try
+        {
+            attributes_ = this->attributes ();
+            if ( !(attributes_->verify ()) )
+            {
+                OUTPUT_INTERNAL ("bad alloced attributes");
+                return false;
+            }
+        }
+        catch (::std::bad_alloc)
+        {
+            OUTPUT_INTERNAL ("cant alloc attributes");
+            return false;
+        }
+    }
+    if ( attributes_->argnum () != args_.size () )
     {
         return false;
     }

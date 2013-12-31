@@ -11,7 +11,7 @@ Progress:
 |--------------------|--------------------|
 | execMem interface  - Done               |
 |--------------------|--------------------|
-| typeAttributes     - Not yet            |
+| typeAttributes     - Done               |
 |--------------------|--------------------|
 | functionAttrubutes - Done               |
 |-----------------------------------------|

@@ -13,19 +13,17 @@ class helloWorld : public Function
         return true;
     }
 
-    virtual functionAttributes attributes () const
+    virtual FunctionAttributes* attributes () const
     {
-        functionAttributes attr = {};
-        attr.size = sizeof (functionAttributes);
-        attr.version = 2;
-        attr.code = 5;
-
-        attr.argnum = 0;
-        attr.args = nullptr;
-
-        memcpy (attr.name, "helloWorld", strlen ("helloWorld") + 1);
-
-        return attr;
+        try
+        {
+            return new FunctionAttributes (5,"HelloWorld");
+        }
+        catch (::std::bad_alloc)
+        {
+            OUTPUT_INTERNAL ("cant alloc attributes");
+            return nullptr;
+        }
     }
 };
 
@@ -46,20 +44,20 @@ class echo : public Function
         return true;
     }
 
-    virtual functionAttributes attributes () const
+    virtual FunctionAttributes* attributes () const
     {
-        functionAttributes attr = {};
-       attr.size = sizeof (functionAttributes);
-        attr.version = 2;
-        attr.code = 7;
-
-        attr.argnum = 1;
-        attr.args = new int[1];
-        attr.args[0] = 12;
-
-        memcpy (attr.name, "echo", strlen ("echo") + 1);
-
-        return attr;
+        try
+        {
+            FunctionAttributes* attr = new FunctionAttributes (7, "echo");
+            attr->pushArg (12);
+            return attr;
+        }
+        catch (::std::bad_alloc)
+        {
+            OUTPUT_INTERNAL ("cant alloc attributes");
+            return nullptr;
+        }
+        return nullptr;
     }
 };
 
@@ -84,20 +82,21 @@ class TextUserInput : public Function
         return false;
     }
 
-    virtual functionAttributes attributes () const
+    virtual FunctionAttributes* attributes () const
     {
-        functionAttributes attr = {};
-        attr.size = sizeof (functionAttributes);
-        attr.version = 2;
-        attr.code = 505;
-
-        attr.argnum = 1;
-        attr.args = new int[1];
-        attr.args[0] = 12;
-
-        memcpy (attr.name, "TextUserInput", strlen ("TextUserInput") + 1);
-
-        return attr;
+        try
+        {
+            FunctionAttributes* attr = nullptr;
+            attr = new FunctionAttributes (505,"TextUserInput");
+            attr->pushArg (12);
+            return attr;
+        }
+        catch (::std::bad_alloc)
+        {
+            OUTPUT_INTERNAL ("cant alloc attributes");
+            return nullptr;
+        }
+        return nullptr;
     }
 };
 
@@ -122,21 +121,21 @@ class Send : public Function
         return false;
     }
 
-    virtual functionAttributes attributes () const
+    virtual FunctionAttributes* attributes () const
     {
-        functionAttributes attr = {};
-        attr.size = sizeof (functionAttributes);
-        attr.version = 2;
-        attr.code = 1012;
-
-        attr.argnum = 2;
-        attr.args = new int[2];
-        attr.args[0] = 777;
-        attr.args[1] = 12;
-
-        memcpy (attr.name, "Send", strlen ("Send") + 1);
-
-        return attr;
+        try
+        {
+            FunctionAttributes* attr = new FunctionAttributes (1012,"Send");
+            attr->pushArg (777);
+            attr->pushArg (12);
+            return attr;
+        }
+        catch (::std::bad_alloc)
+        {
+            OUTPUT_INTERNAL ("cant alloc attributes");
+            return nullptr;
+        }
+        return nullptr;
     }
 };
 
@@ -155,21 +154,21 @@ class Receive : public Function
         return false;
     }
 
-    virtual functionAttributes attributes () const
+    virtual FunctionAttributes* attributes () const
     {
-        functionAttributes attr = {};
-        attr.size = sizeof (functionAttributes);
-        attr.version = 2;
-        attr.code = 1015;
-
-        attr.argnum = 2;
-        attr.args = new int[2];
-        attr.args[0] = 777;
-        attr.args[1] = 12;
-
-        memcpy (attr.name, "Receive", strlen ("Receive") + 1);
-
-        return attr;
+        try
+        {
+            FunctionAttributes* attr = new FunctionAttributes (1015,"Receive");
+            attr->pushArg (777);
+            attr->pushArg (12);
+            return attr;
+        }
+        catch (...)
+        {
+            OUTPUT_INTERNAL ("cant alloc attributes");
+            return nullptr;
+        }
+        return nullptr;
     }
 };
 
