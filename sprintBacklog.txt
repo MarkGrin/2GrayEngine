@@ -18,3 +18,5 @@ Progress:
 | verify functions   - Done               |
 |--------------------|--------------------|
 -------------------------------------------
+
+RESULT:SPRINT ENDED SUCCESSFULLY
