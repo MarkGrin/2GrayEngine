@@ -1,5 +1,5 @@
 Topic:
-stability and memory leaks
+DLL load
 
 Statuses:
 Not yet | Under development | Done | Cancelled
@@ -9,14 +9,14 @@ Progress:
 |Story               | Status             |
 -------------------------------------------
 |--------------------|--------------------|
-| execMem interface  - Done               |
+| DLL functions      - Not yet            |
 |--------------------|--------------------|
-| typeAttributes     - Done               |
+| DLL types          - Not yet            |
 |--------------------|--------------------|
-| functionAttrubutes - Done               |
-|-----------------------------------------|
-| verify functions   - Done               |
+| loading module     - Not yet            |
+|--------------------|--------------------|
+| dll API            - Not yet            |
 |--------------------|--------------------|
 -------------------------------------------
 
-RESULT:SPRINT ENDED SUCCESSFULLY
+RESULT:Under development
