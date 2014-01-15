@@ -7,6 +7,7 @@ namespace engine
 {
 
 # define ENGINE_VERSION 2
+# define ENGINE_VERSION_SUPPORT 2
 
 /* structures */
 struct functionAttributes;

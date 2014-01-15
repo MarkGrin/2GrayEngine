@@ -7,6 +7,7 @@ bool compile (environment* en);
 bool systemCommand (char* line, environment* en);
 bool newCommand    (char* line, environment* en);
 bool delCommand    (char* line, environment* en);
+bool loadCommand   (char* line, environment* en);
 
 bool engineCommand (char* line, environment* en);
 
@@ -142,6 +143,17 @@ bool systemCommand (char* line, environment* en)
         }
         return true;
     }
+    
+    if ( strstr (line, "load ") == line )
+    {
+        if ( !loadCommand (line + 5, en) )
+        {
+            OUTPUT_INTERNAL ("bad command");
+            OUTPUT_ERROR ("load command failure");
+            return false;
+        }
+        return true;
+    }
 
     OUTPUT_INTERNAL ("unknown command");
     OUTPUT_ERROR ("unknown system command:%s", line);
@@ -262,6 +274,118 @@ bool delCommand    (char* line, environment* en)
     {
         OUTPUT_INTERNAL ("bytes wasn't pushed to vector");
         return false;
+    }
+    return true;
+}
+
+/**
+ *
+ * this function loads functions and types from dll
+ *
+ * @param line - name of the dll
+ * @param en   - envoriment that programm will add types and functions to
+ *
+ * @return - success
+ *
+ */
+bool loadCommand   (char* line, environment* en)
+{
+    if ( !en || !line )
+    {
+        OUTPUT_INTERNAL ("bad arg");
+        return false;
+    }
+    if ( !en->scpt        || !en->functions || !en->pool ||
+         !en->placeInPool || !en->typeList )
+    {
+        OUTPUT_INTERNAL ("bad arg");
+        return false;
+    }
+    HMODULE dll = LoadLibrary (line);
+    if ( !dll )
+    {
+        OUTPUT_INTERNAL ("can't find:%s", line);
+        OUTPUT_ERROR ("can't load:\"%s\" dll", line);
+        return false;
+    }
+
+    typedef userlib::technicalData*         getTechData ();
+    typedef ::std::vector<Function*>*       getFuncs    ();
+    typedef ::std::vector<TypeAttributes*>* getTypes    ();
+    getTechData* techData = (getTechData*) GetProcAddress (dll, "technicalData");
+    getFuncs   * funcs    = (getFuncs*   ) GetProcAddress (dll, "funcs");
+    getTypes   * types    = (getTypes*   ) GetProcAddress (dll, "types");
+    if ( !techData || !funcs || !types)
+    {
+        OUTPUT_INTERNAL ("bad dll %s", line);
+        OUTPUT_ERROR    ("dll %s is bad, check it", line);
+        return false;
+    }
+    userlib::technicalData* check = techData ();
+    if ( !check )
+    {
+        OUTPUT_INTERNAL ("no technical data");
+        OUTPUT_ERROR    ("technical data function works uncorrectly");
+        return false;
+    }
+    if ( check->version < ENGINE_VERSION_SUPPORT )
+    {
+        OUTPUT_INTERNAL ("is too old");
+        OUTPUT_ERROR    ("version of dll%s is not supported, dll%d support%d",
+                         line, ENGINE_VERSION, ENGINE_VERSION_SUPPORT);
+        return false;
+    }
+    ::std::vector<Function*>*       addFuncs = funcs ();
+    ::std::vector<TypeAttributes*>* addTypes = types ();
+    if ( !addFuncs || !addTypes )
+    {
+        OUTPUT_INTERNAL ("no user functions or types");
+        OUTPUT_ERROR    ("no user functions or types");
+        return false;
+    }
+    for (unsigned int i = 0; i < addFuncs->size(); i++)
+    {
+        try
+        {
+            if ( !addFuncs->at (i) )
+            {
+                OUTPUT_INTERNAL ("blank function");
+                return false;
+            }
+            en->functions->push_back (addFuncs->at (i));
+        }
+        catch (::std::bad_alloc)
+        {
+            OUTPUT_INTERNAL ("cant add function");
+            return false;
+        }
+        catch (::std::out_of_range)
+        {
+            OUTPUT_INTERNAL ("cant add function");
+            return false;
+        }
+    }
+    for (unsigned int i = 0; i < addTypes->size(); i++)
+    {
+        try
+        {
+            if ( !addTypes->at (i) )
+            {
+                OUTPUT_INTERNAL ("blank type");
+                return false;
+            }
+            if ( ! (en->typeList->add (addTypes->at (i),
+                    addTypes->at(i)->typeCode ())) )
+            {
+                OUTPUT_INTERNAL ("cant add type");
+                return false;
+            }
+        }
+        catch (::std::out_of_range)
+        {
+            OUTPUT_INTERNAL ("cant add type");
+            return false;
+        }
     }
     return true;
 }
