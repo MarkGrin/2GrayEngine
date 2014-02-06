@@ -29,13 +29,13 @@ bool TypeList :: verify () const
  * @return - success
  *
  */
-bool TypeList :: add (TypeAttributes* type, int type_code)
+bool TypeList :: add (logic::TypeAttributes* type, int type_code)
 {
     if ( !verify () )
         return false;
     try
     {
-        list_[type_code] = new TypeAttributes (*type);
+        list_[type_code] = new logic::TypeAttributes (*type);
     }
     catch ( ::std::out_of_range)
     {
@@ -61,11 +61,11 @@ bool TypeList :: add (TypeAttributes* type, int type_code)
  * {nullptr} - error
  *
  */
-Object* TypeList :: create (int type_code)
+logic::Object* TypeList :: create (int type_code)
 {
     if ( !verify () )
         return nullptr;
-    Object* result = nullptr;
+    logic::Object* result = nullptr;
     try
     {
         if ( !list_.count (type_code) )
@@ -73,7 +73,7 @@ Object* TypeList :: create (int type_code)
             //OUTPUT_DEBUG (PLACE, "ERROR: NO code:%d in map", type_code);
             return nullptr;
         }
-        TypeAttributes* check = list_[type_code];
+        logic::TypeAttributes* check = list_[type_code];
         if ( !check )
         {
             ////OUTPUT_DEBUG (PLACE, "ERROR:NO function to call on code:%d", type_code);
@@ -108,11 +108,11 @@ Object* TypeList :: create (int type_code)
  * {nullptr} - error
  *
  */
-Object* TypeList :: create (int type_code, const char* what)
+logic::Object* TypeList :: create (int type_code, const char* what)
 {
     if ( !verify () )
         return nullptr;
-    Object* result = nullptr;
+    logic::Object* result = nullptr;
     try
     {
         if ( !list_.count (type_code) )
@@ -170,7 +170,7 @@ int TypeList :: find (const char* what)
 {
     if ( !verify () )
         return false;
-    std::map<int, TypeAttributes*>::iterator it;
+    std::map<int, logic::TypeAttributes*>::iterator it;
     for (it = list_.begin () ; it != list_.end (); it++)
     {
         if ( !strcmp (it->second->name (), what) )

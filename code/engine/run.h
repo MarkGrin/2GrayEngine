@@ -6,7 +6,7 @@
 bool run         (const char* fileName);
 bool loadFile    (const char* fileName, ScriptHolder* scpt);
 
-bool addStandard (::std::vector<Function*>* functions, TypeList* typeList);
+bool addStandard (::std::vector<logic::Function*>* functions, TypeList* typeList);
 
 
 /**
@@ -31,19 +31,21 @@ bool run (const char* fileName)
             return false;
         }
 
-        ::std::vector<Function*> functions;
-        ::std::vector<Object*> pool;
+        ::std::vector<logic::Function*> functions;
+        ::std::vector<logic::Object*> pool;
         ::std::vector<::std::pair<char*,unsigned int>> placeInPool;
         TypeList typeList;
         ::std::vector<unsigned char> execMem;
         ExecMem mem;
+        LibHolder libs;
 
         if ( !addStandard (&functions, &typeList) )
         {
             OUTPUT_INTERNAL ("add standard failed");
             return false;
         }
-        environment en = {&scpt, &functions, &pool, &placeInPool, &typeList, &execMem, &mem};
+        environment en = {&scpt, &functions, &pool, &placeInPool, &typeList,
+                          &execMem, &mem, &libs};
 
 
         if ( !compile (&en) )
@@ -130,7 +132,7 @@ bool loadFile (const char* fileName, ScriptHolder* scpt)
  * @return - success
  *
  */
-bool addStandard (::std::vector<Function*>* functions, TypeList* typeList)
+bool addStandard (::std::vector<logic::Function*>* functions, TypeList* typeList)
 {
     if ( !functions || !typeList )
     {
@@ -142,13 +144,9 @@ bool addStandard (::std::vector<Function*>* functions, TypeList* typeList)
 
     try
     {
-        functions->push_back (&std::ECHO);
-        functions->push_back (&std::TEXTUSERINPUT);
-        functions->push_back (&std::SEND);
-        functions->push_back (&std::RECEIVE);
-        success = success && typeList ->add (&std::TEXTattributes, 12);
-        success = success && typeList ->add (&std::NUMBERattributes, 14);
-        success = success && typeList ->add (&std::SOCKETattributes, 777);
+        functions->push_back (&userlib::ECHO);
+        functions->push_back (&userlib::TEXTUSERINPUT);
+        success = success && typeList ->add (&userlib::TEXTattributes, 12);
     }
     catch (::std::bad_alloc)
     {

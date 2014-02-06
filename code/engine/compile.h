@@ -11,19 +11,19 @@ bool loadCommand   (char* line, environment* en);
 
 bool engineCommand (char* line, environment* en);
 
-bool parseArgs   (environment* en, Function* fnc,
+bool parseArgs   (environment* en, logic::Function* fnc,
                   const char* argumentLine);
 
-bool userArgument (const char* name, environment* en, Function* fnc,
+bool userArgument (const char* name, environment* en, logic::Function* fnc,
                    int argsParsed);
 
 bool TEXTargument (const char* name, environment* en);
 
 void removeWhitespaces (char* str);
 
-int  findObject (const char* name, ::std::vector<Object*>* pool);
+int  findObject (const char* name, ::std::vector<logic::Object*>* pool);
 bool addObject  (const char* name, int code, TypeList* typeList,
-                 ::std::vector<Object*>* pool,
+                 ::std::vector<logic::Object*>* pool,
                  ::std::vector<::std::pair<char*, unsigned int>>* places);
                   
 /**
@@ -46,7 +46,7 @@ bool compile (environment* en)
         return false;
     }
     if ( !en->scpt        || !en->functions || !en->pool ||
-         !en->placeInPool || !en->typeList )
+         !en->placeInPool || !en->typeList  || !en->libs )
     {
         OUTPUT_INTERNAL ("bad arg");
         return false;
@@ -184,7 +184,7 @@ bool newCommand    (char* line, environment* en)
         return false;
     }
 
-    Object* create = nullptr;
+    logic::Object* create = nullptr;
     char* pos = strchr (line, ' ');
     if ( !pos )
     {
@@ -296,96 +296,16 @@ bool loadCommand   (char* line, environment* en)
         return false;
     }
     if ( !en->scpt        || !en->functions || !en->pool ||
-         !en->placeInPool || !en->typeList )
+         !en->placeInPool || !en->typeList  || !en->libs )
     {
         OUTPUT_INTERNAL ("bad arg");
         return false;
     }
-    HMODULE dll = LoadLibrary (line);
-    if ( !dll )
+    if ( !en->libs->add (en, line) )
     {
-        OUTPUT_INTERNAL ("can't find:%s", line);
-        OUTPUT_ERROR ("can't load:\"%s\" dll", line);
+        OUTPUT_DEBUG ("lib holder didn't load anything");
+        OUTPUT_ERROR ("cant load \"%s\"", line);
         return false;
-    }
-
-    typedef userlib::technicalData*         getTechData ();
-    typedef ::std::vector<Function*>*       getFuncs    ();
-    typedef ::std::vector<TypeAttributes*>* getTypes    ();
-    getTechData* techData = (getTechData*) GetProcAddress (dll, "technicalData");
-    getFuncs   * funcs    = (getFuncs*   ) GetProcAddress (dll, "funcs");
-    getTypes   * types    = (getTypes*   ) GetProcAddress (dll, "types");
-    if ( !techData || !funcs || !types)
-    {
-        OUTPUT_INTERNAL ("bad dll %s", line);
-        OUTPUT_ERROR    ("dll %s is bad, check it", line);
-        return false;
-    }
-    userlib::technicalData* check = techData ();
-    if ( !check )
-    {
-        OUTPUT_INTERNAL ("no technical data");
-        OUTPUT_ERROR    ("technical data function works uncorrectly");
-        return false;
-    }
-    if ( check->version < ENGINE_VERSION_SUPPORT )
-    {
-        OUTPUT_INTERNAL ("is too old");
-        OUTPUT_ERROR    ("version of dll%s is not supported, dll%d support%d",
-                         line, ENGINE_VERSION, ENGINE_VERSION_SUPPORT);
-        return false;
-    }
-    ::std::vector<Function*>*       addFuncs = funcs ();
-    ::std::vector<TypeAttributes*>* addTypes = types ();
-    if ( !addFuncs || !addTypes )
-    {
-        OUTPUT_INTERNAL ("no user functions or types");
-        OUTPUT_ERROR    ("no user functions or types");
-        return false;
-    }
-    for (unsigned int i = 0; i < addFuncs->size(); i++)
-    {
-        try
-        {
-            if ( !addFuncs->at (i) )
-            {
-                OUTPUT_INTERNAL ("blank function");
-                return false;
-            }
-            en->functions->push_back (addFuncs->at (i));
-        }
-        catch (::std::bad_alloc)
-        {
-            OUTPUT_INTERNAL ("cant add function");
-            return false;
-        }
-        catch (::std::out_of_range)
-        {
-            OUTPUT_INTERNAL ("cant add function");
-            return false;
-        }
-    }
-    for (unsigned int i = 0; i < addTypes->size(); i++)
-    {
-        try
-        {
-            if ( !addTypes->at (i) )
-            {
-                OUTPUT_INTERNAL ("blank type");
-                return false;
-            }
-            if ( ! (en->typeList->add (addTypes->at (i),
-                    addTypes->at(i)->typeCode ())) )
-            {
-                OUTPUT_INTERNAL ("cant add type");
-                return false;
-            }
-        }
-        catch (::std::out_of_range)
-        {
-            OUTPUT_INTERNAL ("cant add type");
-            return false;
-        }
     }
     return true;
 }
@@ -414,17 +334,17 @@ bool engineCommand (char* line, environment* en)
         return false;
     }
 
-    ::std::vector<Function*>* functions = en->functions;
+    ::std::vector<logic::Function*>* functions = en->functions;
     for (unsigned int i = 0; i < functions->size (); i++)
     {
-        Function* fnc = functions->at (i);
+        logic::Function* fnc = functions->at (i);
         if ( !fnc )
         {
             OUTPUT_INTERNAL ("blank function %d", i);
             return false;
         }
 
-        FunctionAttributes* attribute = fnc->attributes();
+        logic::FunctionAttributes* attribute = fnc->attributes();
         if ( !attribute )
         {
             OUTPUT_INTERNAL ("error at getting attribute");
@@ -479,7 +399,7 @@ bool engineCommand (char* line, environment* en)
  * @return - success
  *
  */
-bool parseArgs   (environment* en, Function* fnc, 
+bool parseArgs   (environment* en, logic::Function* fnc, 
                   const char* argumentLine)
 {
     if ( !en )
@@ -493,7 +413,7 @@ bool parseArgs   (environment* en, Function* fnc,
         OUTPUT_INTERNAL ("bad arguments");
         return false;
     }
-    FunctionAttributes* attr = fnc->attributes ();
+    logic::FunctionAttributes* attr = fnc->attributes ();
     if ( !attr )
     {
         OUTPUT_INTERNAL ("cant get attributes");
@@ -580,7 +500,7 @@ bool parseArgs   (environment* en, Function* fnc,
  * @return - success
  *
  */
-bool userArgument (const char* name, environment* en, Function* fnc,
+bool userArgument (const char* name, environment* en, logic::Function* fnc,
                    int argsParsed)
 {
     if ( !en )
@@ -594,7 +514,7 @@ bool userArgument (const char* name, environment* en, Function* fnc,
         OUTPUT_INTERNAL ("bad arguments");
         return false;
     }
-    FunctionAttributes* attr = fnc->attributes ();
+    logic::FunctionAttributes* attr = fnc->attributes ();
     if ( !attr )
     {
         OUTPUT_INTERNAL ("cant get attributes");
@@ -662,7 +582,7 @@ bool TEXTargument (const char* name, environment* en)
         return false;
     }
 
-    std::Text* obj = (std::Text*)std::TEXTcreate ();
+    userlib::Text* obj = (userlib::Text*)userlib::TEXTcreate ();
     OUTPUT_DEBUG ("PTR_CREATE_TEXT  PTR:%p", en->pool->size (), obj);
     if ( !obj )
     {
@@ -745,13 +665,13 @@ void removeWhitespaces (char* str)
  * -2 - error
  *
  */
-int findObject (const char* name, ::std::vector<Object*>* pool)
+int findObject (const char* name, ::std::vector<logic::Object*>* pool)
 {
     try
     {
         for (int i = 0; i < pool->size (); i++)
         {
-            Object* obj = pool->at (i);
+            logic::Object* obj = pool->at (i);
             if ( !obj )
             {
                 OUTPUT_INTERNAL ("blank element in pool!");
@@ -786,7 +706,7 @@ int findObject (const char* name, ::std::vector<Object*>* pool)
  *
  */
 bool addObject  (const char* name, int code, TypeList* typeList,
-                 ::std::vector<Object*>* pool,
+                 ::std::vector<logic::Object*>* pool,
                  ::std::vector<::std::pair<char*, unsigned int>>* places)
 {
     if ( !name || !pool || !places )
@@ -800,7 +720,7 @@ bool addObject  (const char* name, int code, TypeList* typeList,
         OUTPUT_ERROR ("Already have such varible");
         return false;
     }
-    Object* obj = typeList->create (code);
+    logic::Object* obj = typeList->create (code);
     OUTPUT_DEBUG ("PTR_CREATE Indx:%d PTR:%p", pool->size(), obj);
     if ( !obj )
     {

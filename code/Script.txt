@@ -1,5 +1,3 @@
 !new Text text
-!new Socket socket
 TextUserInput text
 echo text
-Send socket text

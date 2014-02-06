@@ -14,12 +14,13 @@
 struct environment
 {
     ScriptHolder* scpt;
-    ::std::vector<Function*>* functions;
-    ::std::vector<Object*>* pool;
+    ::std::vector<logic::Function*>* functions;
+    ::std::vector<logic::Object*>* pool;
     ::std::vector<::std::pair<char*,unsigned int>>* placeInPool;
     TypeList* typeList;
     ::std::vector<unsigned char>* execMem;
     ExecMem* mem;
+    LibHolder* libs;
 };
 
 

@@ -4,19 +4,19 @@
 
 
 bool execute  (unsigned int size,
-               ::std::vector<Function*>* functions,
-               ::std::vector<Object*>* pool,
+               ::std::vector<logic::Function*>* functions,
+               ::std::vector<logic::Object*>* pool,
                ::std::vector<::std::pair<char*,unsigned int>>* placeInPool,
                ExecMem* mem_);
 
 int  callCMD  (ExecMem* mem, unsigned int i,
-              ::std::vector<Function*>* functions,
-              ::std::vector<Object*>* pool,
+              ::std::vector<logic::Function*>* functions,
+              ::std::vector<logic::Object*>* pool,
               ::std::vector<::std::pair<char*,unsigned int>>* placeInPool);
 
 int  delCMD   (ExecMem* mem, unsigned int i,
-              ::std::vector<Function*>* functions,
-              ::std::vector<Object*>* pool,
+              ::std::vector<logic::Function*>* functions,
+              ::std::vector<logic::Object*>* pool,
               ::std::vector<::std::pair<char*,unsigned int>>* placeInPool);
 
 
@@ -35,8 +35,8 @@ int  delCMD   (ExecMem* mem, unsigned int i,
  *
  */
 bool execute (unsigned int size,
-              ::std::vector<Function*>* functions,
-              ::std::vector<Object*>* pool,
+              ::std::vector<logic::Function*>* functions,
+              ::std::vector<logic::Object*>* pool,
               ::std::vector<::std::pair<char*,unsigned int>>* placeInPool,
               ExecMem* mem
               )
@@ -93,8 +93,8 @@ bool execute (unsigned int size,
  *
  */
 int callCMD  (ExecMem* mem, unsigned int i,
-              ::std::vector<Function*>* functions,
-              ::std::vector<Object*>* pool,
+              ::std::vector<logic::Function*>* functions,
+              ::std::vector<logic::Object*>* pool,
               ::std::vector<::std::pair<char*,unsigned int>>* placeInPool)
 {
     if ( !mem || !functions || !pool || !placeInPool )
@@ -109,7 +109,7 @@ int callCMD  (ExecMem* mem, unsigned int i,
         OUTPUT_INTERNAL ("calling unknown function:%d", funcNum);
         return -1;
     }
-    Function* call = functions->at(funcNum);
+    logic::Function* call = functions->at(funcNum);
     try
     {
         call = functions->at(mem->get(i));
@@ -129,7 +129,7 @@ int callCMD  (ExecMem* mem, unsigned int i,
     for (unsigned int j = 0; j < argnum; j++)
     {
         i++;
-        Object* arg = nullptr;
+        logic::Object* arg = nullptr;
         if ( mem->get(i) & ARG_FLAG::ALLOCED )
         {
             i++;
@@ -137,7 +137,7 @@ int callCMD  (ExecMem* mem, unsigned int i,
             {
                 OUTPUT_INTERNAL ("Cant copy");
             }
-            i += sizeof (Object*) - 1;
+            i += sizeof (logic::Object*) - 1;
             if ( !(call->pushArg (arg)) )
             {
                 OUTPUT_INTERNAL ("bad arg:%d", arg);
@@ -183,8 +183,8 @@ int callCMD  (ExecMem* mem, unsigned int i,
  *
  */
 int  delCMD   (ExecMem* mem, unsigned int i,
-              ::std::vector<Function*>* functions,
-              ::std::vector<Object*>* pool,
+              ::std::vector<logic::Function*>* functions,
+              ::std::vector<logic::Object*>* pool,
               ::std::vector<::std::pair<char*,unsigned int>>* placeInPool)
 {
     if ( !mem || !functions || !pool || !placeInPool )

@@ -1,1 +1,1 @@
-2grayengine Script.txt
+run "/../bin/2grayengine Script.txt"

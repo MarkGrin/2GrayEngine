@@ -7,8 +7,19 @@ namespace userlib
 {
 
 /* structures */
+class Server;
+class Text;
 
 # include "technicalData.h"
+
+# include "socket.h"
+# include "Text.h"
+
+# include "socketMethods.h"
+# include "textMethods.h"
+
+/* lists of classes */
+# include "functions.h"
 
 };
 

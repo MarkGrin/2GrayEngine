@@ -11,16 +11,16 @@
  */
 class TypeList
 {
-    std::map<int, TypeAttributes*> list_;
+    std::map<int, logic::TypeAttributes*> list_;
 
     public:
 
     bool verify () const;
 
-    bool add (TypeAttributes* type, int typeCode);
+    bool add (logic::TypeAttributes* type, int typeCode);
 
-    Object* create (int typeCode);
-    Object* create (int typeCode, const char* what);
+    logic::Object* create (int typeCode);
+    logic::Object* create (int typeCode, const char* what);
 
     unsigned int size () const;
     int find (const char* what);

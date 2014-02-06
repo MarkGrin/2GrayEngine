@@ -93,7 +93,7 @@ bool ExecMem :: memcpy    (unsigned int indexFrom, unsigned char* to,
         OUTPUT_INTERNAL ("bad object");
         return false;
     }
-    if ( indexFrom + size >= mem_.size () )
+    if ( indexFrom + size > mem_.size () )
     {
         OUTPUT_INTERNAL ("asked too much, actual size:%d, asked:%d",
                          mem_.size (), indexFrom + size);

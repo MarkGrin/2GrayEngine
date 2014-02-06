@@ -6,47 +6,37 @@
 namespace engine
 {
 
-# define ENGINE_VERSION 2
-# define ENGINE_VERSION_SUPPORT 2
 
-/* structures */
-struct functionAttributes;
+struct environment;
 
 /* classes */
-class TypeAttributes;
-class Object;
-class Function;
 class TypeList;
 class ScriptHolder;
+class ExecMem;
+class LibHolder;
+class LibInfo;
 
 
 /* lists */
 # include "CommandList.h"
 
-/* structure files */
-# include "typeAttributes.h"
-# include "functionAttributes.h"
-
 /* class files */
-# include "Object.h"
-# include "Function.h"
 # include "TypeList.h"
 # include "ScriptHolder.h"
-# include  "ExecMem.h"
+# include "ExecMem.h"
+# include "LibHolder.h"
+# include "LibInfo.h"
+
+/* structures */
+# include "environment.h"
 
 /* class methods */
-# include "FunctionAttributesMethods.h"
-# include "TypeAttributesMethods.h"
-# include "ObjectMethods.h"
-# include "FunctionMethods.h"
 # include "TypeListMethods.h"
 # include "ScriptHolderMethods.h"
 # include "ExecMemMethods.h"
+# include "LibInfoMethods.h"
+# include "LibHolderMethods.h"
 
-/* modules */
-# include "std/core.h"
-
-# include "environment.h"
 
 /* methods */
 # include "compile.h"
