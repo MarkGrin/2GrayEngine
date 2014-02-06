@@ -9,14 +9,14 @@ Progress:
 |Story               | Status             |
 -------------------------------------------
 |--------------------|--------------------|
-| DLL functions      - Not yet            |
+| DLL functions      - Done               |
 |--------------------|--------------------|
-| DLL types          - Not yet            |
+| DLL types          - Done               |
 |--------------------|--------------------|
 | loading module     - Done               |
 |--------------------|--------------------|
-| dll API            - Not yet            |
+| dll API            - Cancelled          |
 |--------------------|--------------------|
 -------------------------------------------
 
-RESULT:Under development
+RESULT:Finished with one failed objective

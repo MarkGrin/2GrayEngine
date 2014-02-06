@@ -4,6 +4,23 @@
 
 /**
  *
+ * this function vefifies if LibHolder is ok
+ *
+ * @return 
+ * {true}  - ok
+ * {false} - broken
+ *
+ */
+bool LibHolder :: verify ()
+{
+    if ( !this )
+        return false;
+    return true;
+}
+
+
+/**
+ *
  * blank constructor
  *
  */

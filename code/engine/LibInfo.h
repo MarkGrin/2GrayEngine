@@ -29,6 +29,8 @@ class LibInfo
    
     public:
 
+    bool verify ();
+
     LibInfo (const char* name, HMODULE* handle);
 
     const char* name () const;

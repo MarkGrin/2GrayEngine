@@ -5,6 +5,24 @@
 
 /**
  *
+ * this function vefifies if LibInfo is ok
+ *
+ * @return is okay
+ * {true}  - ok
+ * {false} - error
+ *
+ */
+bool LibInfo :: verify ()
+{
+    if ( !this )
+        return false;
+    if ( !handle_ )
+        return false;
+    return true;
+}
+
+/**
+ *
  * constructor, all params MUST BE VALID
  *
  * @param name   - name of lib not bigger than LibSizeInfo::MAX_SIZE

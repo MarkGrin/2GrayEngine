@@ -13,6 +13,8 @@ class LibHolder
 
     public:
 
+    bool verify ();
+
     LibHolder ();
 
     bool add   (environment* en, const char* name);
