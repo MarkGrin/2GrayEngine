@@ -3,6 +3,14 @@
 # define H_ENGINE_LIBINFOMETHODS
 
 
+/**
+ *
+ * constructor, all params MUST BE VALID
+ *
+ * @param name   - name of lib not bigger than LibSizeInfo::MAX_SIZE
+ * @param handle - handle to lib
+ *
+ */
 LibInfo :: LibInfo (const char* name, HMODULE* handle)
     :
     handle_ (nullptr)
@@ -16,11 +24,23 @@ LibInfo :: LibInfo (const char* name, HMODULE* handle)
     name_[size] = 0;
 }
 
+/**
+ *
+ * this function returns name of the lib
+ *
+ * @param pointer to the name
+ *
+ */
 const char* LibInfo :: name () const
 {
     return name_;
 }
 
+/**
+ *
+ * this is destructor, it frees library
+ *
+ */
 LibInfo :: ~LibInfo ()
 {
     if ( handle_ )

@@ -1,6 +1,6 @@
-# ifndef H_ENGINE_FUNCTIONATTRIBUTESMETHODS
+# ifndef H_LOGIC_FUNCTIONATTRIBUTESMETHODS
 
-# define H_ENGINE_FUNCTIONATTRIBUTESMETHODS
+# define H_LOGIC_FUNCTIONATTRIBUTESMETHODS
 
 
 /**
@@ -121,6 +121,9 @@ int FunctionAttributes :: version () const
  *
  * getter of name
  *
+ * @return
+ * pointer to name
+ *
  */
 const char* FunctionAttributes :: name () const
 {
@@ -227,5 +230,4 @@ FunctionAttributes :: ~FunctionAttributes ()
     name_ = nullptr;
 }
 
-# endif /* H_ENGINE_FUNCTIONATTRIBUTESMETHODS */
-
+# endif /* H_LOGIC_FUNCTIONATTRIBUTESMETHODS */

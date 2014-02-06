@@ -10,6 +10,12 @@ const int MAX_NAME = 32;
 
 };
 
+/**
+ *
+ * this is LibInfo class that represent single lib and manage access and
+ * deletion of lib.
+ *
+ */
 class LibInfo
 {
 

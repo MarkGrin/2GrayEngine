@@ -1,6 +1,6 @@
-# ifndef H_ENGINE_OBJECT
+# ifndef H_LOGIC_OBJECT
 
-# define H_ENGINE_OBJECT
+# define H_LOGIC_OBJECT
 
 
 /**
@@ -36,4 +36,4 @@ class Object
 
 
 
-# endif /* H_ENGINE_OBJECT */
+# endif /* H_LOGIC_OBJECT */

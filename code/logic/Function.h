@@ -1,6 +1,6 @@
-# ifndef H_ENGINE_FUNCTION
+# ifndef H_LOGIC_FUNCTION
 
-# define H_ENGINE_FUNCTION
+# define H_LOGIC_FUNCTION
 
 
 /**
@@ -44,4 +44,4 @@ class Function
 };
 
 
-# endif /* H_ENGINE_FUNCTION */
+# endif /* H_LOGIC_FUNCTION */

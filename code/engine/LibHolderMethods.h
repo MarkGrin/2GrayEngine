@@ -2,9 +2,26 @@
 
 # define H_ENGINE_LIBHOLDERMETHODS
 
+/**
+ *
+ * blank constructor
+ *
+ */
 LibHolder :: LibHolder ()
 {
 }
+
+/**
+ *
+ * this function adds lib to libHolder, and also it upload types and
+ * functions to environment.
+ *
+ * @param en   - environment to upload types and functions
+ * @param name - name of lib
+ *
+ * @return - succes
+ *
+ */
 bool LibHolder :: add (environment* en, const char* name)
 {
     if ( !en || !name )
@@ -116,6 +133,13 @@ bool LibHolder :: add (environment* en, const char* name)
     return true;
 }
 
+/**
+ *
+ * this function frees and delete all libs that LibHolder has
+ *
+ * @return - succes
+ *
+ */
 bool LibHolder :: clear ()
 {
     for (unsigned int i = 0; i < libs_.size (); i++)
@@ -130,8 +154,16 @@ bool LibHolder :: clear ()
         }
     }
     libs_.clear ();
+    return true;
 }
 
+/**
+ *
+ * destructor. Destructor always does one thing. Destructs object. How to 
+ * document it? Say HOW it destructs? Well, it destruct it by calling clear
+ * function
+ *
+ */
 LibHolder :: ~LibHolder ()
 {
     this->clear ();

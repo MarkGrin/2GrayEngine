@@ -1,6 +1,6 @@
-# ifndef H_ENGINE_FUNCTIONATTRIBUTES
+# ifndef H_LOGIC_FUNCTIONATTRIBUTES
 
-# define H_ENGINE_FUNCTIONATTRIBUTES
+# define H_LOGIC_FUNCTIONATTRIBUTES
 
 
 /**
@@ -42,4 +42,4 @@ class FunctionAttributes
     ~FunctionAttributes ();
 };
 
-# endif /* H_ENGINE_FUNCTIONATTRIBUTES */
+# endif /* H_LOGIC_FUNCTIONATTRIBUTES */

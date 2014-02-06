@@ -1,6 +1,6 @@
-# ifndef H_ENGINE_STD_TYPES
+# ifndef H_USERLIB_TYPES
 
-# define H_ENGINE_STD_TYPES
+# define H_USERLIB_TYPES
 
 
 class Text : public Object
@@ -238,5 +238,5 @@ TypeAttributes SOCKETattributes  (777, "Socket",SOCKETcreate, SOCKETcreateOn);
 TypeAttributes NUMBERattributes  (14 , "Number",NUMBERcreate, NUMBERcreateOn);
 
 
-# endif /* H_ENGINE_STD_TYPES */
+# endif /* H_USERLIB_TYPES */
 

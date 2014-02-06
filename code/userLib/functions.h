@@ -1,6 +1,6 @@
-# ifndef H_ENGINE_STD_FUNCTIONS
+# ifndef H_USERLIB_FUNCTIONS
 
-# define H_ENGINE_STD_FUNCTIONS
+# define H_USERLIB_FUNCTIONS
 
 
 class echo : public logic::Function
@@ -282,4 +282,4 @@ class SetIP : public logic::Function
 SetIP SETIP;
 
 
-# endif /* H_ENGINE_STD_FUNCTIONS */
+# endif /* H_USERLIB_FUNCTIONS */

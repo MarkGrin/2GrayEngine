@@ -1,6 +1,6 @@
-# ifndef H_ENGINE_OBJECTMETHODS
+# ifndef H_LOGIC_OBJECTMETHODS
 
-# define H_ENGINE_OBJECTMETHODS
+# define H_LOGIC_OBJECTMETHODS
 
 
 /**
@@ -95,4 +95,4 @@ int Object :: typeCode () const
 }
 
 
-# endif /* H_ENGINE_OBJECTMETHODS */
+# endif /* H_LOGIC_OBJECTMETHODS */

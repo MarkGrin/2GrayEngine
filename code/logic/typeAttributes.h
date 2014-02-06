@@ -1,6 +1,6 @@
-# ifndef H_ENGINE_TYPEATTRIBUTES
+# ifndef H_LOGIC_TYPEATTRIBUTES
 
-# define H_ENGINE_TYPEATTRIBUTES
+# define H_LOGIC_TYPEATTRIBUTES
 
 
 typedef Object* createFunc ();
@@ -47,4 +47,4 @@ class TypeAttributes
 
 
 
-# endif /* H_ENGINE_TYPEATTRIBUTES */
+# endif /* H_LOGIC_TYPEATTRIBUTES */

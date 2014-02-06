@@ -1,3 +1,7 @@
+# ifndef H_ENGINE_COMMANDLIST
+
+# define H_ENGINE_COMMANDLIST
+
 namespace CMD
 {
     const unsigned char
@@ -14,3 +18,5 @@ namespace ARG_FLAG
     ALLOCED = 2  /* Use direct pointer instead of pool */
     ;
 };
+
+# endif /* H_ENGINE_COMMANDLIST */

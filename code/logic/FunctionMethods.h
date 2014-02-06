@@ -1,6 +1,6 @@
-# ifndef H_ENGINE_FUNCTIONMETHODS
+# ifndef H_LOGIC_FUNCTIONMETHODS
 
-# define H_ENGINE_FUNCTIONMETHODS
+# define H_LOGIC_FUNCTIONMETHODS
 
 
 /**
@@ -142,4 +142,4 @@ bool Function :: execute ()
 
 
 
-# endif /* H_ENGINE_FUNCTIONMETHODS */
+# endif /* H_LOGIC_FUNCTIONMETHODS */

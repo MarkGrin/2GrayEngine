@@ -28,6 +28,15 @@ bool ExecMem :: verify () const
     return true;
 }
 
+/**
+ *
+ * this function returns size of memory in ExecMem in bytes
+ *
+ * @return
+ * {true}  - ok
+ * {false} - broken
+ *
+ */
 unsigned int ExecMem :: size () const
 {
     if ( !verify () )
@@ -122,6 +131,16 @@ bool ExecMem :: memcpy    (unsigned int indexFrom, unsigned char* to,
     return true;
 }
 
+/**
+ *
+ * this function get byte by it's index
+ *
+ * @param index - index of byte, that you want to get
+ *
+ * @return
+ * byte that was stored by this index
+ *
+ */
 unsigned char ExecMem :: get (unsigned int index) const
 {
     if ( !verify () )
@@ -137,6 +156,11 @@ unsigned char ExecMem :: get (unsigned int index) const
     return mem_.at (index);
 }
 
+/*
+ *
+ * undocumented, evil laugh
+ *
+ */
 void ExecMem :: dump (const char* fileName) const
 {
     if ( !verify () )
