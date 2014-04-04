@@ -7,17 +7,6 @@ namespace grNetwork
 {
 
 class  ErrorInfo;
-class  DeltaManager
-{
-    public:
-    bool verify ();
-    bool changeAll ();
-    bool changed   ();
-    unsigned int hash ();
-    unsigned int hashFuncCode ();
-
-};
-
 struct SocketData;
 
 
