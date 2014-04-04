@@ -8,7 +8,7 @@ struct threadInfo
     bool killSwitch;
 
     Socket socket;
-    DeltaManager* dManager_;
+    DeltaManager* dManager;
 };
 
 

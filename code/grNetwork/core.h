@@ -7,6 +7,16 @@ namespace grNetwork
 {
 
 class  ErrorInfo;
+class  DeltaManager
+{
+    public:
+    bool verify ();
+    bool changeAll ();
+    bool changed   ();
+    unsigned int hash ();
+    unsigned int hashFuncCode ();
+
+};
 
 struct SocketData;
 
@@ -29,6 +39,7 @@ struct SocketData;
 /* Modules */
 # include "Socket/core.h"
 # include "RawSocket/core.h"
+# include "sync/core.h"
 
 };
 
