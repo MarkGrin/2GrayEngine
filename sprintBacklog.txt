@@ -1,5 +1,5 @@
 Topic:
-DLL load
+Returning values, conditionals and loops
 
 Statuses:
 Not yet | Under development | Done | Cancelled
@@ -9,14 +9,14 @@ Progress:
 |Story               | Status             |
 -------------------------------------------
 |--------------------|--------------------|
-| DLL functions      - Done               |
+| bool type          - Not yet            |
 |--------------------|--------------------|
-| DLL types          - Done               |
+| converting to bool - Not yet            |
 |--------------------|--------------------|
-| loading module     - Done               |
+| loops              - Not yet            |
 |--------------------|--------------------|
-| dll API            - Cancelled          |
+| conditional        - Not yet            |
 |--------------------|--------------------|
 -------------------------------------------
 
-RESULT:Finished with one failed objective
+RESULT:Under development
