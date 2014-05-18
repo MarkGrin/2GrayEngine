@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>2GrayEngine: Исходный файл server.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen_.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.bmp"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">2GrayEngine
+   </div>
+   <div id="projectbrief">Network engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.5 -->
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_32937a55a6fb687a16826cf9f361e0b9.htm">2GrayEngine-master</a></li><li class="navelem"><a class="el" href="dir_abb26aa1f738470fd3c1e4a1410fa318.htm">code</a></li><li class="navelem"><a class="el" href="dir_4415345cc848248c7d1854a28e161023.htm">userLib</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">userLib/Server.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor"># ifndef H_USERLIB_SOCKET</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"># define H_USERLIB_SOCKET</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">class </span><a class="code" href="a00024.htm">Socket</a> : <span class="keyword">public</span> <a class="code" href="a00015.htm">logic::Object</a></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <a class="code" href="a00023.htm">grNetwork::Socket</a> server_;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="a00023.htm">grNetwork::Socket</a> client_;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordtype">bool</span>              isSocket_;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="a00024.htm#a82a9f33812cd255070e2516ee2bf8b77">Socket</a> ();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00024.htm#a9a8ff6eba0efdf5d355b649f81e23faa">setPort</a> (<span class="keyword">const</span> <span class="keywordtype">char</span>* port);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00024.htm#a38cf176bc8884637e3e21c35690b8638">setIP</a>   (<span class="keyword">const</span> <span class="keywordtype">char</span>* IP);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00024.htm#a458bbe4cf81360301586b2e62a7f9dd2">listen</a>  ();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00024.htm#a1396bf9b5defe9fa844a63b5cd40ac0e">connect</a> ();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00024.htm#a637e37aa77a3652b1d25518a5af8570a">send</a>    (<span class="keyword">const</span> <span class="keywordtype">char</span>* buff, <span class="keywordtype">int</span> size);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00024.htm#a5017ae7e9d1d5c8a8f75517ddea62b85">receive</a> (      <span class="keywordtype">char</span>* txt , <span class="keywordtype">int</span> size);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00024.htm#aad5997aaaa2d622f0ca57f8b24a51a7b">start</a>   ();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="a00024.htm#af387aca495ea9a25c511cd7d02d997bb">~Socket</a> ();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<a class="code" href="a00015.htm">logic::Object</a>* SOCKETcreateOn (<span class="keyword">const</span> <span class="keywordtype">char</span>*);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<a class="code" href="a00015.htm">logic::Object</a>* SOCKETcreate   ();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<a class="code" href="a00031.htm">logic::TypeAttributes</a> SOCKETattributes (777, <span class="stringliteral">&quot;Socket&quot;</span>, SOCKETcreate, SOCKETcreateOn);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor"># endif </span><span class="comment">/* H_USERLIB_SOCKET */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00024_htm"><div class="ttname"><a href="a00024.htm">Socket</a></div><div class="ttdef"><b>Definition:</b> <a href="a00085_source.htm#l00012">grNetwork/Socket/Socket.h:12</a></div></div>
+<div class="ttc" id="a00024_htm_a458bbe4cf81360301586b2e62a7f9dd2"><div class="ttname"><a href="a00024.htm#a458bbe4cf81360301586b2e62a7f9dd2">Socket::listen</a></div><div class="ttdeci">void listen()</div><div class="ttdef"><b>Definition:</b> <a href="a00084_source.htm#l00072">userLib/ServerMethods.h:72</a></div></div>
+<div class="ttc" id="a00024_htm_a637e37aa77a3652b1d25518a5af8570a"><div class="ttname"><a href="a00024.htm#a637e37aa77a3652b1d25518a5af8570a">Socket::send</a></div><div class="ttdeci">bool send(const char *what, unsigned int size)</div><div class="ttdef"><b>Definition:</b> <a href="a00088_source.htm#l00102">grNetwork/Socket/SocketMethods.h:102</a></div></div>
+<div class="ttc" id="a00023_htm"><div class="ttname"><a href="a00023.htm">grNetwork::Socket</a></div><div class="ttdef"><b>Definition:</b> <a href="a00043_source.htm#l00013">grNetwork/core.h:13</a></div></div>
+<div class="ttc" id="a00024_htm_a5017ae7e9d1d5c8a8f75517ddea62b85"><div class="ttname"><a href="a00024.htm#a5017ae7e9d1d5c8a8f75517ddea62b85">Socket::receive</a></div><div class="ttdeci">bool receive(char *where, unsigned int size)</div><div class="ttdef"><b>Definition:</b> <a href="a00088_source.htm#l00130">grNetwork/Socket/SocketMethods.h:130</a></div></div>
+<div class="ttc" id="a00024_htm_a1396bf9b5defe9fa844a63b5cd40ac0e"><div class="ttname"><a href="a00024.htm#a1396bf9b5defe9fa844a63b5cd40ac0e">Socket::connect</a></div><div class="ttdeci">void connect()</div><div class="ttdef"><b>Definition:</b> <a href="a00084_source.htm#l00088">userLib/ServerMethods.h:88</a></div></div>
+<div class="ttc" id="a00031_htm"><div class="ttname"><a href="a00031.htm">logic::TypeAttributes</a></div><div class="ttdef"><b>Definition:</b> <a href="a00047_source.htm#l00016">logic/core.h:16</a></div></div>
+<div class="ttc" id="a00015_htm"><div class="ttname"><a href="a00015.htm">logic::Object</a></div><div class="ttdef"><b>Definition:</b> <a href="a00047_source.htm#l00013">logic/core.h:13</a></div></div>
+<div class="ttc" id="a00024_htm_a9a8ff6eba0efdf5d355b649f81e23faa"><div class="ttname"><a href="a00024.htm#a9a8ff6eba0efdf5d355b649f81e23faa">Socket::setPort</a></div><div class="ttdeci">void setPort(short int port)</div><div class="ttdef"><b>Definition:</b> <a href="a00088_source.htm#l00087">grNetwork/Socket/SocketMethods.h:87</a></div></div>
+<div class="ttc" id="a00024_htm_aad5997aaaa2d622f0ca57f8b24a51a7b"><div class="ttname"><a href="a00024.htm#aad5997aaaa2d622f0ca57f8b24a51a7b">Socket::start</a></div><div class="ttdeci">bool start()</div><div class="ttdef"><b>Definition:</b> <a href="a00088_source.htm#l00027">grNetwork/Socket/SocketMethods.h:27</a></div></div>
+<div class="ttc" id="a00024_htm_af387aca495ea9a25c511cd7d02d997bb"><div class="ttname"><a href="a00024.htm#af387aca495ea9a25c511cd7d02d997bb">Socket::~Socket</a></div><div class="ttdeci">~Socket()</div><div class="ttdef"><b>Definition:</b> <a href="a00088_source.htm#l00199">grNetwork/Socket/SocketMethods.h:199</a></div></div>
+<div class="ttc" id="a00024_htm_a38cf176bc8884637e3e21c35690b8638"><div class="ttname"><a href="a00024.htm#a38cf176bc8884637e3e21c35690b8638">Socket::setIP</a></div><div class="ttdeci">bool setIP(const char *IP)</div><div class="ttdef"><b>Definition:</b> <a href="a00088_source.htm#l00063">grNetwork/Socket/SocketMethods.h:63</a></div></div>
+<div class="ttc" id="a00024_htm_a82a9f33812cd255070e2516ee2bf8b77"><div class="ttname"><a href="a00024.htm#a82a9f33812cd255070e2516ee2bf8b77">Socket::Socket</a></div><div class="ttdeci">Socket()</div><div class="ttdef"><b>Definition:</b> <a href="a00088_source.htm#l00010">grNetwork/Socket/SocketMethods.h:10</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Документация по 2GrayEngine. Последние изменения: Пн 19 Май 2014 03:06:19. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.5
+</small></address>
+</body>
+</html>

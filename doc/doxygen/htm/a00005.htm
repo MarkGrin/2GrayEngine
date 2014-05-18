@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>2GrayEngine: Класс ErrorInfo</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen_.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.bmp"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">2GrayEngine
+   </div>
+   <div id="projectbrief">Network engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.5 -->
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>grNetwork</b></li><li class="navelem"><a class="el" href="a00005.htm">ErrorInfo</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="a00178.htm">Полный список членов класса</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс ErrorInfo</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+Граф связей класса ErrorInfo:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00179.png" border="0" usemap="#_error_info_coll__map" alt="Collaboration graph"/></div>
+<map name="_error_info_coll__map" id="_error_info_coll__map">
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:aedb4b4f5f0c21ca779fae61e039b1102"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.htm#aedb4b4f5f0c21ca779fae61e039b1102">ErrorInfo</a> (unsigned int <a class="el" href="a00005.htm#ac4c9bb62cd583b0a9a967f67cdedd0ae">local</a>, unsigned int <a class="el" href="a00005.htm#a34d784c7de57ef82ac88e00044804479">lib</a>)</td></tr>
+<tr class="separator:aedb4b4f5f0c21ca779fae61e039b1102"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77b8d5ed5fe34cebb7748043cf4f7e27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.htm#a77b8d5ed5fe34cebb7748043cf4f7e27">set</a> (unsigned int <a class="el" href="a00005.htm#ac4c9bb62cd583b0a9a967f67cdedd0ae">local</a>, unsigned int <a class="el" href="a00005.htm#a34d784c7de57ef82ac88e00044804479">lib</a>)</td></tr>
+<tr class="separator:a77b8d5ed5fe34cebb7748043cf4f7e27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8e6c29eccbc8a02e2745b90dce28b6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.htm#aa8e6c29eccbc8a02e2745b90dce28b6d">set</a> (const <a class="el" href="a00005.htm">ErrorInfo</a> &amp;)</td></tr>
+<tr class="separator:aa8e6c29eccbc8a02e2745b90dce28b6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4c9bb62cd583b0a9a967f67cdedd0ae"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.htm#ac4c9bb62cd583b0a9a967f67cdedd0ae">local</a> () const </td></tr>
+<tr class="separator:ac4c9bb62cd583b0a9a967f67cdedd0ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34d784c7de57ef82ac88e00044804479"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00005.htm#a34d784c7de57ef82ac88e00044804479">lib</a> () const </td></tr>
+<tr class="separator:a34d784c7de57ef82ac88e00044804479"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>This class provides information about error. It stores error in two parts. local - is error that happened in GrNetwork module. lib - is error that happened in socket library (winsock). Some winsock error can cause error in GrNetwork module, so <a class="el" href="a00005.htm">ErrorInfo</a> class can contain both of them. </p>
+
+<p>См. определение в файле <a class="el" href="a00043_source.htm">grNetwork/core.h</a> строка <a class="el" href="a00043_source.htm#l00016">16</a></p>
+</div><h2 class="groupheader">Конструктор(ы)</h2>
+<a class="anchor" id="aedb4b4f5f0c21ca779fae61e039b1102"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00005.htm">ErrorInfo</a> </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>local</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>lib</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This is constructor that sets error codes.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">local</td><td>local error to be set. </td></tr>
+    <tr><td class="paramname">lib</td><td>error code that happened in library to be set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="a00043_source.htm">grNetwork/core.h</a> строка <a class="el" href="a00043_source.htm#l00015">15</a></p>
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a class="anchor" id="a77b8d5ed5fe34cebb7748043cf4f7e27"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>local</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>lib</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This is function that sets error code values.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">local</td><td>local error to be set. </td></tr>
+    <tr><td class="paramname">lib</td><td>error code that happened in library to be set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="a00043_source.htm">grNetwork/core.h</a> строка <a class="el" href="a00043_source.htm#l00029">29</a></p>
+
+</div>
+</div>
+<a class="anchor" id="aa8e6c29eccbc8a02e2745b90dce28b6d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="a00005.htm">ErrorInfo</a> &amp;&#160;</td>
+          <td class="paramname"><em>ei</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function set error codes values by copying them from another <a class="el" href="a00005.htm">ErrorInfo</a> class.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ei</td><td><a class="el" href="a00005.htm">ErrorInfo</a> class that contains error codes to be copied. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="a00043_source.htm">grNetwork/core.h</a> строка <a class="el" href="a00043_source.htm#l00045">45</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ac4c9bb62cd583b0a9a967f67cdedd0ae"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int local </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function returns local error.</p>
+<dl class="section return"><dt>Возвращает</dt><dd>local error. </dd></dl>
+
+<p>См. определение в файле <a class="el" href="a00043_source.htm">grNetwork/core.h</a> строка <a class="el" href="a00043_source.htm#l00060">60</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a34d784c7de57ef82ac88e00044804479"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int lib </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function return lib error code.</p>
+<dl class="section return"><dt>Возвращает</dt><dd>lib error. </dd></dl>
+
+<p>См. определение в файле <a class="el" href="a00043_source.htm">grNetwork/core.h</a> строка <a class="el" href="a00043_source.htm#l00072">72</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li><a class="el" href="a00052_source.htm">ErrorInfo.h</a></li>
+<li><a class="el" href="a00053_source.htm">ErrorInfoMethods.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Документация по 2GrayEngine. Последние изменения: Пн 19 Май 2014 03:06:19. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.5
+</small></address>
+</body>
+</html>

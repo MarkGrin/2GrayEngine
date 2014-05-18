@@ -1,0 +1,5 @@
+<map id="environment" name="environment">
+<area shape="rect" id="node2" href="$a00008.htm" title="{ExecMem\n|&#45; mem_\l|+ verify()\l+ ExecMem()\l+ size()\l+ push_back()\l+ memcpy()\l+ get()\l+ dump()\l+ ~ExecMem()\l&#45; ExecMem()\l&#45; operator=()\l}" alt="" coords="5,25,120,219"/>
+<area shape="rect" id="node3" href="$a00033.htm" title="{TypeList\n|&#45; list_\l|+ verify()\l+ add()\l+ create()\l+ create()\l+ size()\l+ find()\l}" alt="" coords="145,52,231,192"/>
+<area shape="rect" id="node4" href="$a00020.htm" title="{ScriptHolder\n|&#45; lines_\l|+ verify()\l+ ScriptHolder()\l+ ScriptHolder()\l+ lines()\l+ length()\l+ pushBack()\l+ insert()\l+ get()\l+ get()\l+ remove()\l+ replace()\l+ ~ScriptHolder()\l&#45; operator=()\l}" alt="" coords="256,5,389,239"/>
+</map>

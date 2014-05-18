@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>2GrayEngine: Исходный файл Server.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen_.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.bmp"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">2GrayEngine
+   </div>
+   <div id="projectbrief">Network engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.5 -->
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_32937a55a6fb687a16826cf9f361e0b9.htm">2GrayEngine-master</a></li><li class="navelem"><a class="el" href="dir_abb26aa1f738470fd3c1e4a1410fa318.htm">code</a></li><li class="navelem"><a class="el" href="dir_8abab398aa1fd7d3af9cc452db32f15e.htm">grNetwork</a></li><li class="navelem"><a class="el" href="dir_4e594c35eb08611e3725422f8c41d90d.htm">Socket</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">grNetwork/Socket/Server.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor"># ifndef H_GRNETWORK_SOCKET_SERVER</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"># define H_GRNETWORK_SOCKET_SERVER</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="a00022.htm">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="a00022.htm">Server</a> : <span class="keyword">public</span> <a class="code" href="a00024.htm">Socket</a></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">bool</span> asyncState_;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="a00022.htm#af2f1305573ef7939b3e8400354878e0d">Server</a> ();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="a00024.htm#a458bbe4cf81360301586b2e62a7f9dd2">listen</a> (<a class="code" href="a00002.htm">Client</a> * listenSocket = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;};</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"># endif </span><span class="comment">/* H_GRNETWORK_SOCKET_SERVER */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00024_htm"><div class="ttname"><a href="a00024.htm">Socket</a></div><div class="ttdef"><b>Definition:</b> <a href="a00085_source.htm#l00012">grNetwork/Socket/Socket.h:12</a></div></div>
+<div class="ttc" id="a00022_htm_af2f1305573ef7939b3e8400354878e0d"><div class="ttname"><a href="a00022.htm#af2f1305573ef7939b3e8400354878e0d">Server::Server</a></div><div class="ttdeci">Server()</div><div class="ttdef"><b>Definition:</b> <a href="a00083_source.htm#l00011">grNetwork/Socket/ServerMethods.h:11</a></div></div>
+<div class="ttc" id="a00024_htm_a458bbe4cf81360301586b2e62a7f9dd2"><div class="ttname"><a href="a00024.htm#a458bbe4cf81360301586b2e62a7f9dd2">Socket::listen</a></div><div class="ttdeci">void listen()</div><div class="ttdef"><b>Definition:</b> <a href="a00084_source.htm#l00072">userLib/ServerMethods.h:72</a></div></div>
+<div class="ttc" id="a00022_htm"><div class="ttname"><a href="a00022.htm">Server</a></div><div class="ttdef"><b>Definition:</b> <a href="a00081_source.htm#l00012">grNetwork/Socket/Server.h:12</a></div></div>
+<div class="ttc" id="a00002_htm"><div class="ttname"><a href="a00002.htm">Client</a></div><div class="ttdef"><b>Definition:</b> <a href="a00035_source.htm#l00012">Client.h:12</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Документация по 2GrayEngine. Последние изменения: Пн 19 Май 2014 03:06:19. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.5
+</small></address>
+</body>
+</html>

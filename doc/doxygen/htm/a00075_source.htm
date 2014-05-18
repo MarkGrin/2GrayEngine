@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>2GrayEngine: Исходный файл RawSocket.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen_.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.bmp"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">2GrayEngine
+   </div>
+   <div id="projectbrief">Network engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.5 -->
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_32937a55a6fb687a16826cf9f361e0b9.htm">2GrayEngine-master</a></li><li class="navelem"><a class="el" href="dir_abb26aa1f738470fd3c1e4a1410fa318.htm">code</a></li><li class="navelem"><a class="el" href="dir_8abab398aa1fd7d3af9cc452db32f15e.htm">grNetwork</a></li><li class="navelem"><a class="el" href="dir_ebe8f7a7c45e296a96db625452fded9b.htm">RawSocket</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">RawSocket.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor"># ifndef H_GRNETWORK_RAWSOCKET_RAWSOCKET</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"># define H_GRNETWORK_RAWSOCKET_RAWSOCKET</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="a00018.htm">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="a00018.htm">RawSocket</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="a00018.htm#ad7e1f526195723df9ed919eb7e9f130e">RawSocket</a> (<a class="code" href="a00018.htm">RawSocket</a>&amp;);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="a00018.htm">RawSocket</a>&amp; operator = (<a class="code" href="a00018.htm">RawSocket</a>&amp;);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="a00006.htm">ErrorInfo</a> lastError_;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="a00018.htm#ad7e1f526195723df9ed919eb7e9f130e">RawSocket</a> ();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="a00025.htm">socketData</a> socketData_;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="a00006.htm">ErrorInfo</a> <a class="code" href="a00018.htm#a6e3fd57651efdaf0a1065686b14a0b89">GetLastError</a> ();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="a00018.htm#a9d411a15161cf88af69e5761fd3ca88b">isBlockError</a> ();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="a00018.htm#ab2d69f96f73d1c3c912dcb3cb36b53e8">sync</a>         (<span class="keywordtype">bool</span> makeAsync);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="a00018.htm#a0b2927ba927eaa96bdfda17504881b90">customHeader</a> (<span class="keywordtype">bool</span> makeCustom);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="a00018.htm#aad5997aaaa2d622f0ca57f8b24a51a7b">start</a> ();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="a00018.htm#abdafadb8f1d146ec549c9a5c1143b988">setIP</a>   (<span class="keyword">const</span> <span class="keywordtype">char</span>* IP);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00018.htm#a9a8ff6eba0efdf5d355b649f81e23faa">setPort</a> (<span class="keywordtype">short</span> <span class="keywordtype">int</span> port);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">int</span>  <a class="code" href="a00018.htm#afaa5b169c39334f771936acbce5cfd98">send</a>    (<span class="keyword">const</span> <span class="keywordtype">char</span>* data, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="a00018.htm#a78e4ca41493a0af1db31d18cd68c39fc">receive</a> (<span class="keywordtype">char</span>* data, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00018.htm#a8c528baf37154d347366083f0f816846">stop</a> ();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="a00018.htm#a21b4e1b65f8daf47307ded2a7d81a769">~RawSocket</a> ();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor"># endif </span><span class="comment">/* H_GRNETWORK_RAWSOCKET_RAWSOCKET */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00018_htm"><div class="ttname"><a href="a00018.htm">RawSocket</a></div><div class="ttdef"><b>Definition:</b> <a href="a00075_source.htm#l00011">RawSocket.h:11</a></div></div>
+<div class="ttc" id="a00018_htm_a78e4ca41493a0af1db31d18cd68c39fc"><div class="ttname"><a href="a00018.htm#a78e4ca41493a0af1db31d18cd68c39fc">RawSocket::receive</a></div><div class="ttdeci">bool receive(char *data, unsigned int size)</div><div class="ttdef"><b>Definition:</b> <a href="a00076_source.htm#l00206">RawSocketMethods.h:206</a></div></div>
+<div class="ttc" id="a00018_htm_a21b4e1b65f8daf47307ded2a7d81a769"><div class="ttname"><a href="a00018.htm#a21b4e1b65f8daf47307ded2a7d81a769">RawSocket::~RawSocket</a></div><div class="ttdeci">~RawSocket()</div><div class="ttdef"><b>Definition:</b> <a href="a00076_source.htm#l00242">RawSocketMethods.h:242</a></div></div>
+<div class="ttc" id="a00018_htm_ab2d69f96f73d1c3c912dcb3cb36b53e8"><div class="ttname"><a href="a00018.htm#ab2d69f96f73d1c3c912dcb3cb36b53e8">RawSocket::sync</a></div><div class="ttdeci">bool sync(bool makeAsync)</div><div class="ttdef"><b>Definition:</b> <a href="a00076_source.htm#l00058">RawSocketMethods.h:58</a></div></div>
+<div class="ttc" id="a00018_htm_a9a8ff6eba0efdf5d355b649f81e23faa"><div class="ttname"><a href="a00018.htm#a9a8ff6eba0efdf5d355b649f81e23faa">RawSocket::setPort</a></div><div class="ttdeci">void setPort(short int port)</div><div class="ttdef"><b>Definition:</b> <a href="a00076_source.htm#l00160">RawSocketMethods.h:160</a></div></div>
+<div class="ttc" id="a00006_htm"><div class="ttname"><a href="a00006.htm">ErrorInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="a00052_source.htm#l00015">ErrorInfo.h:15</a></div></div>
+<div class="ttc" id="a00025_htm"><div class="ttname"><a href="a00025.htm">socketData</a></div><div class="ttdef"><b>Definition:</b> <a href="a00087_source.htm#l00013">SocketData.h:13</a></div></div>
+<div class="ttc" id="a00018_htm_a8c528baf37154d347366083f0f816846"><div class="ttname"><a href="a00018.htm#a8c528baf37154d347366083f0f816846">RawSocket::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdef"><b>Definition:</b> <a href="a00076_source.htm#l00231">RawSocketMethods.h:231</a></div></div>
+<div class="ttc" id="a00018_htm_ad7e1f526195723df9ed919eb7e9f130e"><div class="ttname"><a href="a00018.htm#ad7e1f526195723df9ed919eb7e9f130e">RawSocket::RawSocket</a></div><div class="ttdeci">RawSocket()</div><div class="ttdef"><b>Definition:</b> <a href="a00076_source.htm#l00011">RawSocketMethods.h:11</a></div></div>
+<div class="ttc" id="a00018_htm_aad5997aaaa2d622f0ca57f8b24a51a7b"><div class="ttname"><a href="a00018.htm#aad5997aaaa2d622f0ca57f8b24a51a7b">RawSocket::start</a></div><div class="ttdeci">bool start()</div><div class="ttdef"><b>Definition:</b> <a href="a00076_source.htm#l00105">RawSocketMethods.h:105</a></div></div>
+<div class="ttc" id="a00018_htm_a6e3fd57651efdaf0a1065686b14a0b89"><div class="ttname"><a href="a00018.htm#a6e3fd57651efdaf0a1065686b14a0b89">RawSocket::GetLastError</a></div><div class="ttdeci">ErrorInfo GetLastError()</div><div class="ttdef"><b>Definition:</b> <a href="a00076_source.htm#l00026">RawSocketMethods.h:26</a></div></div>
+<div class="ttc" id="a00018_htm_a9d411a15161cf88af69e5761fd3ca88b"><div class="ttname"><a href="a00018.htm#a9d411a15161cf88af69e5761fd3ca88b">RawSocket::isBlockError</a></div><div class="ttdeci">bool isBlockError()</div><div class="ttdef"><b>Definition:</b> <a href="a00076_source.htm#l00039">RawSocketMethods.h:39</a></div></div>
+<div class="ttc" id="a00018_htm_afaa5b169c39334f771936acbce5cfd98"><div class="ttname"><a href="a00018.htm#afaa5b169c39334f771936acbce5cfd98">RawSocket::send</a></div><div class="ttdeci">int send(const char *data, unsigned int size)</div><div class="ttdef"><b>Definition:</b> <a href="a00076_source.htm#l00175">RawSocketMethods.h:175</a></div></div>
+<div class="ttc" id="a00018_htm_a0b2927ba927eaa96bdfda17504881b90"><div class="ttname"><a href="a00018.htm#a0b2927ba927eaa96bdfda17504881b90">RawSocket::customHeader</a></div><div class="ttdeci">bool customHeader(bool makeCustom)</div><div class="ttdef"><b>Definition:</b> <a href="a00076_source.htm#l00085">RawSocketMethods.h:85</a></div></div>
+<div class="ttc" id="a00018_htm_abdafadb8f1d146ec549c9a5c1143b988"><div class="ttname"><a href="a00018.htm#abdafadb8f1d146ec549c9a5c1143b988">RawSocket::setIP</a></div><div class="ttdeci">bool setIP(const char *IP)</div><div class="ttdef"><b>Definition:</b> <a href="a00076_source.htm#l00132">RawSocketMethods.h:132</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Документация по 2GrayEngine. Последние изменения: Пн 19 Май 2014 03:06:19. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.5
+</small></address>
+</body>
+</html>

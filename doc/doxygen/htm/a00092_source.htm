@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>2GrayEngine: Исходный файл Text.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen_.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.bmp"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">2GrayEngine
+   </div>
+   <div id="projectbrief">Network engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.5 -->
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_32937a55a6fb687a16826cf9f361e0b9.htm">2GrayEngine-master</a></li><li class="navelem"><a class="el" href="dir_abb26aa1f738470fd3c1e4a1410fa318.htm">code</a></li><li class="navelem"><a class="el" href="dir_4415345cc848248c7d1854a28e161023.htm">userLib</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Text.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor"># ifndef H_USERLIB_TEXT</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"># define H_USERLIB_TEXT</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">class </span><a class="code" href="a00029.htm">Text</a> : <span class="keyword">public</span> <a class="code" href="a00015.htm">logic::Object</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">char</span>* text_;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="a00029.htm#a388f572c62279f839ee138a9afbdeeb5">print</a> ();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="a00029.htm#a65202a7c3049d325d0e8c88f0e849d32">readFromQuotes</a> (<span class="keyword">const</span> <span class="keywordtype">char</span>* text);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="a00029.htm#adecc4441e05c4a2ceec5137a1443a4c1">set</a>            (<span class="keyword">const</span> <span class="keywordtype">char</span>* smth);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span>* <span class="keyword">get</span> ();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="a00029.htm#a8bbff8b26bfd195b340d303ffa9b121b">~Text</a> ();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="a00029.htm#a950a98ae75562dc9c6a458acbd330143">Text</a>  ();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<a class="code" href="a00015.htm">logic::Object</a>* TEXTcreateOn (<span class="keyword">const</span> <span class="keywordtype">char</span>*);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<a class="code" href="a00015.htm">logic::Object</a>* TEXTcreate   ();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<a class="code" href="a00031.htm">logic::TypeAttributes</a> TEXTattributes (12 , <span class="stringliteral">&quot;Text&quot;</span>,  TEXTcreate, TEXTcreateOn);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor"># endif </span><span class="comment">/* H_USERLIB_TEXT */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00029_htm"><div class="ttname"><a href="a00029.htm">Text</a></div><div class="ttdef"><b>Definition:</b> <a href="a00050_source.htm#l00006">echo.h:6</a></div></div>
+<div class="ttc" id="a00029_htm_a388f572c62279f839ee138a9afbdeeb5"><div class="ttname"><a href="a00029.htm#a388f572c62279f839ee138a9afbdeeb5">Text::print</a></div><div class="ttdeci">void print()</div><div class="ttdef"><b>Definition:</b> <a href="a00050_source.htm#l00013">echo.h:13</a></div></div>
+<div class="ttc" id="a00029_htm_adecc4441e05c4a2ceec5137a1443a4c1"><div class="ttname"><a href="a00029.htm#adecc4441e05c4a2ceec5137a1443a4c1">Text::set</a></div><div class="ttdeci">bool set(const char *smth)</div><div class="ttdef"><b>Definition:</b> <a href="a00050_source.htm#l00048">echo.h:48</a></div></div>
+<div class="ttc" id="a00031_htm"><div class="ttname"><a href="a00031.htm">logic::TypeAttributes</a></div><div class="ttdef"><b>Definition:</b> <a href="a00047_source.htm#l00016">logic/core.h:16</a></div></div>
+<div class="ttc" id="a00015_htm"><div class="ttname"><a href="a00015.htm">logic::Object</a></div><div class="ttdef"><b>Definition:</b> <a href="a00047_source.htm#l00013">logic/core.h:13</a></div></div>
+<div class="ttc" id="a00029_htm_a65202a7c3049d325d0e8c88f0e849d32"><div class="ttname"><a href="a00029.htm#a65202a7c3049d325d0e8c88f0e849d32">Text::readFromQuotes</a></div><div class="ttdeci">bool readFromQuotes(const char *text)</div><div class="ttdef"><b>Definition:</b> <a href="a00050_source.htm#l00024">echo.h:24</a></div></div>
+<div class="ttc" id="a00029_htm_a8bbff8b26bfd195b340d303ffa9b121b"><div class="ttname"><a href="a00029.htm#a8bbff8b26bfd195b340d303ffa9b121b">Text::~Text</a></div><div class="ttdeci">~Text()</div><div class="ttdef"><b>Definition:</b> <a href="a00050_source.htm#l00075">echo.h:75</a></div></div>
+<div class="ttc" id="a00029_htm_a950a98ae75562dc9c6a458acbd330143"><div class="ttname"><a href="a00029.htm#a950a98ae75562dc9c6a458acbd330143">Text::Text</a></div><div class="ttdeci">Text()</div><div class="ttdef"><b>Definition:</b> <a href="a00050_source.htm#l00082">echo.h:82</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Документация по 2GrayEngine. Последние изменения: Пн 19 Май 2014 03:06:19. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.5
+</small></address>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>2GrayEngine: Исходный файл execMem.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen_.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.bmp"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">2GrayEngine
+   </div>
+   <div id="projectbrief">Network engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.5 -->
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_32937a55a6fb687a16826cf9f361e0b9.htm">2GrayEngine-master</a></li><li class="navelem"><a class="el" href="dir_abb26aa1f738470fd3c1e4a1410fa318.htm">code</a></li><li class="navelem"><a class="el" href="dir_f43a24636d7873fc097a3756357a119f.htm">engine</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">execMem.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor"># ifndef H_ENGINE_EXECMEM</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"># define H_ENGINE_EXECMEM</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="a00008.htm">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="a00008.htm">ExecMem</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    ::std::vector&lt;unsigned char&gt; mem_;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="a00008.htm#ad140b8c2c906f4cfe60f6aecdd588b63">ExecMem</a> (<a class="code" href="a00008.htm">ExecMem</a>&amp;);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="a00008.htm">ExecMem</a>&amp; operator = (<a class="code" href="a00008.htm">ExecMem</a>&amp;);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="a00008.htm#a5d5ed44f2168a9c5ac1a8b8d03b7ed63">verify</a> () <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="a00008.htm#ad140b8c2c906f4cfe60f6aecdd588b63">ExecMem</a> ();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="a00008.htm#a90ca964ebcc1b02bbcde225edd49e812">size</a> () <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">bool</span> push_back (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* data, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size = 1);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="a00008.htm#af6d5d6c1d716f57b8eb656af16a65332">memcpy</a>    (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> indexFrom, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* to,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <span class="keyword">get</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> dump (<span class="keyword">const</span> <span class="keywordtype">char</span>* fileName) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="a00008.htm#ab46bf6d6ab5e66cadae934c0cb4f4cf5">~ExecMem</a> ();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;};</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor"># endif </span><span class="comment">/* H_ENGINE_EXECMEM */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00008_htm_a5d5ed44f2168a9c5ac1a8b8d03b7ed63"><div class="ttname"><a href="a00008.htm#a5d5ed44f2168a9c5ac1a8b8d03b7ed63">ExecMem::verify</a></div><div class="ttdeci">bool verify() const </div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.htm#l00024">execMemMethods.h:24</a></div></div>
+<div class="ttc" id="a00008_htm_ab46bf6d6ab5e66cadae934c0cb4f4cf5"><div class="ttname"><a href="a00008.htm#ab46bf6d6ab5e66cadae934c0cb4f4cf5">ExecMem::~ExecMem</a></div><div class="ttdeci">~ExecMem()</div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.htm#l00184">execMemMethods.h:184</a></div></div>
+<div class="ttc" id="a00008_htm_a90ca964ebcc1b02bbcde225edd49e812"><div class="ttname"><a href="a00008.htm#a90ca964ebcc1b02bbcde225edd49e812">ExecMem::size</a></div><div class="ttdeci">unsigned int size() const </div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.htm#l00040">execMemMethods.h:40</a></div></div>
+<div class="ttc" id="a00008_htm"><div class="ttname"><a href="a00008.htm">ExecMem</a></div><div class="ttdef"><b>Definition:</b> <a href="a00055_source.htm#l00013">execMem.h:13</a></div></div>
+<div class="ttc" id="a00008_htm_af6d5d6c1d716f57b8eb656af16a65332"><div class="ttname"><a href="a00008.htm#af6d5d6c1d716f57b8eb656af16a65332">ExecMem::memcpy</a></div><div class="ttdeci">bool memcpy(unsigned int indexFrom, unsigned char *to, unsigned int size) const </div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.htm#l00097">execMemMethods.h:97</a></div></div>
+<div class="ttc" id="a00008_htm_ad140b8c2c906f4cfe60f6aecdd588b63"><div class="ttname"><a href="a00008.htm#ad140b8c2c906f4cfe60f6aecdd588b63">ExecMem::ExecMem</a></div><div class="ttdeci">ExecMem()</div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.htm#l00011">execMemMethods.h:11</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Документация по 2GrayEngine. Последние изменения: Пн 19 Май 2014 03:06:19. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.5
+</small></address>
+</body>
+</html>

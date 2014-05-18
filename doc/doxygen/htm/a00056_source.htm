@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>2GrayEngine: Исходный файл execMemMethods.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen_.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.bmp"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">2GrayEngine
+   </div>
+   <div id="projectbrief">Network engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.5 -->
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_32937a55a6fb687a16826cf9f361e0b9.htm">2GrayEngine-master</a></li><li class="navelem"><a class="el" href="dir_abb26aa1f738470fd3c1e4a1410fa318.htm">code</a></li><li class="navelem"><a class="el" href="dir_f43a24636d7873fc097a3756357a119f.htm">engine</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">execMemMethods.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor"># ifndef H_ENGINE_EXECMEMMETHODS</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"># define H_ENGINE_EXECMEMMETHODS</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="a00008.htm#ad140b8c2c906f4cfe60f6aecdd588b63">   11</a></span>&#160;<a class="code" href="a00008.htm#ad140b8c2c906f4cfe60f6aecdd588b63">ExecMem :: ExecMem</a> ()</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="a00008.htm#a5d5ed44f2168a9c5ac1a8b8d03b7ed63">   24</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="a00008.htm#a5d5ed44f2168a9c5ac1a8b8d03b7ed63">ExecMem :: verify</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">if</span> ( !<span class="keyword">this</span> )</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="a00008.htm#a90ca964ebcc1b02bbcde225edd49e812">   40</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="a00008.htm#a90ca964ebcc1b02bbcde225edd49e812">ExecMem :: size</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">if</span> ( !<a class="code" href="a00008.htm#a5d5ed44f2168a9c5ac1a8b8d03b7ed63">verify</a> () )</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> mem_.size ();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> * this function adds to the end of memory another memory.</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"> * @param data - data to add to the end</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"> * @param size - size of data to add</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"> * @return - succes</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">bool</span> ExecMem :: push_back (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* data,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                           <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size<span class="comment">/* = 1 */</span>)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span> ( !<a class="code" href="a00008.htm#a5d5ed44f2168a9c5ac1a8b8d03b7ed63">verify</a> () )</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        OUTPUT_INTERNAL (<span class="stringliteral">&quot;bad object&quot;</span>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">if</span> ( !data )</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        OUTPUT_INTERNAL (<span class="stringliteral">&quot;bad arg&quot;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="a00008.htm#a90ca964ebcc1b02bbcde225edd49e812">size</a>; i++)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            mem_.push_back (data[i]);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">catch</span> (::std::bad_alloc)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            OUTPUT_INTERNAL (<span class="stringliteral">&quot;exec mem can&#39;t alloc %d step&quot;</span>, i);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="a00008.htm#af6d5d6c1d716f57b8eb656af16a65332">   97</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="a00008.htm#af6d5d6c1d716f57b8eb656af16a65332">ExecMem :: memcpy</a>    (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> indexFrom, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* to,</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">if</span> ( !<a class="code" href="a00008.htm#a5d5ed44f2168a9c5ac1a8b8d03b7ed63">verify</a> () )</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        OUTPUT_INTERNAL (<span class="stringliteral">&quot;bad object&quot;</span>);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">if</span> ( indexFrom + size &gt; mem_.size () )</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        OUTPUT_INTERNAL (<span class="stringliteral">&quot;asked too much, actual size:%d, asked:%d&quot;</span>,</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                         mem_.size (), indexFrom + <a class="code" href="a00008.htm#a90ca964ebcc1b02bbcde225edd49e812">size</a>);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordflow">if</span> ( !to )</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        OUTPUT_INTERNAL (<span class="stringliteral">&quot;bad argument&quot;</span>);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> forbidenIndex = indexFrom + <a class="code" href="a00008.htm#a90ca964ebcc1b02bbcde225edd49e812">size</a>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> src = indexFrom;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> dst = 0; dst &lt; <a class="code" href="a00008.htm#a90ca964ebcc1b02bbcde225edd49e812">size</a>; dst++)</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            to[dst] = mem_.at (src);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">catch</span> (::std::out_of_range)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            OUTPUT_INTERNAL (<span class="stringliteral">&quot;cant access %d, size:%d&quot;</span>, src, mem_.size ());</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        src++;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="a00008.htm#ac865291d45758ef3c3da2475be178316">  144</a></span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="a00008.htm#ac865291d45758ef3c3da2475be178316">ExecMem :: get</a> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">if</span> ( !<a class="code" href="a00008.htm#a5d5ed44f2168a9c5ac1a8b8d03b7ed63">verify</a> () )</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        OUTPUT_INTERNAL (<span class="stringliteral">&quot;bad object&quot;</span>);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">return</span> CMD::BAD;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">if</span> ( index &gt;= mem_.size () )</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        OUTPUT_INTERNAL (<span class="stringliteral">&quot;bad parametr:%d size:%d&quot;</span>, index, mem_.size ());</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keywordflow">return</span> CMD::BAD;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">return</span> mem_.at (index);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment"> * undocumented, evil laugh</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="keywordtype">void</span> ExecMem :: dump (<span class="keyword">const</span> <span class="keywordtype">char</span>* fileName)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">if</span> ( !<a class="code" href="a00008.htm#a5d5ed44f2168a9c5ac1a8b8d03b7ed63">verify</a> () )</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        return ;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    FILE* file = fopen (fileName, <span class="stringliteral">&quot;w&quot;</span>);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">if</span> ( !file )</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; mem_.size (); i++)</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keywordtype">int</span> input = mem_.at(i);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        fprintf (file, <span class="stringliteral">&quot;[%3d]:{%X}\n&quot;</span>, i, input);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    fclose (file);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;}</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="a00008.htm#ab46bf6d6ab5e66cadae934c0cb4f4cf5">  184</a></span>&#160;<a class="code" href="a00008.htm#ab46bf6d6ab5e66cadae934c0cb4f4cf5">ExecMem :: ~ExecMem</a>()</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;{</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;}</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="preprocessor"># endif </span><span class="comment">/* H_ENGINE_EXECMEMMETHODS */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a00008_htm_a5d5ed44f2168a9c5ac1a8b8d03b7ed63"><div class="ttname"><a href="a00008.htm#a5d5ed44f2168a9c5ac1a8b8d03b7ed63">ExecMem::verify</a></div><div class="ttdeci">bool verify() const </div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.htm#l00024">execMemMethods.h:24</a></div></div>
+<div class="ttc" id="a00008_htm_ab46bf6d6ab5e66cadae934c0cb4f4cf5"><div class="ttname"><a href="a00008.htm#ab46bf6d6ab5e66cadae934c0cb4f4cf5">ExecMem::~ExecMem</a></div><div class="ttdeci">~ExecMem()</div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.htm#l00184">execMemMethods.h:184</a></div></div>
+<div class="ttc" id="a00008_htm_a90ca964ebcc1b02bbcde225edd49e812"><div class="ttname"><a href="a00008.htm#a90ca964ebcc1b02bbcde225edd49e812">ExecMem::size</a></div><div class="ttdeci">unsigned int size() const </div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.htm#l00040">execMemMethods.h:40</a></div></div>
+<div class="ttc" id="a00008_htm_ac865291d45758ef3c3da2475be178316"><div class="ttname"><a href="a00008.htm#ac865291d45758ef3c3da2475be178316">ExecMem::get</a></div><div class="ttdeci">unsigned char get(unsigned int index) const </div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.htm#l00144">execMemMethods.h:144</a></div></div>
+<div class="ttc" id="a00008_htm_af6d5d6c1d716f57b8eb656af16a65332"><div class="ttname"><a href="a00008.htm#af6d5d6c1d716f57b8eb656af16a65332">ExecMem::memcpy</a></div><div class="ttdeci">bool memcpy(unsigned int indexFrom, unsigned char *to, unsigned int size) const </div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.htm#l00097">execMemMethods.h:97</a></div></div>
+<div class="ttc" id="a00008_htm_ad140b8c2c906f4cfe60f6aecdd588b63"><div class="ttname"><a href="a00008.htm#ad140b8c2c906f4cfe60f6aecdd588b63">ExecMem::ExecMem</a></div><div class="ttdeci">ExecMem()</div><div class="ttdef"><b>Definition:</b> <a href="a00056_source.htm#l00011">execMemMethods.h:11</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Документация по 2GrayEngine. Последние изменения: Пн 19 Май 2014 03:06:19. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.5
+</small></address>
+</body>
+</html>

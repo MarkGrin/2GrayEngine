@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>2GrayEngine: Класс Socket</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen_.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.bmp"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">2GrayEngine
+   </div>
+   <div id="projectbrief">Network engine</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.5 -->
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>grNetwork</b></li><li class="navelem"><a class="el" href="a00023.htm">Socket</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="a00180.htm">Полный список членов класса</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс Socket</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+Граф связей класса Socket:</div>
+<div class="dyncontent">
+<div class="center"><img src="a00181.png" border="0" usemap="#_socket_coll__map" alt="Collaboration graph"/></div>
+<map name="_socket_coll__map" id="_socket_coll__map">
+<area shape="rect" id="node2" href="a00026.htm" title="{socketData\n|+ addrInfo\l+ socket\l|}" alt="" coords="5,32,100,119"/><area shape="rect" id="node3" href="a00005.htm" title="{ErrorInfo\n|&#45; local_\l&#45; lib_\l|+ ErrorInfo()\l+ set()\l+ set()\l+ local()\l+ lib()\l}" alt="" coords="125,5,225,145"/></map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a82a9f33812cd255070e2516ee2bf8b77"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.htm#a82a9f33812cd255070e2516ee2bf8b77">Socket</a> ()</td></tr>
+<tr class="separator:a82a9f33812cd255070e2516ee2bf8b77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad5997aaaa2d622f0ca57f8b24a51a7b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.htm#aad5997aaaa2d622f0ca57f8b24a51a7b">start</a> ()</td></tr>
+<tr class="separator:aad5997aaaa2d622f0ca57f8b24a51a7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c528baf37154d347366083f0f816846"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.htm#a8c528baf37154d347366083f0f816846">stop</a> ()</td></tr>
+<tr class="separator:a8c528baf37154d347366083f0f816846"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdafadb8f1d146ec549c9a5c1143b988"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.htm#abdafadb8f1d146ec549c9a5c1143b988">setIP</a> (const char *IP)</td></tr>
+<tr class="separator:abdafadb8f1d146ec549c9a5c1143b988"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a8ff6eba0efdf5d355b649f81e23faa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.htm#a9a8ff6eba0efdf5d355b649f81e23faa">setPort</a> (short int port)</td></tr>
+<tr class="separator:a9a8ff6eba0efdf5d355b649f81e23faa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a637e37aa77a3652b1d25518a5af8570a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.htm#a637e37aa77a3652b1d25518a5af8570a">send</a> (const char *what, unsigned int size)</td></tr>
+<tr class="separator:a637e37aa77a3652b1d25518a5af8570a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5017ae7e9d1d5c8a8f75517ddea62b85"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.htm#a5017ae7e9d1d5c8a8f75517ddea62b85">receive</a> (char *where, unsigned int size)</td></tr>
+<tr class="separator:a5017ae7e9d1d5c8a8f75517ddea62b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08bcb94d9d35dd0f2bfbbe2670ccbe91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.htm#a08bcb94d9d35dd0f2bfbbe2670ccbe91">sync</a> (bool makeAsync)</td></tr>
+<tr class="separator:a08bcb94d9d35dd0f2bfbbe2670ccbe91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd26f11788e11ab04b80335afdddf778"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.htm#acd26f11788e11ab04b80335afdddf778">blockError</a> () const </td></tr>
+<tr class="separator:acd26f11788e11ab04b80335afdddf778"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5da055f3ea72b200f23bf0d401d3fc1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="a00005.htm">ErrorInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.htm#ac5da055f3ea72b200f23bf0d401d3fc1">getLastError</a> () const </td></tr>
+<tr class="separator:ac5da055f3ea72b200f23bf0d401d3fc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af387aca495ea9a25c511cd7d02d997bb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00023.htm#af387aca495ea9a25c511cd7d02d997bb">~Socket</a> ()</td></tr>
+<tr class="separator:af387aca495ea9a25c511cd7d02d997bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>This socket class is abstract class that contain methods and varibles that are used in both sides of TCP connection. So it's and base class of TCP socket. </p>
+
+<p>См. определение в файле <a class="el" href="a00043_source.htm">grNetwork/core.h</a> строка <a class="el" href="a00043_source.htm#l00013">13</a></p>
+</div><h2 class="groupheader">Конструктор(ы)</h2>
+<a class="anchor" id="a82a9f33812cd255070e2516ee2bf8b77"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00023.htm">Socket</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This is standard constructor that sets everything to zero. </p>
+
+<p>См. определение в файле <a class="el" href="a00043_source.htm">grNetwork/core.h</a> строка <a class="el" href="a00043_source.htm#l00011">11</a></p>
+
+</div>
+</div>
+<a class="anchor" id="af387aca495ea9a25c511cd7d02d997bb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">~<a class="el" href="a00023.htm">Socket</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This is just destructor, it calls stop function. </p>
+
+<p>См. определение в файле <a class="el" href="a00043_source.htm">grNetwork/core.h</a> строка <a class="el" href="a00043_source.htm#l00200">200</a></p>
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a class="anchor" id="aad5997aaaa2d622f0ca57f8b24a51a7b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool start </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function start socket. Before using network functions of this class start socket. After using use stop function</p>
+<dl class="section return"><dt>Возвращает</dt><dd>success </dd></dl>
+
+<p>См. определение в файле <a class="el" href="a00043_source.htm">grNetwork/core.h</a> строка <a class="el" href="a00043_source.htm#l00028">28</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a8c528baf37154d347366083f0f816846"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function stops socket. </p>
+
+<p>См. определение в файле <a class="el" href="a00043_source.htm">grNetwork/core.h</a> строка <a class="el" href="a00043_source.htm#l00049">49</a></p>
+
+</div>
+</div>
+<a class="anchor" id="abdafadb8f1d146ec549c9a5c1143b988"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool setIP </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>IP</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function Sets IP.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">IP</td><td>- IP to be set</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>success </dd></dl>
+
+<p>См. определение в файле <a class="el" href="a00043_source.htm">grNetwork/core.h</a> строка <a class="el" href="a00043_source.htm#l00064">64</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a9a8ff6eba0efdf5d355b649f81e23faa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setPort </td>
+          <td>(</td>
+          <td class="paramtype">short int&#160;</td>
+          <td class="paramname"><em>port</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function sets port</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>- port to be set </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>См. определение в файле <a class="el" href="a00043_source.htm">grNetwork/core.h</a> строка <a class="el" href="a00043_source.htm#l00088">88</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a637e37aa77a3652b1d25518a5af8570a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool send </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>what</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p><a class="el" href="a00010.htm">Function</a> that sends your information.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>- data to be sent </td></tr>
+    <tr><td class="paramname">size</td><td>- size of data buffer to be sent</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>- success </dd></dl>
+
+<p>См. определение в файле <a class="el" href="a00043_source.htm">grNetwork/core.h</a> строка <a class="el" href="a00043_source.htm#l00103">103</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a5017ae7e9d1d5c8a8f75517ddea62b85"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool receive </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>where</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function receives data from socket.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">where</td><td>- where tp put data </td></tr>
+    <tr><td class="paramname">size</td><td>- size of data to be putted in data buffer</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>- success </dd></dl>
+
+<p>См. определение в файле <a class="el" href="a00043_source.htm">grNetwork/core.h</a> строка <a class="el" href="a00043_source.htm#l00131">131</a></p>
+
+</div>
+</div>
+<a class="anchor" id="a08bcb94d9d35dd0f2bfbbe2670ccbe91"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sync </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>makeAsync</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function sets socket in blocking or nonblocking mode. It can be called after start function.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">makeAsync</td><td>true - make non - blocking, false - make blocking</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>succes. </dd></dl>
+
+<p>См. определение в файле <a class="el" href="a00043_source.htm">grNetwork/core.h</a> строка <a class="el" href="a00043_source.htm#l00170">170</a></p>
+
+</div>
+</div>
+<a class="anchor" id="acd26f11788e11ab04b80335afdddf778"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool blockError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function looks if error was real or if it is fake error that happened, because socket is non blocking. Try to search non blocking sockets in msdn.</p>
+<dl class="section return"><dt>Возвращает</dt><dd>true - fake error, false - real error. </dd></dl>
+
+<p>См. определение в файле <a class="el" href="a00043_source.htm">grNetwork/core.h</a> строка <a class="el" href="a00043_source.htm#l00187">187</a></p>
+
+</div>
+</div>
+<a class="anchor" id="ac5da055f3ea72b200f23bf0d401d3fc1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="a00005.htm">ErrorInfo</a> getLastError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function returns last error.</p>
+<dl class="section return"><dt>Возвращает</dt><dd>last error. </dd></dl>
+
+<p>См. определение в файле <a class="el" href="a00043_source.htm">grNetwork/core.h</a> строка <a class="el" href="a00043_source.htm#l00155">155</a></p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li><a class="el" href="a00085_source.htm">grNetwork/Socket/Socket.h</a></li>
+<li><a class="el" href="a00088_source.htm">grNetwork/Socket/SocketMethods.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Документация по 2GrayEngine. Последние изменения: Пн 19 Май 2014 03:06:19. Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.5
+</small></address>
+</body>
+</html>

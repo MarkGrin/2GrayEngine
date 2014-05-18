@@ -1,0 +1,5 @@
+<map id="Client" name="Client">
+<area shape="rect" id="node2" href="$a00023.htm" title="{Socket\n||+ Socket()\l+ start()\l+ stop()\l+ setIP()\l+ setPort()\l+ send()\l+ receive()\l+ sync()\l+ blockError()\l+ getLastError()\l+ ~Socket()\l&#45; Socket()\l&#45; operator=()\l}" alt="" coords="52,207,176,440"/>
+<area shape="rect" id="node3" href="$a00026.htm" title="{socketData\n|+ addrInfo\l+ socket\l|}" alt="" coords="5,32,100,119"/>
+<area shape="rect" id="node4" href="$a00005.htm" title="{ErrorInfo\n|&#45; local_\l&#45; lib_\l|+ ErrorInfo()\l+ set()\l+ set()\l+ local()\l+ lib()\l}" alt="" coords="125,5,225,145"/>
+</map>
