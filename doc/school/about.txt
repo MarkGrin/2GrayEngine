@@ -1,0 +1,25 @@
+School module is a project that was given as a task in school. It requires
+implementation of:
+
+*Lexical analysis                          \
+*Syntax analysis resulting AST tree        | - compilation
+*AST to engine executable code translation /
+
+*Engine executable code execution | - execution
+
+To achive this goal in school module will be implemented new method of
+compilation as it was asked to do in school. After this method is
+added to engine module and execution is tweaked to be able to execute
+all things that were added as school task, school task will be finished
+and project will gain new more professional compilation method.
+
+When school task is completed and submited to school AST tree and executor
+will probably will be changed a little to remove specific school task
+details that are irrelevant to project.
+
+After this plan is done module will be deleted and probably will have
+very small trace somwhere in backlog.
+
+In the std_notes.txt described notes about AST standard to discuss with classmates.
+
+Current status:AST tree - implementation

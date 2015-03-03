@@ -1,0 +1,8 @@
+Drawbacks
+
+1. No logic then, why have boolean operators?
+2. Standard must be more formal.
+3. Where are derivirations that should be there?
+4. Why have NULL at the end of node?
+5. Convert some parts of AST to binary
+6. Double as AST node value? Why specify size of it? Why specify type?

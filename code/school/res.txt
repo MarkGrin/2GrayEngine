@@ -1,0 +1,56 @@
+AST builder
+!n a
+{
+    x = x + 5;
+}
+
+!m
+{
+    x = x + 5 - 7;
+    w  x < 1 ;
+    {
+        x = x + 1;
+    }
+}
+$
+
+tokenizing done
+
+[0]={SYS_MARK}(!)
+[1]={NEW_FUNC}
+[2]={NAME}(addone)
+[3]={SCOPE}({)
+[4]={NAME}(x)
+[5]={EQUALITY}(=)
+[6]={NAME}(x)
+[7]={MATH}(+)
+[8]={NUM}(51)
+[9]={END}(;)
+[10]={SCOPE}(})
+[11]={SYS_MARK}(!)
+[12]={MAIN}
+[13]={SCOPE}({)
+[14]={NAME}(x)
+[15]={EQUALITY}(=)
+[16]={NAME}(x)
+[17]={MATH}(+)
+[18]={NUM}(515)
+[19]={MATH}(-)
+[20]={NUM}(7)
+[21]={END}(;)
+[22]={NAME}(while)
+[23]={NAME}(x)
+[24]={MATH}(<)
+[25]={NUM}(10000)
+[26]={END}(;)
+[27]={SCOPE}({)
+[28]={NAME}(x)
+[29]={EQUALITY}(=)
+[30]={NAME}(x)
+[31]={MATH}(+)
+[32]={NUM}(1)
+[33]={END}(;)
+[34]={SCOPE}(})
+[35]={SCOPE}(})
+[36]={EXIT}($)Done
+
