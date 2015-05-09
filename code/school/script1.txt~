@@ -1,0 +1,26 @@
+!newvar x=0
+!newfunc increment
+{
+    x = x + 1 ;
+}
+
+!mainfunc
+{
+
+   if 22 + 1 ;
+   {
+      x = x + 5;
+      increment;
+      x = x + 12;
+      increment;
+      if x + 12 ;
+      {
+          increment;
+          x = x + 12;
+          x = x + 7;
+      }
+   }
+
+   x = 5 + x + 2 ;
+}
+$

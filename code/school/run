@@ -1,0 +1,3 @@
+./out > log.out
+./dotter.prog YOUR_TREE.txt > err2.txt
+ristretto Graph.jpg

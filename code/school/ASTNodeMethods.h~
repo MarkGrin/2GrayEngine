@@ -186,8 +186,7 @@ void ASTNode :: write (FILE* file) const
     if ( !isOK() )
         return ;
 
-    int value = value_;
-    fprintf (file, "[ %d %d ", code_, value);
+    fprintf (file, "[ %d %f ", code_, value_);
 
     for (int i = 0; i < child_.size(); i++)
         child_.at(i)->write (file);

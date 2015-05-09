@@ -1,0 +1,54 @@
+AST builder
+!n x=0
+!n y=1
+!n i
+{
+    x = x + 1 ;
+}
+
+!m
+{
+    i x ;
+    x = x + 5;
+    i x  - 1 > 0 ;
+    {
+        w x > 0 ;
+        {
+            x = x - 1 ;
+        }
+    }
+}
+$
+
+tokenizing done
+
+CURR:3 +
+CURR:7 
+CIVIL END
+|8 }
+|6 x
+CURR:3 +
+CURR:7 
+CIVIL END
+|6 if
+1:6 x
+CURR:3 -
+CURR:4 >
+CIVIL ENDswapping
+GOTCHA
+2:4
+3:2
+47:0x16bb1d0 0x16bb070 0x16bb250
+1:6 x
+2:4
+3:2
+47:0x16bb4d0 0x16bb630 0x16bb670
+CURR:3 -
+CURR:7 
+CIVIL ENDswapping
+GOTCHA
+|8 }
+|8 }
+|8 }EXITING
+EXITING
+

@@ -90,7 +90,7 @@ std::vector<token_t*>* tokenize (FILE* file)
             else if ( input == '>' || input == '<' )
             {
                 token_t* current = new token_t;
-                current->type = TOKEN::BOOL_OP;
+                current->type = TOKEN::MATH_OP;
                 current->data[0] = input;
                 tokens->push_back (current);
             }

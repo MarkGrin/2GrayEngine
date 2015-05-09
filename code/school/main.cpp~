@@ -76,15 +76,12 @@ void check (std::vector<token_t*>* tokens)
 
 int main (int argv, char** argc)
 {
-
     printf ("AST builder\n");
+
     FILE* file = fopen ("script1.txt", "r");
     std::vector<token_t*>* tokens = tokenize (file);
     fclose (file);
     printf ("\ntokenizing done\n");
-
-
-
     file = fopen ("YOUR_TREE.txt", "w");
     toTree tree (*tokens);
     ASTNode* root = tree.getProg ();
