@@ -1,0 +1,43 @@
+struct ExecByte /* Plain Old Data */
+{
+    unsigned char head[4];
+    double        data;
+};
+
+typedef std::vector<ExecByte> Memory;
+typedef std::stack<double> Stack;
+typedef std::stack<unsigned int> CallStack;
+
+const int   MAX_DATA = 256;
+const char* HEADER   = "MARKGRIN_EXECUTABLE_FILE";
+
+namespace COMMAND
+{
+    enum COMMAND
+    {
+        STOP_PROC = 10,
+        PUSH      = 11,
+        POP       = 12,
+        TOP       = 13,
+        ADD       = 14,
+        SUB       = 15,
+        MUL       = 16,
+        DIV       = 17,
+        JMP       = 18,
+        MARK      = 19,
+        CALL      = 20,
+        RET       = 21,
+        IN        = 22,
+        OUT       = 23,
+    };
+}
+
+namespace PLACE
+{
+    enum PLACE
+    {
+        NOWHERE  = 0,
+        REGISTER = 1,
+        MEMORY   = 2,
+    };
+}

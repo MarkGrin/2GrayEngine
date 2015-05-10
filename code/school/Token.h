@@ -75,7 +75,7 @@ const char* MAIN_FUNC_NAME = "mainfunc";
 const char* NEW_FUNC_NAME  = "newfunc";
 const char* NEW_VAR_NAME   = "newvar";
 
-struct token_t
+struct token_t /* Plain Old Data */
 {
     int type;
     char data[MAX_MEM]; // TODO:add dynamic memory

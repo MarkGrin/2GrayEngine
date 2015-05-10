@@ -1,20 +1,19 @@
 !newvar x=0
-!newvar y=15
+!newvar y=0
+
 !newfunc increment
 {
-    x = x + 15 ;
+    x = x + 1 ;
+    out x ;
 }
 
 !mainfunc
 {
-    in x ;
-    x = x + 5;
-    if x  - 1 > 0 ;
+    in y ;
+    while x > y ;
     {
-        while x > 0 ;
-        {
-            x = x - 1 ;
-        }
+        y = y - 1 ;
+        increment ;
     }
 }
 $

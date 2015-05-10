@@ -18,7 +18,6 @@ std::vector<token_t*>* tokenize (FILE* file)
         {
             if ( input == EOF )
                 break;
-            printf ("%c", input);
             if ( input == ' ' )
             {
             }

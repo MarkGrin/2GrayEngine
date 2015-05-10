@@ -78,16 +78,22 @@ int main (int argv, char** argc)
 {
 
     printf ("AST builder\n");
-    FILE* file = fopen ("script1.txt", "r");
+    if ( argv != 3 )
+    {
+        printf ("Please provide 2 arguments:\n");
+        printf ("1-Name of the script file\n");
+        printf ("2-Name of outpit AST file\n");
+        return 1;
+    }
+    FILE* file = fopen (argc[1], "r");
     std::vector<token_t*>* tokens = tokenize (file);
     fclose (file);
-    printf ("\ntokenizing done\n");
-
-
-
-    file = fopen ("YOUR_TREE.txt", "w");
+    printf ("Tokenizing done\n");
+    file = fopen (argc[2], "w");
     toTree tree (*tokens);
     ASTNode* root = tree.getProg ();
+
+
     fprintf (file, "1 11\nFUNCS ");
     fprintf (file, "%d", tree.getFuncSize());
     for (int i = 0; i < tree.getFuncSize(); i++)
@@ -99,8 +105,9 @@ int main (int argv, char** argc)
     fprintf (file, "\n");
     root->write(file);
     fclose (file);
+    printf ("AST tree built and saved:%s", argc[2]);
 
-    printf ("\nEXITING\n");
+    printf ("\nEXITING");
     printf ("\n");
     return 0;
 }

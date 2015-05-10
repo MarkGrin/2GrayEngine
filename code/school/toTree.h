@@ -38,6 +38,7 @@ class toTree
         root_         = new ASTNode (TREE::ROOT, 0);
         varsInit_     = new ASTNode (TREE::VAR_INIT, 0);
         main_         = new ASTNode (TREE::MAIN, 0);
+        root_->add (varsInit_);
         while ( true )
         {
             int res = getSysCom ();
@@ -50,8 +51,6 @@ class toTree
             }
             if ( res > 0 )
             {
-                printf ("EXITING");
-                root_->add (varsInit_);
                 root_->add (main_);
                 return root_;
             }
@@ -117,7 +116,6 @@ class toTree
         ASTNode* result = getTerm();
         while ( result )
         {
-            printf ("\n|%d %s", getToken()->type, getToken()->data);
             func->add (result);
             result = getTerm();
         }
@@ -169,6 +167,7 @@ class toTree
             index_++;
             ASTNode* son = new ASTNode (TREE::VARIABLE, getVar (getToken()->data));
             index_++;
+            index_++;
             node->add (son);
             return node;
         }
@@ -183,13 +182,9 @@ class toTree
         node->add (left);
         node->add (right);
         index_++;
-        printf ("\n1:%d %s", getToken()->type, getToken()->data);
         ASTNode* leftOp  = getArythm ();
-        printf ("\n2:%d", getToken()->type);
         ASTNode* midOp   = getLogic ();
-        printf ("\n3:%d", getToken()->type);
         ASTNode* rightOp = getArythm ();
-        printf ("\n4%d:%p %p %p", getToken()->type, leftOp, midOp, rightOp);
         midOp->add(leftOp);
         midOp->add(rightOp);
         left->add(midOp);
@@ -219,80 +214,20 @@ class toTree
             printf ("\nbad math");
             return nullptr;
         }
-        bool minused = false;
-        bool extended = false;
-        ASTNode* plus  = new ASTNode (TREE::OPERATOR, OPERATORS::PLUS);
-        ASTNode* minus = new ASTNode (TREE::OPERATOR, OPERATORS::PLUS);
-        plus->add (element);
         if ( !( getToken()->data[0] == '+' ||
                 getToken()->data[0] == '-'   ) ||
              getToken()->type != TOKEN::MATH_OP)
             return element;
-        while (true)
-        {
-            printf ("\nCURR:%d %s", getToken()->type, getToken()->data);
-            if ( !next () )
-            {
-                printf ("\nmath reached end unfinished");
-                return nullptr;
-            }
-            if ( getToken()->type != TOKEN::MATH_OP )
-            {
-                printf ("\nCIVIL END");
-                if ( plus->getSize () == 1 )
-                {
-                    printf ("swapping");
-                    ASTNode* del = plus;
-                    plus = plus->getChild(0);
-                    del->remove (0);
-                    //delete del;
-                }
-                if ( minus->getSize() == 0 )
-                {
-                    return plus;
-                }
-                else if ( minus->getSize() == 1 )
-                {
-                    printf ("\nGOTCHA");
-                    ASTNode* root = new ASTNode (TREE::OPERATOR, OPERATORS::MINUS);
-                    root->add (plus);
-                    root->add (minus->getChild(0));
-                    delete minus;
-                    return root;
-                }
-                else if ( minus->getSize() > 1 )
-                {
-                    ASTNode* root = new ASTNode (TREE::OPERATOR, OPERATORS::MINUS);
-                    root->add (plus);
-                    root->add (minus);
-                    return root;
-                }
-            }
-            if ( getToken()->data[0] == '+' )
-            {
-                index_++;
-                ASTNode* result = getComponent();
-                if ( !result )
-                {
-                    return nullptr;
-                }
-                plus->add (result);
-            }
-            else if ( getToken()->data[0] == '-' )
-            {
-                index_++;
-                ASTNode* result = getComponent();
-                if ( !result )
-                {
-                    return nullptr;
-                }
-                minus->add (result);
-            }
-            else
-            {
-                return nullptr;
-            }
-        }
+        int op = 0;
+        if ( getToken()->data[0] == '+' )
+            op = OPERATORS::PLUS;
+        else if ( getToken()->data[0] == '-' )
+            op = OPERATORS::MINUS;
+        index_++;
+        ASTNode* root = new ASTNode (TREE::OPERATOR, op);
+        root->add (element);
+        root->add (getArythm());
+        return root;
     }
 
     ASTNode* getComponent()
@@ -303,80 +238,20 @@ class toTree
             printf ("\nbad comp math");
             return nullptr;
         }
-        bool minused = false;
-        bool extended = false;
-        ASTNode* plus  = new ASTNode (TREE::OPERATOR, OPERATORS::MUL);
-        ASTNode* minus = new ASTNode (TREE::OPERATOR, OPERATORS::MUL);
-        plus->add (element);
         if ( !( getToken()->data[0] == '*' ||
                 getToken()->data[0] == '/'   ) ||
              getToken()->type != TOKEN::MATH_OP)
             return element;
-        while (true)
-        {
-            printf ("\nCURR:%d %s", getToken()->type, getToken()->data);
-            if ( !next () )
-            {
-                printf ("\nmath reached end unfinished");
-                return nullptr;
-            }
-            if ( getToken()->type != TOKEN::MATH_OP )
-            {
-                printf ("\nCIVIL END");
-                if ( plus->getSize () == 1 )
-                {
-                    printf ("swapping");
-                    ASTNode* del = plus;
-                    plus = plus->getChild(0);
-                    del->remove (0);
-                    //delete del;
-                }
-                if ( minus->getSize() == 0 )
-                {
-                    return plus;
-                }
-                else if ( minus->getSize() == 1 )
-                {
-                    printf ("\nGOTCHA");
-                    ASTNode* root = new ASTNode (TREE::OPERATOR, OPERATORS::DIV);
-                    root->add (plus);
-                    root->add (minus->getChild(0));
-                    delete minus;
-                    return root;
-                }
-                else if ( minus->getSize() > 1 )
-                {
-                    ASTNode* root = new ASTNode (TREE::OPERATOR, OPERATORS::DIV);
-                    root->add (plus);
-                    root->add (minus);
-                    return root;
-                }
-            }
-            if ( getToken()->data[0] == '*' )
-            {
-                index_++;
-                ASTNode* result = getElement();
-                if ( !result )
-                {
-                    return nullptr;
-                }
-                plus->add (result);
-            }
-            else if ( getToken()->data[0] == '/' )
-            {
-                index_++;
-                ASTNode* result = getElement();
-                if ( !result )
-                {
-                    return nullptr;
-                }
-                minus->add (result);
-            }
-            else
-            {
-                return nullptr;
-            }
-        }
+        int operat = 0;
+        if ( getToken()->data[0] == '*' )
+            operat = OPERATORS::MUL;
+        else if ( getToken()->data[0] == '/' )
+            operat = OPERATORS::DIV;
+        index_++;
+        ASTNode* root = new ASTNode (TREE::OPERATOR, operat);
+        root->add (element);
+        root->add (getComponent());
+        return root;
     }
 
     ASTNode* getElement ()
