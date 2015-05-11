@@ -38,7 +38,7 @@ digraph DotGraph
     Node17 -> Node18 [color="black", style="solid", weight="1", label="0"];
     Node18 [shape="ellipse", color="#FE9A2E", fontcolor="#FE9A2E", fillcolor="white", style="solid", weight="1", label="condition"];
     Node18 -> Node19 [color="black", style="solid", weight="1", label="0"];
-    Node19 [shape="ellipse", color="#298A08", fontcolor="#298A08", fillcolor="white", style="solid", weight="1", label=">"];
+    Node19 [shape="ellipse", color="#298A08", fontcolor="#298A08", fillcolor="white", style="solid", weight="1", label="=="];
     Node19 -> Node20 [color="black", style="solid", weight="1", label="0"];
     Node20 [shape="ellipse", color="blue", fontcolor="blue", fillcolor="white", style="solid", weight="1", label="x"];
     Node19 -> Node21 [color="black", style="solid", weight="1", label="1"];
@@ -55,7 +55,7 @@ digraph DotGraph
     Node26 [shape="ellipse", color="blue", fontcolor="blue", fillcolor="white", style="solid", weight="1", label="y"];
     Node25 -> Node27 [color="black", style="solid", weight="1", label="1"];
     Node27 [shape="ellipse", color="red", fontcolor="red", fillcolor="white", style="solid", weight="1", label="1"];
-    Node22 -> Node28 [color="black", style="solid", weight="1", label="1"];
+    Node14 -> Node28 [color="black", style="solid", weight="1", label="2"];
     Node28 [shape="box", color="#9A7195", fontcolor="#9A4195", fillcolor="white", style="solid", weight="1", label="call"];
     Node28 -> Node29 [color="black", style="solid", weight="1", label="0"];
     Node29 [shape="tab", color="#084B8A", fontcolor="#084B8A", fillcolor="white", style="solid", weight="1", label="increment"];

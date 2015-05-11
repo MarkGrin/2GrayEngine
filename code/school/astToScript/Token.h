@@ -46,7 +46,6 @@ namespace OPERATORS
         MINUS   = 3,
         MUL     = 4,
         DIV     = 5,
-        BOOL_EQ = 7,
         LOWER   = 9,
         GREATER = 10,
     };

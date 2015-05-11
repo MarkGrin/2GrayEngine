@@ -27,7 +27,7 @@ Reading
 25 to 23
 26 to 25
 27 to 25
-28 to 22
+28 to 14
 29 to 28
 Done
 1 to 0
@@ -57,5 +57,5 @@ Done
 25 to 23
 26 to 25
 27 to 25
-28 to 22
+28 to 14
 29 to 28Executing:wine DotExe\\Dot.exe -Tjpg out.dot -o Graph.jpg

@@ -1,0 +1,1 @@
+./ast2script.prog tree.ast out.script

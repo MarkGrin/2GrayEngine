@@ -10,7 +10,7 @@
 !mainfunc
 {
     in y ;
-    while x == y ;
+    while x > y ;
     {
         y = y - 1 ;
         call increment;

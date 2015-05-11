@@ -303,7 +303,7 @@ class toTree
         }
         int logic = 0;
         if ( getToken()->data[0] == '=' )
-            logic = OPERATORS::EQUAL;
+            logic = OPERATORS::BOOL_EQ;
         else if ( getToken()->data[0] == '>' )
             logic = OPERATORS::GREATER;
         else if ( getToken()->data[0] == '<' )
