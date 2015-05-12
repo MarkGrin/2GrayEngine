@@ -159,7 +159,7 @@ void ASTree :: toScript (FILE* file, ASTNode* node, int indent)
             toScript (file, node->getChild(0), indent);
             fprintf (file, "= ");
             for (int i = 1; i < node->getSize(); i++)
-                toScript(file, node->getChild(1), indent);
+                toScript(file, node->getChild(i), indent);
             fprintf (file, ";\n");
         }
         else

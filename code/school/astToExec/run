@@ -1,0 +1,4 @@
+./out script1.txt tree.ast
+./ast2exec.prog tree.ast out.exec
+cp out.exec ../proc/out.exec
+../proc/proc ../proc/out.exec

@@ -1,0 +1,21 @@
+!newvar x=0
+!newvar y=0
+!newvar z=0
+
+!mainfunc
+{
+    in y ;
+    while x < y;
+    {
+        z = x ;
+        while z < y ;
+        {
+            z = z + 1 ;
+            out z ;
+        }
+        x = x + 1;
+        out x;
+    }
+    out y;
+}
+$

@@ -95,7 +95,7 @@ bool Proc :: execute ()
             stack_.pop ();
             double num2 = stack_.top ();
             stack_.pop ();
-            num1 = num1 + num2;
+            num1 = num2 + num1;
             stack_.push (num1);
         }
         else if ( currentPlace.head[0] == COMMAND::SUB )
@@ -109,7 +109,7 @@ bool Proc :: execute ()
             stack_.pop ();
             double num2 = stack_.top ();
             stack_.pop ();
-            num1 = num1 - num2;
+            num1 = num2 - num1;
             stack_.push (num1);
         }
         else if ( currentPlace.head[0] == COMMAND::MUL )
@@ -123,7 +123,7 @@ bool Proc :: execute ()
             stack_.pop ();
             double num2 = stack_.top ();
             stack_.pop ();
-            num1 = num1 + num2;
+            num1 = num2 * num1;
             stack_.push (num1);
         }
         else if ( currentPlace.head[0] == COMMAND::DIV )
@@ -137,12 +137,76 @@ bool Proc :: execute ()
             stack_.pop ();
             double num2 = stack_.top ();
             stack_.pop ();
-            num1 = num1 + num2;
+            num1 = num2 / num1;
             stack_.push (num1);
         }
         else if ( currentPlace.head[0] == COMMAND::JMP )
         {
             index = currentPlace.data;
+        }
+        else if ( currentPlace.head[0] == COMMAND::J_EQUAL )
+        {
+            if ( stack_.size () < 2 )
+            {
+                printf ("Trying to J_X in less than 2 entries stack\n");
+                return false;
+            }
+            double num1 = stack_.top ();
+            stack_.pop ();
+            double num2 = stack_.top ();
+            stack_.pop ();
+            if ( num1 == num2 )
+            {
+                index = currentPlace.data;
+            }
+        }
+        else if ( currentPlace.head[0] == COMMAND::J_ABOVE )
+        {
+            if ( stack_.size () < 2 )
+            {
+                printf ("Trying to J_X in less than 2 entries stack\n");
+                return false;
+            }
+            double num1 = stack_.top ();
+            stack_.pop ();
+            double num2 = stack_.top ();
+            stack_.pop ();
+            if ( num1 <= num2 )
+            {
+                index = currentPlace.data;
+            }
+        }
+        else if ( currentPlace.head[0] == COMMAND::J_BELOW )
+        {
+            if ( stack_.size () < 2 )
+            {
+                printf ("Trying to J_X in less than 2 entries stack\n");
+                return false;
+            }
+            double num1 = stack_.top ();
+            stack_.pop ();
+            double num2 = stack_.top ();
+            stack_.pop ();
+            if ( num1 >= num2 )
+            {
+                index = currentPlace.data;
+            }
+        }
+        else if ( currentPlace.head[0] == COMMAND::J_NOT_EQ )
+        {
+            if ( stack_.size () < 2 )
+            {
+                printf ("Trying to J_X in less than 2 entries stack\n");
+                return false;
+            }
+            double num1 = stack_.top ();
+            stack_.pop ();
+            double num2 = stack_.top ();
+            stack_.pop ();
+            if ( num1 != num2 )
+            {
+                index = currentPlace.data;
+            }
         }
         else if ( currentPlace.head[0] == COMMAND::MARK )
         {
@@ -164,8 +228,9 @@ bool Proc :: execute ()
         }
         else if ( currentPlace.head[0] == COMMAND::IN )
         {
-            printf ("Requested input:");
-            scanf ("%f", reg_[currentPlace.head[2]]);
+            double input = 0;
+            scanf ("%lf", &input);
+            reg_[currentPlace.head[2]] = input;
         }
         else if ( currentPlace.head[0] == COMMAND::OUT )
         {
@@ -173,7 +238,7 @@ bool Proc :: execute ()
         }
         else
         {
-            printf ("Unknown command reached!\n");
+            printf ("Unknown command reached:%d !\n", currentPlace.head[0]);
             return false;
         }
         index++;

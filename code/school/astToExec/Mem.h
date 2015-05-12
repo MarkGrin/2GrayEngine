@@ -5,8 +5,6 @@ struct ExecByte /* Plain Old Data */
 };
 
 typedef std::vector<ExecByte> Memory;
-typedef std::stack<double> Stack;
-typedef std::stack<unsigned int> CallStack;
 
 const int   MAX_DATA = 256;
 const char* HEADER   = "MARKGRIN_EXECUTABLE_FILE";
