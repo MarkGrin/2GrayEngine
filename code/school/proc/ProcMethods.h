@@ -171,12 +171,44 @@ bool Proc :: execute ()
             stack_.pop ();
             double num2 = stack_.top ();
             stack_.pop ();
-            if ( num1 <= num2 )
+            if ( num1 > num2 )
             {
                 index = currentPlace.data;
             }
         }
         else if ( currentPlace.head[0] == COMMAND::J_BELOW )
+        {
+            if ( stack_.size () < 2 )
+            {
+                printf ("Trying to J_X in less than 2 entries stack\n");
+                return false;
+            }
+            double num1 = stack_.top ();
+            stack_.pop ();
+            double num2 = stack_.top ();
+            stack_.pop ();
+            if ( num1 < num2 )
+            {
+                index = currentPlace.data;
+            }
+        }
+        else if ( currentPlace.head[0] == COMMAND::J_NOT_BE )
+        {
+            if ( stack_.size () < 2 )
+            {
+                printf ("Trying to J_X in less than 2 entries stack\n");
+                return false;
+            }
+            double num1 = stack_.top ();
+            stack_.pop ();
+            double num2 = stack_.top ();
+            stack_.pop ();
+            if ( num1 <= num2 )
+            {
+                index = currentPlace.data;
+            }
+        }
+        else if ( currentPlace.head[0] == COMMAND::J_NOT_AB )
         {
             if ( stack_.size () < 2 )
             {

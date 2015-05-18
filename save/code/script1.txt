@@ -1,0 +1,20 @@
+!newvar x = 0 
+!newvar y = 0 
+
+!newfunc increment
+{
+    x = x + 1 ;
+    out x ;
+}
+
+!mainfunc
+{
+    in y ;
+    while x == y ;
+    {
+        y = y - 1 ;
+        call increment;
+    }
+
+}
+$

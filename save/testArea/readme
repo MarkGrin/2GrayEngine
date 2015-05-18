@@ -1,0 +1,21 @@
+PROGRAMMS:
+astToExec.prog - AST to executable program
+astToScript.prog - AST to script program
+scriptToAst.prog - script to AST program
+dotter.prog - visualisator (generates Graph.jpg)
+DotExe/ - dot package for visualisation
+proc.prog - softprocessor
+
+MISC:
+Graph.jpg - visual ast
+out.dot - file for visualisation
+
+FILES:
+script.in - Lev's initial script
+script.out - Lev's script from Grisha's tree
+tree2.in - Grisha's initial tree
+tree.out - Lev's tree from Lev's script
+exec2.out - Grisha's 
+exec.out - Lev's executable from Lev's tree from Lev's Script
+exec2.out - Lev's executable from Grisha's tree
+

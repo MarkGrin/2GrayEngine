@@ -151,15 +151,35 @@ void ASTree :: toScript (FILE* file, ASTNode* node, int indent)
     else if ( code == OPERATOR )
     {
         const char* OPERATORS[20] = {"=", "+", "-", "*", "/", "^", "==", "!=", "<", ">", ">=", "<=", "!", "||", "&&",
-                                     "!=", "-=", "*=", "/=", "ERROR"};
+                                     "+=", "-=", "*=", "/=", "ERROR"};
         if ( value == 1 )
         {
             for (int i = 0; i < indent; i++)
                 fprintf (file, "    ");
             toScript (file, node->getChild(0), indent);
             fprintf (file, "= ");
+            toScript(file, node->getChild(1), indent);
+            fprintf (file, ";\n");
+        }
+        else if ( value >= 16 )
+        {
+            for (int i = 0; i < indent; i++)
+                fprintf (file, "    ");
+            toScript (file, node->getChild(0), indent);
+            fprintf (file, "= ");
+            toScript (file, node->getChild(0), indent);
+            if ( value == 16 )
+                fprintf (file, " + ");
+            if ( value == 17 )
+                fprintf (file, " - ");
+            if ( value == 18 )
+                fprintf (file, " * ( ");
+            if ( value == 19 )
+                fprintf (file, " / ( ");
             for (int i = 1; i < node->getSize(); i++)
                 toScript(file, node->getChild(i), indent);
+            if ( value == 18 || value == 19 )
+                fprintf (file, ") ");
             fprintf (file, ";\n");
         }
         else

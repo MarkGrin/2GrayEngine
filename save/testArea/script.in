@@ -1,0 +1,20 @@
+!newvar count  = 1
+!newvar output = 1
+
+!newfunc next
+{
+    output = output * count ;
+}
+
+!mainfunc
+{
+    in count ;
+    while count > 1 ;
+    {
+        next ;
+        out output ;
+        count = count - 1 ;
+    }
+    out output ;
+}
+$

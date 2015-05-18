@@ -182,9 +182,13 @@ class toTree
         node->add (left);
         node->add (right);
         index_++;
+        printf ("\nSTART TO GET FUNC");
         ASTNode* leftOp  = getArythm ();
+        printf ("\nSTART TO GET FUNC");
         ASTNode* midOp   = getLogic ();
+        printf ("\nSTART TO GET FUNC");
         ASTNode* rightOp = getArythm ();
+        printf ("\nSTART TO GET FUNC");
         midOp->add(leftOp);
         midOp->add(rightOp);
         left->add(midOp);
@@ -302,12 +306,23 @@ class toTree
             return nullptr;
         }
         int logic = 0;
+
         if ( getToken()->data[0] == '=' )
             logic = OPERATORS::BOOL_EQ;
         else if ( getToken()->data[0] == '>' )
-            logic = OPERATORS::GREATER;
+        {
+            if ( getToken()->data[1] == '=' )
+                logic = OPERATORS::NOT_LOW;
+            else
+                logic = OPERATORS::GREATER;
+        }
         else if ( getToken()->data[0] == '<' )
-            logic = OPERATORS::LOWER;
+        {
+            if ( getToken()->data[1] == '=' )
+                logic = OPERATORS::NOT_GRE;
+            else
+                logic = OPERATORS::LOWER;
+        }
         else
             return nullptr;
 

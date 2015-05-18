@@ -1,0 +1,18 @@
+!newvar value = 1 
+!newvar oldvalue = 0 
+!newvar n = 0 
+!newvar counter = 0 
+
+!mainfunc
+{
+    in n ;
+    while counter < n ;
+    {
+        value = value + oldvalue ;
+        oldvalue = value - oldvalue ;
+        out oldvalue ;
+        counter = 1 + counter ;
+    }
+
+}
+$

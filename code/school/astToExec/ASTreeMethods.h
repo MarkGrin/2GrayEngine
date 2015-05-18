@@ -154,11 +154,55 @@ void ASTree :: toExec (ASTNode* node)
     else if ( code == OPERATOR )
     {
         const char* OPERATORS[20] = {"=", "+", "-", "*", "/", "^", "==", "!=", "<", ">", ">=", "<=", "!", "||", "&&",
-                                     "!=", "-=", "*=", "/=", "ERROR"};
+                                     "+=", "-=", "*=", "/=", "ERROR"};
         if ( value == 1 )
         {
             for (int i = 1; i < node->getSize(); i++)
                 toExec(node->getChild(i));
+            ExecByte byte = {{COMMAND::POP, PLACE::REGISTER, node->getChild(0)->getValue(), 0}, 0};
+            mem_.push_back (byte);
+        }
+        if ( value == 16 )
+        {
+            ExecByte push = {{COMMAND::PUSH, PLACE::REGISTER, node->getChild(0)->getValue(), 0}, 0};
+            mem_.push_back (push);
+            for (int i = 1; i < node->getSize(); i++)
+                toExec(node->getChild(i));
+            ExecByte math = {{COMMAND::ADD, 0, 0, 0}, 0};
+            mem_.push_back (math);
+            ExecByte byte = {{COMMAND::POP, PLACE::REGISTER, node->getChild(0)->getValue(), 0}, 0};
+            mem_.push_back (byte);
+        }
+        if ( value == 17 )
+        {
+            ExecByte push = {{COMMAND::PUSH, PLACE::REGISTER, node->getChild(0)->getValue(), 0}, 0};
+            mem_.push_back (push);
+            for (int i = 1; i < node->getSize(); i++)
+                toExec(node->getChild(i));
+            ExecByte math = {{COMMAND::SUB, 0, 0, 0}, 0};
+            mem_.push_back (math);
+            ExecByte byte = {{COMMAND::POP, PLACE::REGISTER, node->getChild(0)->getValue(), 0}, 0};
+            mem_.push_back (byte);
+        }
+        if ( value == 18 )
+        {
+            ExecByte push = {{COMMAND::PUSH, PLACE::REGISTER, node->getChild(0)->getValue(), 0}, 0};
+            mem_.push_back (push);
+            for (int i = 1; i < node->getSize(); i++)
+                toExec(node->getChild(i));
+            ExecByte math = {{COMMAND::MUL, 0, 0, 0}, 0};
+            mem_.push_back (math);
+            ExecByte byte = {{COMMAND::POP, PLACE::REGISTER, node->getChild(0)->getValue(), 0}, 0};
+            mem_.push_back (byte);
+        }
+        if ( value == 19 )
+        {
+            ExecByte push = {{COMMAND::PUSH, PLACE::REGISTER, node->getChild(0)->getValue(), 0}, 0};
+            mem_.push_back (push);
+            for (int i = 1; i < node->getSize(); i++)
+                toExec(node->getChild(i));
+            ExecByte math = {{COMMAND::DIV, 0, 0, 0}, 0};
+            mem_.push_back (math);
             ExecByte byte = {{COMMAND::POP, PLACE::REGISTER, node->getChild(0)->getValue(), 0}, 0};
             mem_.push_back (byte);
         }
@@ -199,11 +243,15 @@ void ASTree :: toExec (ASTNode* node)
             ASTNode* cond     = node->getChild(0);
             int command = 0;
             if ( cond->getChild(0)->getValue() == OPERATORS::GREATER )
-                command = COMMAND::J_BELOW;
+                command = COMMAND::J_NOT_AB;
             else if ( cond->getChild(0)->getValue() == OPERATORS::LOWER )
-                command = COMMAND::J_ABOVE;
+                command = COMMAND::J_NOT_BE;
             else if ( cond->getChild(0)->getValue() == OPERATORS::EQUAL )
                 command = COMMAND::J_NOT_EQ;
+            else if ( cond->getChild(0)->getValue() == OPERATORS::NOT_LOW )
+                command = COMMAND::J_ABOVE;
+            else if ( cond->getChild(0)->getValue() == OPERATORS::NOT_GRE )
+                command = COMMAND::J_BELOW;
             ASTNode* sign = cond->getChild(0);
             toExec (sign->getChild(0));
             toExec (sign->getChild(1));
