@@ -8,9 +8,9 @@
         x = 30 ;
         out x ;
     }
-    if x <= 20 ;
+    else
     {
-        x = 20 ;
+        x = 0 ;
         out x ;
     }
 }

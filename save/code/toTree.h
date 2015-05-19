@@ -155,8 +155,8 @@ class toTree
         {
             ASTNode* node = new ASTNode (TREE::STD_FUNC, STD_FUNC::IN);
             index_++;
-            ASTNode* son = new ASTNode (TREE::VARIABLE, getVar (getToken()->data));
-            index_++;
+
+            ASTNode* son = getArythm();
             index_++;
             node->add (son);
             return node;
@@ -165,8 +165,8 @@ class toTree
         {
             ASTNode* node = new ASTNode (TREE::STD_FUNC, STD_FUNC::OUT);
             index_++;
-            ASTNode* son = new ASTNode (TREE::VARIABLE, getVar (getToken()->data));
-            index_++;
+
+            ASTNode* son = getArythm();
             index_++;
             node->add (son);
             return node;
@@ -191,6 +191,15 @@ class toTree
         index_++;
         index_++;
         getFunc (right);
+        if ( getToken()->type == TOKEN::NAME &&
+             ! (strcmp (getToken()->data, "else")) )
+        {
+            index_++;
+            index_++;
+            ASTNode* elseCond = new ASTNode (TREE::LOGIC, LOGIC::ELSE);
+            getFunc (elseCond);
+            node->add (elseCond);
+        }
         return node;
     }
 
@@ -274,6 +283,42 @@ class toTree
             {
                 ASTNode* res = new ASTNode (TREE::VARIABLE, var);
                 index_++;
+                return res;
+            }
+            if ( !strcmp (getToken()->data, "max") )
+            {
+                index_++;
+                index_++;
+                ASTNode* res = new ASTNode (TREE::STD_FUNC, STD_FUNC::MAX);
+                ASTNode* arg1 = getArythm();
+                index_++;
+                ASTNode* arg2 = getArythm();
+                index_++;
+                res->add(arg1);
+                res->add(arg2);
+                return res;
+            }
+            else if ( !strcmp (getToken()->data, "min") )
+            {
+                index_++;
+                index_++;
+                ASTNode* res = new ASTNode (TREE::STD_FUNC, STD_FUNC::MIN);
+                ASTNode* arg1 = getArythm();
+                index_++;
+                ASTNode* arg2 = getArythm();
+                index_++;
+                res->add(arg1);
+                res->add(arg2);
+                return res;
+            }
+            else if ( !strcmp (getToken()->data, "sqrt") )
+            {
+                index_++;
+                index_++;
+                ASTNode* res = new ASTNode (TREE::STD_FUNC, STD_FUNC::SQRT);
+                ASTNode* arg1 = getArythm();
+                index_++;
+                res->add(arg1);
                 return res;
             }
             printf ("Unknown name:%s", getToken()->data);

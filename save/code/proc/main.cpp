@@ -2,6 +2,7 @@
 # include <string.h>
 # include <stack>
 # include <vector>
+# include <math.h>
 
 # include "Mem.h"
 # include "Proc.h"

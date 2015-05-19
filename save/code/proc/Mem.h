@@ -35,6 +35,9 @@ namespace COMMAND
         J_NOT_EQ  = 27,
         J_NOT_AB  = 28,
         J_NOT_BE  = 29,
+        MAX       = 30,
+        MIN       = 31,
+        SQRT      = 32,
     };
 }
 

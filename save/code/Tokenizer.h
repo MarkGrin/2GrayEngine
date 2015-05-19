@@ -119,11 +119,15 @@ std::vector<token_t*>* tokenize (FILE* file)
                 tokens->push_back (current);
                 continue;
             }
-            else if ( input >= 'a' && input <= 'z' )
+            else if ( ( input >= 'a' && input <= 'z' ) ||
+                      ( input >= 'A' && input <= 'Z' ) ||
+                        input == '_' )
             {
                 token_t* current = new token_t;
                 int i = 0;
-                while ( input >= 'a' && input <= 'z' )
+                while ( ( input >= 'a' && input <= 'z') ||
+                        ( input >= 'A' && input <= 'Z') ||
+                          input == '_' )
                 {
                     current->data[i] = input;
                     i++;

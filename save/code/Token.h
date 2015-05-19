@@ -71,7 +71,10 @@ namespace STD_FUNC
     {
         IN      = 1,
         OUT     = 2,
-        CALL    = 6
+        CALL    = 6,
+        SQRT    = 8,
+        MAX     = 9,
+        MIN     = 10,
     };
 }
 const char* MAIN_FUNC_NAME = "mainfunc";

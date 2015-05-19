@@ -131,7 +131,6 @@ void ASTree :: toExec (ASTNode* node)
             ExecByte byte = {{COMMAND::MARK, 0, 0, 0}, 0};
             mem_.push_back (byte);
             funcJumps_[value] = mem_.size() - 1;
-            printf ("jump of %d is %d\n", value, mem_.size() - 1);
             for (int i = 0; i < node->getSize(); i++)
                 toExec (node->getChild(i));
             ExecByte ret = {{COMMAND::RET, 0, 0, 0}, 0};
@@ -240,32 +239,83 @@ void ASTree :: toExec (ASTNode* node)
         const char* LOGICS[6] = {"if", "while", "else", "condition", "cond_met", "ERROR"};
         if ( value == 1 )
         {
-            ASTNode* cond     = node->getChild(0);
-            int command = 0;
-            if ( cond->getChild(0)->getValue() == OPERATORS::GREATER )
-                command = COMMAND::J_NOT_AB;
-            else if ( cond->getChild(0)->getValue() == OPERATORS::LOWER )
-                command = COMMAND::J_NOT_BE;
-            else if ( cond->getChild(0)->getValue() == OPERATORS::EQUAL )
-                command = COMMAND::J_NOT_EQ;
-            else if ( cond->getChild(0)->getValue() == OPERATORS::NOT_LOW )
-                command = COMMAND::J_ABOVE;
-            else if ( cond->getChild(0)->getValue() == OPERATORS::NOT_GRE )
-                command = COMMAND::J_BELOW;
-            ASTNode* sign = cond->getChild(0);
-            toExec (sign->getChild(0));
-            toExec (sign->getChild(1));
-            ExecByte jmp = {{command, 0, 0, 0}, 0};
-            mem_.push_back (jmp);
-            int jumpIndex = mem_.size() - 1;
+            if ( node->getSize () <= 2 )
+            {
+                ASTNode* cond     = node->getChild(0);
+                int command = 0;
+                if ( cond->getChild(0)->getValue() == OPERATORS::GREATER )
+                    command = COMMAND::J_NOT_AB;
+                else if ( cond->getChild(0)->getValue() == OPERATORS::LOWER )
+                    command = COMMAND::J_NOT_BE;
+                else if ( cond->getChild(0)->getValue() == OPERATORS::EQUAL )
+                    command = COMMAND::J_NOT_EQ;
+                else if ( cond->getChild(0)->getValue() == OPERATORS::NOT_LOW )
+                    command = COMMAND::J_ABOVE;
+                else if ( cond->getChild(0)->getValue() == OPERATORS::NOT_GRE )
+                    command = COMMAND::J_BELOW;
+                else if ( cond->getChild(0)->getValue() == OPERATORS::BOOL_EQ )
+                    command = COMMAND::J_NOT_EQ;
 
-            ASTNode* cond_met = node->getChild(1);
-            for (int i = 0; i < cond_met->getSize(); i++)
-                toExec (cond_met->getChild(i));
+                ASTNode* sign = cond->getChild(0);
+                toExec (sign->getChild(0));
+                toExec (sign->getChild(1));
+            printf ("\ncom:%d %d", command, cond->getChild(0)->getValue());
+                ExecByte jmp = {{command, 0, 0, 0}, 0};
+                mem_.push_back (jmp);
+                int jumpIndex = mem_.size() - 1;
 
-            ExecByte mark = {{COMMAND::MARK, 0, 0, 0}, 0};
-            mem_.push_back (mark);
-            mem_.at (jumpIndex).data = mem_.size() - 1;
+                ASTNode* cond_met = node->getChild(1);
+                for (int i = 0; i < cond_met->getSize(); i++)
+                    toExec (cond_met->getChild(i));
+
+                ExecByte mark = {{COMMAND::MARK, 0, 0, 0}, 0};
+                mem_.push_back (mark);
+                mem_.at (jumpIndex).data = mem_.size() - 1;
+            }
+            else
+            {
+                ASTNode* cond     = node->getChild(0);
+                int command = 0;
+                if ( cond->getChild(0)->getValue() == OPERATORS::GREATER )
+                    command = COMMAND::J_NOT_AB;
+                else if ( cond->getChild(0)->getValue() == OPERATORS::LOWER )
+                    command = COMMAND::J_NOT_BE;
+                else if ( cond->getChild(0)->getValue() == OPERATORS::EQUAL )
+                    command = COMMAND::J_NOT_EQ;
+                else if ( cond->getChild(0)->getValue() == OPERATORS::NOT_LOW )
+                    command = COMMAND::J_ABOVE;
+                else if ( cond->getChild(0)->getValue() == OPERATORS::NOT_GRE )
+                    command = COMMAND::J_BELOW;
+                else if ( cond->getChild(0)->getValue() == OPERATORS::BOOL_EQ )
+                    command = COMMAND::J_NOT_EQ;
+
+                ASTNode* sign = cond->getChild(0);
+                toExec (sign->getChild(0));
+                toExec (sign->getChild(1));
+            printf ("\ncom:%d %d", command, cond->getChild(0)->getValue());
+                ExecByte jmp = {{command, 0, 0, 0}, 0};
+                mem_.push_back (jmp);
+                int jumpIndex = mem_.size() - 1;
+
+                ASTNode* cond_met = node->getChild(1);
+                for (int i = 0; i < cond_met->getSize(); i++)
+                    toExec (cond_met->getChild(i));
+
+                ExecByte endJump = {{COMMAND::JMP, 0, 0, 0}, 0};
+                mem_.push_back (endJump);
+                int endJumpIndex = mem_.size() - 1;
+
+                ExecByte mark = {{COMMAND::MARK, 0, 0, 0}, 0};
+                mem_.push_back (mark);
+                mem_.at (jumpIndex).data = mem_.size() - 1;
+
+                ASTNode* elseCond = node->getChild(2);
+                for (int i = 0; i < elseCond->getSize(); i++)
+                    toExec (elseCond->getChild(i));
+
+                mem_.push_back (mark);
+                mem_.at (endJumpIndex).data = mem_.size() - 1;
+            }
         }
         if ( value == 2 )
         {
@@ -284,6 +334,10 @@ void ASTree :: toExec (ASTNode* node)
                 command = COMMAND::J_ABOVE;
             else if ( cond->getChild(0)->getValue() == OPERATORS::NOT_GRE )
                 command = COMMAND::J_BELOW;
+            else if ( cond->getChild(0)->getValue() == OPERATORS::BOOL_EQ )
+                command = COMMAND::J_NOT_EQ;
+
+            printf ("\ncom:%d %d", command, cond->getChild(0)->getValue());
             ASTNode* sign = cond->getChild(0);
             toExec (sign->getChild(0));
             toExec (sign->getChild(1));
@@ -323,12 +377,42 @@ void ASTree :: toExec (ASTNode* node)
         }
         else if ( value == 2 )
         {
-            ExecByte byte = {{COMMAND::OUT, 0, node->getChild(0)->getValue(), 0}, 0};
+            for (int i = 0; i < node->getSize(); i++)
+                toExec (node->getChild(i));
+            ExecByte byte = {{COMMAND::OUT, 0, 0, 0}, 0};
             mem_.push_back (byte);
         }
         else if ( value == 6 )
         {
             ExecByte byte = {{COMMAND::CALL, 0, 0, 0}, funcJumps_[node->getChild(0)->getValue()]};
+            mem_.push_back (byte);
+        }
+        else if ( value == 8 )
+        {
+            for (int i = 0; i < node->getSize(); i++)
+                toExec (node->getChild(i));
+            ExecByte byte = {{COMMAND::SQRT, 0, 0, 0}, 0};
+            mem_.push_back (byte);
+        }
+        else if ( value == 9 )
+        {
+            for (int i = 0; i < node->getSize(); i++)
+                toExec (node->getChild(i));
+            ExecByte byte = {{COMMAND::MAX, 0, 0, 0}, 0};
+            mem_.push_back (byte);
+        }
+        else if ( value == 10 )
+        {
+            for (int i = 0; i < node->getSize(); i++)
+                toExec (node->getChild(i));
+            ExecByte byte = {{COMMAND::MIN, 0, 0, 0}, 0};
+            mem_.push_back (byte);
+        }
+        else if ( value == 11 )
+        {
+            for (int i = 0; i < node->getSize(); i++)
+                toExec (node->getChild(i));
+            ExecByte byte = {{COMMAND::SQRT, 0, 0, 0}, 0};
             mem_.push_back (byte);
         }
     }

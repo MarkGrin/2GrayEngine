@@ -207,13 +207,31 @@ void ASTree :: toScript (FILE* file, ASTNode* node, int indent)
     else if ( code == LOGIC )
     {
         const char* LOGICS[6] = {"if", "while", "else", "condition", "cond_met", "ERROR"};
-        if ( value <= 3 )
+        if ( value <= 2 )
         {
             for (int i = 0; i < indent; i++)
                 fprintf (file, "    ");
             fprintf (file, "%s ", LOGICS[value-1]);
             for (int i = 0; i < node->getSize(); i++)
                 toScript (file, node->getChild(i), indent);
+        }
+        if ( value == 3 )
+        {
+            for (int i = 0; i < indent; i++)
+                fprintf (file, "    ");
+            fprintf (file, "%s\n", LOGICS[value-1]);
+            for (int i = 0; i < indent; i++)
+                fprintf (file, "    ");
+            fprintf (file, "{\n");
+            indent++;
+
+            for (int i = 0; i < node->getSize(); i++)
+                toScript (file, node->getChild(i), indent);
+
+            indent--;
+            for (int i = 0; i < indent; i++)
+                fprintf (file, "    ");
+            fprintf (file, "}\n\n");
         }
         if ( value == 4 )
         {
@@ -256,6 +274,17 @@ void ASTree :: toScript (FILE* file, ASTNode* node, int indent)
                 fprintf (file, "%s ", STANDARD_FUNCS[value-1]);
             toScript (file, node->getChild(0), indent);
             fprintf (file, ";\n");
+        }
+        else if ( value == 9 || value == 10 || value == 8 )
+        {
+            fprintf (file, "%s ( ", STANDARD_FUNCS[value-1]);
+            for (int i = 0; i < node->getSize(); i++)
+            {
+                toScript (file, node->getChild(i), indent);
+                if ( i != node->getSize() - 1 )
+                    fprintf (file, ", ");
+            }
+            fprintf (file, ") ");
         }
         else
         {

@@ -1,0 +1,71 @@
+!newvar var = 0 
+!newvar factorial = 1 
+!newvar a = 0 
+!newvar b = 0 
+!newvar c = 0 
+!newvar d = 0 
+
+!newfunc countD
+{
+    d = b * b - 4 * c * a ;
+}
+
+!newfunc input
+{
+    in a ;
+    in b ;
+    in c ;
+}
+
+!newfunc gimme_that_factorial_____
+{
+    while var == max ( var , 2 ) ;
+    {
+        factorial = factorial * var ;
+        var = var - 1 ;
+    }
+
+    out factorial ;
+}
+
+!mainfunc
+{
+    in var ;
+    gimme_that_factorial_____;
+    input;
+    if a == 0 ;
+    {
+        out 1 ;
+        out ( 0 - c ) / b ;
+    }
+
+    else
+    {
+        countD;
+        if d == 0 ;
+        {
+            out 1 ;
+            out ( 0 - b ) / 2 * a ;
+        }
+
+        else
+        {
+            if d == max ( d , 0 ) ;
+            {
+                out 2 ;
+                d = sqrt ( d ) ;
+                out ( 0 - b + d ) / 2 * a ;
+                out ( 0 - b - d ) / 2 * a ;
+            }
+
+            else
+            {
+                out 0 ;
+            }
+
+        }
+
+    }
+
+}
+$

@@ -1,56 +1,56 @@
 In file included from main.cpp:11:0:
 ASTreeMethods.h: In member function ‘void ASTree::toExec(ASTNode*)’:
-ASTreeMethods.h:146:69: warning: narrowing conversion of ‘value’ from ‘int’ to ‘double’ inside { } [-Wnarrowing]
+ASTreeMethods.h:145:69: warning: narrowing conversion of ‘value’ from ‘int’ to ‘double’ inside { } [-Wnarrowing]
          ExecByte byte = {{COMMAND::PUSH, PLACE::MEMORY, 0, 0}, value};
                                                                      ^
-ASTreeMethods.h:151:71: warning: narrowing conversion of ‘value’ from ‘int’ to ‘unsigned char’ inside { } [-Wnarrowing]
+ASTreeMethods.h:150:71: warning: narrowing conversion of ‘value’ from ‘int’ to ‘unsigned char’ inside { } [-Wnarrowing]
          ExecByte byte = {{COMMAND::PUSH, PLACE::REGISTER, value, 0}, 0};
                                                                        ^
-ASTreeMethods.h:162:90: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
+ASTreeMethods.h:161:90: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
              ExecByte byte = {{COMMAND::POP, PLACE::REGISTER, node->getChild(0)->getValue(), 0}, 0};
                                                                                           ^
-ASTreeMethods.h:167:91: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
+ASTreeMethods.h:166:91: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
              ExecByte push = {{COMMAND::PUSH, PLACE::REGISTER, node->getChild(0)->getValue(), 0}, 0};
                                                                                            ^
-ASTreeMethods.h:173:90: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
+ASTreeMethods.h:172:90: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
              ExecByte byte = {{COMMAND::POP, PLACE::REGISTER, node->getChild(0)->getValue(), 0}, 0};
                                                                                           ^
-ASTreeMethods.h:178:91: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
+ASTreeMethods.h:177:91: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
              ExecByte push = {{COMMAND::PUSH, PLACE::REGISTER, node->getChild(0)->getValue(), 0}, 0};
                                                                                            ^
-ASTreeMethods.h:184:90: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
+ASTreeMethods.h:183:90: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
              ExecByte byte = {{COMMAND::POP, PLACE::REGISTER, node->getChild(0)->getValue(), 0}, 0};
                                                                                           ^
-ASTreeMethods.h:189:91: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
+ASTreeMethods.h:188:91: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
              ExecByte push = {{COMMAND::PUSH, PLACE::REGISTER, node->getChild(0)->getValue(), 0}, 0};
                                                                                            ^
-ASTreeMethods.h:195:90: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
+ASTreeMethods.h:194:90: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
              ExecByte byte = {{COMMAND::POP, PLACE::REGISTER, node->getChild(0)->getValue(), 0}, 0};
                                                                                           ^
-ASTreeMethods.h:200:91: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
+ASTreeMethods.h:199:91: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
              ExecByte push = {{COMMAND::PUSH, PLACE::REGISTER, node->getChild(0)->getValue(), 0}, 0};
                                                                                            ^
-ASTreeMethods.h:206:90: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
+ASTreeMethods.h:205:90: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
              ExecByte byte = {{COMMAND::POP, PLACE::REGISTER, node->getChild(0)->getValue(), 0}, 0};
                                                                                           ^
-ASTreeMethods.h:258:50: warning: narrowing conversion of ‘command’ from ‘int’ to ‘unsigned char’ inside { } [-Wnarrowing]
+ASTreeMethods.h:263:54: warning: narrowing conversion of ‘command’ from ‘int’ to ‘unsigned char’ inside { } [-Wnarrowing]
+                 ExecByte jmp = {{command, 0, 0, 0}, 0};
+                                                      ^
+ASTreeMethods.h:296:54: warning: narrowing conversion of ‘command’ from ‘int’ to ‘unsigned char’ inside { } [-Wnarrowing]
+                 ExecByte jmp = {{command, 0, 0, 0}, 0};
+                                                      ^
+ASTreeMethods.h:344:50: warning: narrowing conversion of ‘command’ from ‘int’ to ‘unsigned char’ inside { } [-Wnarrowing]
              ExecByte jmp = {{command, 0, 0, 0}, 0};
                                                   ^
-ASTreeMethods.h:290:50: warning: narrowing conversion of ‘command’ from ‘int’ to ‘unsigned char’ inside { } [-Wnarrowing]
-             ExecByte jmp = {{command, 0, 0, 0}, 0};
-                                                  ^
-ASTreeMethods.h:298:72: warning: narrowing conversion of ‘checkMarkIndex’ from ‘int’ to ‘double’ inside { } [-Wnarrowing]
+ASTreeMethods.h:352:72: warning: narrowing conversion of ‘checkMarkIndex’ from ‘int’ to ‘double’ inside { } [-Wnarrowing]
              ExecByte retJump = {{COMMAND::JMP, 0, 0, 0}, checkMarkIndex};
                                                                         ^
-ASTreeMethods.h:321:75: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
+ASTreeMethods.h:375:75: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
              ExecByte byte = {{COMMAND::IN, 0, node->getChild(0)->getValue(), 0}, 0};
                                                                            ^
-ASTreeMethods.h:326:76: warning: narrowing conversion of ‘node->ASTNode::getChild(0)->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
-             ExecByte byte = {{COMMAND::OUT, 0, node->getChild(0)->getValue(), 0}, 0};
-                                                                            ^
-ASTreeMethods.h:331:97: warning: narrowing conversion of ‘((ASTree*)this)->ASTree::funcJumps_.std::map<_Key, _Tp, _Compare, _Alloc>::operator[]<int, int, std::less<int>, std::allocator<std::pair<const int, int> > >((* &(std::map<int, int, std::less<int>, std::allocator<std::pair<const int, int> > >::key_type)(node)->getChild()(0)->getValue()()))’ from ‘std::map<int, int>::mapped_type {aka int}’ to ‘double’ inside { } [-Wnarrowing]
+ASTreeMethods.h:387:97: warning: narrowing conversion of ‘((ASTree*)this)->ASTree::funcJumps_.std::map<_Key, _Tp, _Compare, _Alloc>::operator[]<int, int, std::less<int>, std::allocator<std::pair<const int, int> > >((* &(std::map<int, int, std::less<int>, std::allocator<std::pair<const int, int> > >::key_type)(node)->getChild()(0)->getValue()()))’ from ‘std::map<int, int>::mapped_type {aka int}’ to ‘double’ inside { } [-Wnarrowing]
              ExecByte byte = {{COMMAND::CALL, 0, 0, 0}, funcJumps_[node->getChild(0)->getValue()]};
                                                                                                  ^
-ASTreeMethods.h:344:77: warning: narrowing conversion of ‘var->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
+ASTreeMethods.h:428:77: warning: narrowing conversion of ‘var->ASTNode::getValue()’ from ‘double’ to ‘unsigned char’ inside { } [-Wnarrowing]
              ExecByte pop  = {{COMMAND::POP,  PLACE::REGISTER, var->getValue(), 0}, 0};
                                                                              ^

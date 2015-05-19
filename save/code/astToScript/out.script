@@ -1,21 +1,20 @@
 !newvar x = 0 
 !newvar y = 0 
 
-!newfunc math
+!newfunc increment
 {
-    in y ;
-    x = x + y ;
-    x = x * ( 2 + 8 ) ;
+    x = x + 1 ;
+    out x ;
 }
 
 !mainfunc
 {
-    while x >= 2 ;
+    in y ;
+    while x > y ;
     {
-        x = x + 5 ;
+        y = y - 1 ;
+        increment;
     }
 
-    call math;
-    out x ;
 }
 $

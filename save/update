@@ -1,0 +1,4 @@
+cp code/out testArea/scriptToAst.prog
+cp code/astToScript/ast2script.prog testArea/astToScript.prog
+cp code/astToExec/ast2exec.prog testArea/astToExec.prog
+cp code/proc/proc testArea/proc.prog

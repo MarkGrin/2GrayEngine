@@ -1,20 +1,11 @@
 !newvar x=0
-!newvar y=0
-
-!newfunc math
-{
-    in y ;
-    x = x + y ;
-    x = x * ( 2 + 8 ) ;
-}
 
 !mainfunc
 {
-    while x >= 2 ;
+    if max ( 5, 2 ) > 17 ;
     {
-        x = x + 5 ;
+        x = 25 * max ( 25 * 5 , 2 ) ;
     }
-    math ;
     out x ;
 }
 $

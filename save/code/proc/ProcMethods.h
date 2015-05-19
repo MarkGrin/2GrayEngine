@@ -267,7 +267,42 @@ bool Proc :: execute ()
         }
         else if ( currentPlace.head[0] == COMMAND::OUT )
         {
-            printf ("Requested output:%f\n", reg_[currentPlace.head[2]]);
+            double result = stack_.top();
+            stack_.pop ();
+            printf ("Requested output:%f\n", result);
+        }
+        else if ( currentPlace.head[0] == COMMAND::MAX )
+        {
+            double x1 = stack_.top ();
+            stack_.pop ();
+
+            double x2 = stack_.top ();
+            stack_.pop ();
+
+            if ( x1 > x2 )
+                stack_.push (x1);
+            else
+                stack_.push (x2);
+        }
+        else if ( currentPlace.head[0] == COMMAND::MIN )
+        {
+            double x1 = stack_.top ();
+            stack_.pop ();
+
+            double x2 = stack_.top ();
+            stack_.pop ();
+
+            if ( x1 < x2 )
+                stack_.push (x1);
+            else
+                stack_.push (x2);
+        }
+        else if ( currentPlace.head[0] == COMMAND::SQRT )
+        {
+            double res = stack_.top ();
+            stack_.pop();
+            res = sqrt (res);
+            stack_.push (res);
         }
         else
         {

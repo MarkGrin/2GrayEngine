@@ -1,0 +1,12 @@
+!newvar x = 0 
+
+!mainfunc
+{
+    if max ( 5 , 2 ) > 17 ;
+    {
+        x = 25 * max ( 25 * 5 , 2 ) ;
+    }
+
+    out x ;
+}
+$
