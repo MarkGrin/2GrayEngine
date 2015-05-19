@@ -1,0 +1,11 @@
+To test this programm go to testArea folder. Then start checkTree.bash script with one of the trees given.
+EXAMPLE:
+bash checkTree.bash tree3.in
+
+OR
+
+start checkScript.bash script with one of the scripts given
+EXAMPLE:
+bash checkScript.bash script.in
+
+For description of what does what go to testArea folder and find readme file
